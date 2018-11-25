@@ -78,7 +78,8 @@ for pageno in range(1,MAX_PAGES):
     break
   else:
     last_page = res.text
-    file.write(",\n")
+    if(pageno > 1):
+      file.write(",\n")
   # Remove control character before json.loads
   raw_text = rm_ctrl_ch(res.text[33:])
   try:
