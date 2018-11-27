@@ -1,14 +1,20 @@
 #!/usr/bin/env python3
 
-# Script for NGA saimoe group analyse
+# Script for NGA saimoe group analysis
 # ChangeLogs
 ## v0: analysis output/18-GroupA.csv -> output/18-GroupA-result.csv
 
 import csv
 import json
 import re
+import time
 
-selection_max = 5
+def date2unix(str):
+  return int(time.mktime(time.strptime(str,"%Y-%m-%d %H:%M:%S")))
+
+REG_TIME_LIMIT = date2unix("2018-11-11 00:00:00")
+
+SELECTION_MAX = 5
 candidates = ["摩耶", "Maestrale", "朝潮", "球磨", "风云", "Aquila", "山城", "Intrepid", "晓", "朝云", "凉风", "旗风", "时雨", "北上", "Gotland", "葛城"]
 aliasDB = {
   '凉风': ['凉风', '涼風'], 
@@ -27,6 +33,19 @@ aliasDB = {
   'Maestrale': ['Maestrale', '西北风'], 
   '时雨': ['时雨', '時雨', "shigure", "大天使", "祥瑞", "忠犬"], 
   '晓': ['晓', 'lady', '曉', '暁']}
+
+def result_check(row):
+  # Registered before REG_TIME_LIMIT
+  if(date2unix(row['reg_time']) > REG_TIME_LIMIT):
+    return False
+  # Selections less than SELECTION_MAX
+  selection_num = 0
+  for name in candidates:
+    if(row[name]):
+      selection_num += 1
+  if(selection_num > SELECTION_MAX):
+    return False
+  return True
 
 def alias_match(post_content, name):
   for alias in aliasDB[name]:
@@ -50,7 +69,8 @@ for row in raw:
     else:
       row[name] = ''
   writer.writerow(row)
-  print(row['post_no']+' '+row['text'])
+  if(not result_check(row)):
+    print(row['post_no']+' | '+row['reg_time']+' | '+row['text'])
   data.append(row)
 
 csvfile.close()
