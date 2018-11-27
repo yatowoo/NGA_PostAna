@@ -30,7 +30,7 @@ except ValueError:
 
 MAX_PAGES = 100
 REQUEST_DELAY = 0.5 # second
-OUTPUT_FILENAME = 'NGA-' + repr(NGA_TID) + '.json'
+OUTPUT_FILENAME = 'output/NGA-' + repr(NGA_TID) + '.json'
 
 chrome_header = {
           'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 
@@ -94,12 +94,13 @@ for pageno in range(1,MAX_PAGES):
   rows = raw['data']['__ROWS']
   rows_page = raw['data']['__R__ROWS']
   rows_per_page = raw['data']['__R__ROWS_PAGE']
+  n_pages = int((rows+1)/rows_per_page)+1
   if(pageno == 1):
     print("[-] Connected to NGA thread "+repr(NGA_TID))
     print("\t"+raw['data']['__T']['subject'])
-    print("\tRows : "+repr(rows)+", Pages : "+repr(int((rows+1)/rows_per_page)+1))
-  print("[-] Page " + repr(pageno) + " - "+repr(res.status_code)+" OK")
-
+    print("\tRows : "+repr(rows)+", Pages : "+repr(n_pages))
+  print("\r[-] Page " + repr(pageno) + " / " + repr(n_pages) + " - "+repr(res.status_code)+" OK", end='')
+print("\n[-] INFO - Finished")
 
 file.write("\n]")
 file.close()

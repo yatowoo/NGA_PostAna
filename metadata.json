@@ -5,17 +5,20 @@
       "A" : {
         "tid": 15730297,
         "candidates":["摩耶", "Maestrale", "朝潮", "球磨", "风云", "Aquila", "山城", "Intrepid", "晓", "朝云", "凉风", "旗风", "时雨", "北上", "Gotland", "葛城"],
-        "selection_max" : 5
+        "selection_max" : 5,
+        "deadline": "2018-11-28 10:00:00"
       },
       "B" : {
         "tid": 15730308,
         "candidates":["曙", "那智", "铃谷", "扶桑", "长门", "Iowa", "三日月", "满潮", "荒潮", "Prinz Eugen", "萩风", "长良", "千岁", "高雄", "Gambier Bay", "神鹰"],
-        "selection_max" : 5
+        "selection_max" : 5,
+        "deadline": "2018-11-28 10:00:00"
       },
       "C" : {
         "tid": 15730315,
         "candidates":["古鹰", "日振", "夕张", "那珂", "初雪","深雪", "Italia", "瑞穗", "浦波", "足柄", "加贺", "滨波", "武藏", "多摩", "凤翔", "福江"],
-        "selection_max" : 5
+        "selection_max" : 5,
+        "deadline": "2018-11-28 10:00:00"
       }
     }
   },
