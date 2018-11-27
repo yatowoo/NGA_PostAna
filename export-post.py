@@ -37,12 +37,14 @@ output.write("post_no"+sep+"uid"+sep+"reg_time"+sep+"post_time"+sep+"text"+"\n")
 for page in raw:
   for rowno in range(page['data']['__R__ROWS']):
     row = page['data']['__R'][repr(rowno)]
+    if(row['lou'] == 0):
+      continue
     output.write(repr(row['lou'])) # post no.
     uid = row['authorid']
     output.write(sep + repr(uid))
     output.write(sep + print_time(page['data']['__U'][repr(uid)]['regdate']))
     output.write(sep + print_time(row['postdatetimestamp']))
-    output.write(sep + row['content'])
+    output.write(sep + row['content'].replace(',',' '))
     output.write('\n')
     
 output.close()
