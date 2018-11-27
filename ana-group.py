@@ -2,37 +2,43 @@
 
 # Script for NGA saimoe group analysis
 # ChangeLogs
+## v1: use external metadata for analysis
 ## v0: analysis output/18-GroupA.csv -> output/18-GroupA-result.csv
+
+# Usage: ./ana-group.py [csv_file] [year] [stage] [group]
+## Example: ./ana-group.py output/18-GroupA.csv 2018 group_stage A
 
 import csv
 import json
 import re
 import time
+import sys
+import os
 
 def date2unix(str):
   return int(time.mktime(time.strptime(str,"%Y-%m-%d %H:%M:%S")))
 
-REG_TIME_LIMIT = date2unix("2018-11-11 00:00:00")
+metafile = open("metadata.json")
+metadata = json.load(metafile)
+metafile.close()
 
-SELECTION_MAX = 5
-candidates = ["摩耶", "Maestrale", "朝潮", "球磨", "风云", "Aquila", "山城", "Intrepid", "晓", "朝云", "凉风", "旗风", "时雨", "北上", "Gotland", "葛城"]
-aliasDB = {
-  '凉风': ['凉风', '涼風'], 
-  '风云': ['风云', '風雲'], 
-  '北上': ['北上'], 
-  'Intrepid': ['Intrepid', '无畏'], 
-  '摩耶': ['摩耶', 'maya'], 
-  'Aquila': ['Aquila', '阿奎拉', '阿库娅', '鹫座', '天鹰'], 
-  '朝潮': ['朝潮'], 
-  '朝云': ['朝云', '朝雲'], 
-  'Gotland': ['Gotland', '哥特兰'], 
-  '旗风': ['旗风', '旗風'], 
-  '球磨': ['球磨', 'kuma'], 
-  '山城': ['山城'], 
-  '葛城': ['葛城'], 
-  'Maestrale': ['Maestrale', '西北风'], 
-  '时雨': ['时雨', '時雨', "shigure", "大天使", "祥瑞", "忠犬"], 
-  '晓': ['晓', 'lady', '曉', '暁']}
+# Read from metadata with arguments
+SAIMOE_YEAR = sys.argv[2]
+SAIMOE_STAGE = sys.argv[3]
+SAIMOE_GROUP = sys.argv[4]
+if(metadata.get(SAIMOE_YEAR)):
+  REG_TIME_LIMIT = date2unix(metadata[SAIMOE_YEAR]['regtime_limit'])
+else:
+  print('[X] ERROR - Wrong YEAR for analysis')
+  exit()
+if(metadata[SAIMOE_YEAR].get(SAIMOE_STAGE) and metadata[SAIMOE_YEAR][SAIMOE_STAGE].get(SAIMOE_GROUP)):
+  SELECTION_MAX = metadata[SAIMOE_YEAR][SAIMOE_STAGE][SAIMOE_GROUP]['selection_max']
+  candidates = metadata[SAIMOE_YEAR][SAIMOE_STAGE][SAIMOE_GROUP]['candidates']
+else:
+  print('[X] ERROR - Wrong STAGE for analysis')
+  exit()
+
+aliasDB = metadata['ShipAliasDB']
 
 def result_check(row):
   # Registered before REG_TIME_LIMIT
@@ -53,10 +59,13 @@ def alias_match(post_content, name):
       return True
   return False
 
-csvfile = open("output/18-GroupA.csv")
+csvfile = open(sys.argv[1])
 raw = csv.DictReader(csvfile)
 
-result_file = open("output/18-GroupA-result.csv","w")
+dirname = os.path.dirname(sys.argv[1])
+filename = os.path.basename(sys.argv[1]).split('.')[0]
+
+result_file = open(dirname +"/" + filename + "-result.csv","w")
 header = ['post_no','uid','reg_time','post_time','text'] + candidates
 writer = csv.DictWriter(result_file, fieldnames=header)
 writer.writeheader()
