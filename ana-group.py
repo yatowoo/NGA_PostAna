@@ -14,6 +14,7 @@ import re
 import time
 import sys
 import os
+import zhconv
 
 def date2unix(str):
   return int(time.mktime(time.strptime(str,"%Y-%m-%d %H:%M:%S")))
@@ -73,7 +74,9 @@ writer.writeheader()
 data = []
 for row in raw:
   for name in candidates:
-    if(alias_match(row['text'], name)):
+    # 预处理中文繁体
+    if(alias_match(
+      zhconv.convert(row['text'], 'zh-cn'), name)):
       row[name] = 1
     else:
       row[name] = ''
