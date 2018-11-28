@@ -88,7 +88,7 @@ for row in raw:
     if(re.search(name, post_content, re.I)):
       # 本名
       row[name] = 1
-    elif(alias_match(post_content, name)):
+    elif(aliasDB.get(name) and alias_match(post_content, name)):
       # 别名
       row[name] = 1
     elif(pinyin_match(post_content, name)):
