@@ -2,6 +2,7 @@
 
 # Script for NGA saimoe group analysis
 # ChangeLogs
+## v1.1: 支持繁体与中文名谐音
 ## v1: use external metadata for analysis
 ## v0: analysis output/18-GroupA.csv -> output/18-GroupA-result.csv
 
@@ -15,6 +16,7 @@ import time
 import sys
 import os
 import zhconv
+from pypinyin import lazy_pinyin
 
 def date2unix(str):
   return int(time.mktime(time.strptime(str,"%Y-%m-%d %H:%M:%S")))
@@ -60,6 +62,13 @@ def alias_match(post_content, name):
       return True
   return False
 
+def pinyin_match(post_content, name):
+  real_pinyin = ''.join(lazy_pinyin(name))
+  input_pinyin = ''.join(lazy_pinyin(post_content))
+  if(re.search(real_pinyin, input_pinyin, re.I)):
+    return True
+  return False
+
 csvfile = open(sys.argv[1])
 raw = csv.DictReader(csvfile)
 
@@ -75,8 +84,15 @@ data = []
 for row in raw:
   for name in candidates:
     # 预处理中文繁体
-    if(alias_match(
-      zhconv.convert(row['text'], 'zh-cn'), name)):
+    post_content = zhconv.convert(row['text'], 'zh-cn')
+    if(re.search(name, post_content, re.I)):
+      # 本名
+      row[name] = 1
+    elif(alias_match(post_content, name)):
+      # 别名
+      row[name] = 1
+    elif(pinyin_match(post_content, name)):
+      # 谐音 / 错字
       row[name] = 1
     else:
       row[name] = ''
