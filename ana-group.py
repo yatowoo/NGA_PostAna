@@ -43,10 +43,13 @@ else:
 
 aliasDB = metadata['ShipAliasDB']
 
-def result_check(row):
+def pass_register_time_check(row):
   # Registered before REG_TIME_LIMIT
   if(date2unix(row['reg_time']) > REG_TIME_LIMIT):
     return False
+  return True
+
+def pass_selection_num_check(row):
   # Selections less than SELECTION_MAX
   selection_num = 0
   for name in candidates:
@@ -76,12 +79,18 @@ dirname = os.path.dirname(sys.argv[1])
 filename = os.path.basename(sys.argv[1]).split('.')[0]
 
 result_file = open(dirname +"/" + filename + "-result.csv","w")
-header = ['post_no','uid','reg_time','post_time','text'] + candidates
+header = ['post_no','uid','reg_time','post_time','text','选择数'] + candidates
 writer = csv.DictWriter(result_file, fieldnames=header)
 writer.writeheader()
 
 data = []
+excel_row_no = 0 # 导入Excel后的行号
 for row in raw:
+  # 直接输出Excel公式，统计本行选择数
+  # 求和公式格式：=SUM($G$2:$V$2)
+  # TODO: 若修改输出格式需修改公式，如增加页码列
+  excel_row_no += 1
+  row['选择数'] = '=SUM($G$'+ repr(excel_row_no +1) + ':$V$' + repr(excel_row_no +1) + ')'
   for name in candidates:
     # 预处理中文繁体
     post_content = zhconv.convert(row['text'], 'zh-cn')
@@ -96,9 +105,15 @@ for row in raw:
       row[name] = 1
     else:
       row[name] = ''
+  if(not pass_register_time_check(row)):
+    # 清空结果，但仍输出回帖内容，表中注意标红
+    for name in candidates:
+      row[name] = ''
+    print(row['post_no']+'\t'+row['reg_time']+'\t'+row['text'])
+  if(not pass_selection_num_check(row)):
+    print(row['post_no']+'\t'+row['reg_time']+'\t'+row['text'])
   writer.writerow(row)
-  if(not result_check(row)):
-    print(row['post_no']+' | '+row['reg_time']+' | '+row['text'])
+
   data.append(row)
 
 csvfile.close()
