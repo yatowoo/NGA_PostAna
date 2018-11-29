@@ -6,7 +6,7 @@ import zhconv
 import json
 from pprint import pprint
 
-ships = [
+NGA_SHIPS = [
     "秋月", "照月", "凉月", "初月", "岛风", "晓", "响/Верный", "雷", "电", "白露", "时雨", "村雨",
     "夕立", "春雨", "五月雨", "凉风", "江风", "海风", "山风", "阳炎", "不知火", "黑潮", "初风", "雪风",
     "天津风", "时津风", "浦风", "矶风", "滨风", "谷风", "野分", "舞风", "秋云", "萩风", "岚", "亲潮",
@@ -30,17 +30,56 @@ ships = [
     "明石", "秋津丸", "速吸", "神威", "占守", "国后", "择捉", "松轮", "佐渡", "对马", "福江", "日振",
     "大东"]
 
-f = open('metadata.json')
-meta = json.load(f)
-f.close()
+# Data from Akashi-Toolkit 明石工具箱
+## https://github.com/kcwikizh/Akashi-Toolkit
+def extract_alias():
+  f = open('Ship.json')
+  db = json.load(f)
+  f.close()
 
-db = {}
-for name in ships:
-  if(meta['ShipAliasDB'].get(name)):
-    continue
-  db[name] = [name]  # NGA投票候选用名
-  name_zhtw = zhconv.convert(name, 'zh-tw')
-  if (name != name_zhtw):
-    db[name].append(name_zhtw)
+  alias = {}
+  for ship in db:
+    if(not ship.get('remodel') or ship['remodel']['from_id']):
+      continue
+    if(not ship.get('name_for_search')):
+      print(ship['name']['zh_cn'])
+      continue
+    alias[ship['name']['zh_cn']] = alias[ship['name']['zh_cn']] = ship['name_for_search'].split(',')
 
-pprint(db)
+# Export ship alias for metadata.json
+def export_alias():
+  f = open('metadata.json')
+  meta = json.load(f)
+  f.close()
+  f = open('ShipAlias.json')
+  alias = json.load(f)
+  f.close()
+  for group in ['A', 'B', 'C', 'D', 'E', 'F']:
+    ships = meta['2018']['group_stage'][group]['candidates']
+    for name in ships:
+      print('    "'+name+'": ',end='')
+      if(alias.get(name)):
+        pprint(alias[name])
+      else:
+        print()
+
+# Export ship alias for Excel
+def export_alias_excel():
+  N_COLUMN = 20
+  f = open('metadata.json')
+  meta = json.load(f)
+  f.close()
+  for group in ['A', 'B', 'C', 'D', 'E', 'F']:
+    ships = meta['2018']['group_stage'][group]['candidates']
+    for name in ships:
+      alias = meta['ShipAliasDB'][name]
+      if(alias.count(name)):
+        alias.remove(name)
+      if(len(alias) < N_COLUMN):
+        alias = alias + [''] * (N_COLUMN - len(alias))
+      print(name+"\t",end='')
+      print(','.join(alias))
+
+if __name__ == "__main__":
+  export_alias_excel()
+  
