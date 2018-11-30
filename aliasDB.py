@@ -5,6 +5,7 @@
 import zhconv
 import json
 from pprint import pprint
+from pypinyin import lazy_pinyin
 
 NGA_SHIPS = [
     "秋月", "照月", "凉月", "初月", "岛风", "晓", "响/Верный", "雷", "电", "白露", "时雨", "村雨",
@@ -72,12 +73,16 @@ def export_alias_excel():
   for group in ['A', 'B', 'C', 'D', 'E', 'F']:
     ships = meta['2018']['group_stage'][group]['candidates']
     for name in ships:
+      pinyin = ''.join(lazy_pinyin(name))
       alias = meta['ShipAliasDB'][name]
       if(alias.count(name)):
         alias.remove(name)
+      if(alias.count(pinyin)):
+        alias.remove(pinyin)
+      alias.sort()
       if(len(alias) < N_COLUMN):
         alias = alias + [''] * (N_COLUMN - len(alias))
-      print(name+"\t",end='')
+      print(name+",",end='')
       print(','.join(alias))
 
 if __name__ == "__main__":
