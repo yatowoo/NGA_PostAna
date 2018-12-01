@@ -81,7 +81,7 @@ filename = os.path.basename(sys.argv[1]).split('.')[0]
 
 result_file = open(dirname +"/" + filename + "-result.csv","w")
 header = ['post_no','uid','reg_time','post_time','text','选择数'] + candidates
-writer = csv.DictWriter(result_file, fieldnames=header, extrasaction='ignore')
+writer = csv.DictWriter(result_file, fieldnames=header, extrasaction='ignore', dialect="excel-tab")
 writer.writeheader()
 
 data = []
