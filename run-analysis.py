@@ -5,6 +5,7 @@
 import os
 import json
 import time
+import sys
 
 def date2unix(str):
   return int(time.mktime(time.strptime(str,"%Y-%m-%d %H:%M:%S")))
@@ -16,9 +17,22 @@ metafile.close()
 SAIMOE_YEAR = '2018'
 SAIMOE_STAGE = 'group_stage'
 
-for group,thread in metadata[SAIMOE_YEAR]['group_stage'].items():
+# Command-line arguments
+debug = False
+if(len(sys.argv) > 1):
+  # Run mode
+  debug = (sys.argv[1] == 'debug')
+
+# Create output directory
+print('\n------\n\tNGA舰萌计票辅助\n------\n')
+cmd = 'mkdir -p output'
+print('[-] INFO - Check output dir. : '+cmd)
+os.system(cmd)
+for group in sorted(metadata[SAIMOE_YEAR]['group_stage']):
+  thread = metadata[SAIMOE_YEAR]['group_stage'][group]
   print("\n---> Processing : " + SAIMOE_YEAR + ' ' + SAIMOE_STAGE + ' ' + group)
 
+  # Check existence of post data
   postfile = 'output/NGA-' + repr(thread['tid']) + '.json'
   try:
     file_info = os.stat(postfile)
@@ -38,12 +52,15 @@ for group,thread in metadata[SAIMOE_YEAR]['group_stage'].items():
   # Get post by NGA tid
   cmd = './get-post.py '+ repr(thread['tid'])
   print(cmd)
-  os.system(cmd)
+  if(not debug):
+    os.system(cmd)
   # Export post from raw json to csv
   cmd = './export-post.py '+ postfile + ' ' + csvfile
   print(cmd)
-  os.system(cmd)
+  if(not debug):
+    os.system(cmd)
   # Analysis post content as csv
   cmd = './ana-group.py '+ csvfile + ' ' + SAIMOE_YEAR + ' ' + SAIMOE_STAGE + ' ' + group
   print(cmd)
-  os.system(cmd)
+  if(not debug):
+    os.system(cmd)
