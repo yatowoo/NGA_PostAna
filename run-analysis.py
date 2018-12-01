@@ -30,6 +30,8 @@ print('[-] INFO - Check output dir. : '+cmd)
 os.system(cmd)
 for group in sorted(metadata[SAIMOE_YEAR]['group_stage']):
   thread = metadata[SAIMOE_YEAR]['group_stage'][group]
+  if(not thread.get('tid')):
+    continue
   print("\n---> Processing : " + SAIMOE_YEAR + ' ' + SAIMOE_STAGE + ' ' + group)
 
   # Check existence of post data

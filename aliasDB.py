@@ -6,6 +6,9 @@ import zhconv
 import json
 from pprint import pprint
 from pypinyin import lazy_pinyin
+import sys
+
+EXPORT_MODE = ['json', 'excel', 'csv']
 
 NGA_SHIPS = [
     "秋月", "照月", "凉月", "初月", "岛风", "晓", "响/Верный", "雷", "电", "白露", "时雨", "村雨",
@@ -47,44 +50,44 @@ def extract_alias():
       continue
     alias[ship['name']['zh_cn']] = alias[ship['name']['zh_cn']] = ship['name_for_search'].split(',')
 
-# Export ship alias for metadata.json
-def export_alias():
-  f = open('metadata.json')
-  meta = json.load(f)
-  f.close()
-  f = open('ShipAlias.json')
-  alias = json.load(f)
-  f.close()
-  for group in ['A', 'B', 'C', 'D', 'E', 'F']:
-    ships = meta['2018']['group_stage'][group]['candidates']
-    for name in ships:
-      print('    "'+name+'": ',end='')
-      if(alias.get(name)):
-        pprint(alias[name])
-      else:
-        print()
-
 # Export ship alias for Excel
-def export_alias_excel():
-  N_COLUMN = 20
+def export_alias_excel(mode='json'):
   f = open('metadata.json')
   meta = json.load(f)
   f.close()
-  for group in ['A', 'B', 'C', 'D', 'E', 'F']:
+  for group in sorted(meta['2018']['group_stage']): 
     ships = meta['2018']['group_stage'][group]['candidates']
+    aliasDB = meta['ShipAliasDB']
     for name in ships:
       pinyin = ''.join(lazy_pinyin(name))
-      alias = meta['ShipAliasDB'][name]
+      alias = []
+      # From current alias
+      if(meta['ShipAliasDB'].get(name)):
+        alias += meta['ShipAliasDB'][name]
       if(alias.count(name)):
         alias.remove(name)
       if(alias.count(pinyin)):
         alias.remove(pinyin)
+      alias = list(set(alias))
       alias.sort()
-      if(len(alias) < N_COLUMN):
-        alias = alias + [''] * (N_COLUMN - len(alias))
-      print(name+",",end='')
-      print(','.join(alias))
+      if(mode == 'json'):
+        print('"'+name+'": ',end='')
+        print(alias,end='')
+        print(',')
+      elif(mode == 'excel'):
+        print(name+'\t'+'\t'.join(alias))
+      elif(mode == 'csv'):
+        print(name+','+','.join(alias))
+          
 
 if __name__ == "__main__":
-  export_alias_excel()
+  mode = 'json'
+  if(len(sys.argv) > 1):
+    mode = sys.argv[1]
+    if(mode not in EXPORT_MODE):
+      print('[X] ERROR - Mode input not in config : ' + mode)
+      print('\tSupoort export mode : ', end='')
+      print(EXPORT_MODE)
+      exit()
+  export_alias_excel(mode)
   
