@@ -19,6 +19,9 @@ import os
 import zhconv
 from pypinyin import lazy_pinyin
 
+# 统一不同匹配策略命中次数
+MATCH_COUNT = {'总计':0, '尝试':0, '本名':0, '别名':0, '谐音':0, '总楼层':0}
+
 def date2unix(str):
   return int(time.mktime(time.strptime(str,"%Y-%m-%d %H:%M:%S")))
 
@@ -62,6 +65,7 @@ def pass_selection_num_check(row):
 
 def alias_match(post_content, name):
   for alias in aliasDB[name]:
+    MATCH_COUNT['尝试'] += 1
     if(re.search(alias, post_content, re.I)):
       return True
   return False
@@ -80,6 +84,9 @@ dirname = os.path.dirname(sys.argv[1])
 filename = os.path.basename(sys.argv[1]).split('.')[0]
 
 result_file = open(dirname +"/" + filename + "-result.csv","w")
+logfile = open('analysis.log','a+')
+logfile.write('\n------> Analysis log for NGA舰萌'+SAIMOE_YEAR+' '+SAIMOE_STAGE+' '+SAIMOE_GROUP+'组\n')
+logfile.write('Date : '+ time.strftime("%Y-%m-%d %H:%M:%S") + '\n')
 header = ['post_no','uid','reg_time','post_time','text','选择数'] + candidates
 writer = csv.DictWriter(result_file, fieldnames=header, extrasaction='ignore', dialect="excel-tab")
 writer.writeheader()
@@ -97,26 +104,36 @@ for row in raw:
   for name in candidates:
     # 预处理中文繁体
     post_content = zhconv.convert(row['text'], 'zh-cn')
+    MATCH_COUNT['总计'] += 1
     if(re.search(name, post_content, re.I)):
       # 本名
       row[name] = 1
+      MATCH_COUNT['本名'] += 1
     elif(aliasDB.get(name) and alias_match(post_content, name)):
       # 别名
       row[name] = 1
-    elif(pinyin_match(post_content, name)):
-      # 谐音 / 错字
+      MATCH_COUNT['别名'] += 1
+    elif(len(name) > 1 and pinyin_match(post_content, name)):
+      # 谐音 / 错字 (移除单字舰娘，减少误判)
       row[name] = 1
+      MATCH_COUNT['谐音'] += 1
+      print('谐音\t'+row['post_no']+'\t'+row['text'])
     else:
       row[name] = ''
+      MATCH_COUNT['总计'] -= 1
   if(not pass_register_time_check(row)):
     # 清空结果，但仍输出回帖内容，表中注意标红
     for name in candidates:
       row[name] = ''
-    print(row['post_no']+'\t'+row['reg_time']+'\t'+row['text'])
+    logfile.write('新号\t'+row['post_no']+'\t'+row['reg_time']+'\t'+row['text']+'\n')
   if(not pass_selection_num_check(row)):
-    print(row['post_no']+'\t'+row['reg_time']+'\t'+row['text'])
+    logfile.write('超票\t'+row['post_no']+'\t'+row['text']+'\n')
   writer.writerow(row)
   data.append(row)
+MATCH_COUNT['总楼层'] = len(data)
+print('[-] INFO - Match efficiency test : ')
+print(json.dumps(MATCH_COUNT, ensure_ascii=False, indent=2))
+logfile.write('------> End of analysis log\n')
 # End of post analysis
 
 # Output excel formula to sum the result in total & pages
@@ -162,4 +179,5 @@ writer.writerow(fPage)
 
 csvfile.close()
 result_file.close()
+logfile.close()
 
