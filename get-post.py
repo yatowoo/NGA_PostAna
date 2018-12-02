@@ -34,10 +34,10 @@ OUTPUT_FILENAME = 'output/NGA-' + repr(NGA_TID) + '.json'
 
 chrome_header = {
           'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 
-           'Upgrade-Insecure-Requests' : 1,
+           'Upgrade-Insecure-Requests' : '1',
            'Accept-Language': 'en-GB,en;q=0.9,en-US;q=0.8,zh-CN;q=0.7,zh;q=0.6,ja;q=0.5,de;q=0.4,zh-TW;q=0.3',
            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-           'DNT': 1,
+           'DNT': '1',
            'Accept-Encoding': 'gzip, deflate',
            'Cache-Control':'max-age=0',
            'Connection':'keep-alive'
