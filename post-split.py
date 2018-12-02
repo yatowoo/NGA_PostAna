@@ -43,7 +43,11 @@ for row in raw:
         text = text.replace('commandant teste', 'CommandantTeste')
       elif(name == '齐柏林'):
         text = text.replace('graf zeppelin', 'GrafZeppelin')
-  text = text.replace('zsbd','|')
+  text = text.replace('zsbd','')
+  text = text.replace('紫薯布丁','')
+  text = text.replace('字数补丁','')
+  text = text.replace('字数','')
+  text = text.replace('。', '|')
   text = text.replace('，', '|')
   text = text.replace('、', '|')
   text = text.replace('<br/>','|')
