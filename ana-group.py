@@ -45,7 +45,19 @@ else:
   print('[X] ERROR - Wrong STAGE for analysis')
   exit()
 
+# Import ship alias after distincted
 aliasDB = metadata['ShipAliasDB']
+# Remove duplicate alias in candidates
+import functools
+  # Flatten
+allAlias = functools.reduce(
+  (lambda x,y: x+y),
+  [aliasDB[name] for name in candidates])
+duplicate = {alias for alias in allAlias if allAlias.count(alias) > 1}
+for alias in duplicate:
+  for name in candidates:
+    if(aliasDB[name].count(alias)):
+      aliasDB[name].remove(alias)
 
 def pass_register_time_check(row):
   # Registered before REG_TIME_LIMIT
