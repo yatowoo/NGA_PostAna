@@ -19,9 +19,11 @@ SAIMOE_STAGE = 'group_stage'
 
 # Command-line arguments
 debug = False
+local = False
 if(len(sys.argv) > 1):
   # Run mode
   debug = (sys.argv[1] == 'debug')
+  local = (sys.argv[1] == 'local')
 
 # Create output directory
 print('\n------\n\tNGA舰萌计票辅助\n------\n')
@@ -40,6 +42,7 @@ for group in sorted(metadata[SAIMOE_YEAR]['group_stage']):
     file_info = os.stat(postfile)
   except FileNotFoundError:
     print("[-] NEW post found in metadata.json")
+    local = False
   else:
     deadline = date2unix(thread['deadline'])
     # Check file last modified time
@@ -54,7 +57,7 @@ for group in sorted(metadata[SAIMOE_YEAR]['group_stage']):
   # Get post by NGA tid
   cmd = './get-post.py '+ repr(thread['tid'])
   print(cmd)
-  if(not debug):
+  if(not debug and not local):
     os.system(cmd)
   # Export post from raw json to csv
   cmd = './export-post.py '+ postfile + ' ' + csvfile

@@ -99,6 +99,9 @@ def pass_validation(row):
         text = text.replace('commandant teste', 'CommandantTeste')
       elif(name == '齐柏林'):
         text = text.replace('graf zeppelin', 'GrafZeppelin')
+      elif(name == '罗伯茨'):
+        text = text.replace('samuel b.roberts', 'SamuelBRoberts')
+        text = text.replace('samuel b. roberts', 'SamuelBRoberts')
   # Remove useless characters in post content
   text = text.replace('zsbd','')
   text = text.replace('紫薯布丁','')
@@ -108,6 +111,7 @@ def pass_validation(row):
   text = text.replace('-', '|')
   text = text.replace('；', '|')
   text = text.replace(';', '|')
+  text = text.replace('.', '|')
   text = text.replace('。', '|')
   text = text.replace('，', '|')
   text = text.replace('、', '|')
