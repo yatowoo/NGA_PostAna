@@ -1,3 +1,4 @@
+舰娘	别名1	别名2	别名3	别名4	别名5	别名6	别名7	别名8	别名9	别名10	别名11	别名12	别名13	别名14	别名15	别名16	别名17	别名18	别名19	别名20
 摩耶	Maya	まや
 西北风	Maestrale
 朝潮	Asashio	あさしお
@@ -79,7 +80,7 @@
 伊14	14	I-14	I14	い14	イヨ	伊佑
 皇家方舟	Ark	Ark Royal	アークロイヤル	剑鱼组	方舟	方舟子
 吕500	500	low酱	ro酱	ろ500	ろーちゃん	ろ酱	吕酱	啰酱
-隼鹰	Junnyou	じゅんよう	酒鬼	隼鷹
+隼鹰	Junnyou	じゅんよう	酒鬼
 冲波	Okinami	おきなみ	沖波	蔡英文
 衣笠	Kinugasa	きぬがさ
 夕立	Yuudachi	p.*o.*i	poi	ぽい	ゆうだち	婆姨	狂犬	狗子
@@ -99,7 +100,7 @@ Z1	Leberecht Maass	レーベレヒト・マース
 绫波	0波	Ayanami	あやなみ	綾波	绫包子	退环境	鬼神	黑豹
 路易吉	504	Luigi	Luigi Torelli	UIT-25	伊504	路易吉·托雷利
 响	Bep	Hibiki	Верный	ひびき	不死鸟	信赖	响爷	小同志	響
-特斯特	CT	Commandant Teste	TST	Teste	test	塔斯特	法 国poi	法国水母	法母	特斯塔	特斯拉	特斯特司令官	特斯特长官	高露洁
+特斯特	CT	Commandant Teste	TST	Teste	test	塔斯特	法国poi	法国水母	特斯塔	特斯拉	特斯特司令官	特斯特长官	高露洁
 明石	Akashi	あかし	明老板
 菊月	Kikuduki	きくづき
 清霜	Kiyoshimo	bb霜	きよしも
@@ -138,84 +139,84 @@ Z1	Leberecht Maass	レーベレヒト・マース
 U511	511	U酱	ゆ-511	ゆ酱
 望月	Mochiduki	もちづき
 大潮	Ooshio	おおしお
-凉月	Suzutsuki	suzutsuki	すずつき	水泥姬	涼月	凉月
+凉月	Suzutsuki	すずつき	水泥姬	涼月	凉月
 胧	Oboro	おぼろ	朧	蟹
 苍龙	Souryuu	そうりゅう	蒼龍
-时津风	Tokitsukaze	ときつかぜ	時津風
-陆奥	Mutsu	むつ	陸奥
+时津风	Tokitsukaze	ときつかぜ	失禁风	時津風
+陆奥	Mutsu	むつ	三号炮塔	肉奥	陸奥
 江风	Kawakaze	かわかぜ	江風
 鬼怒	Kinu	きぬ
 神威	Kamoi	かもい
 飞鹰	Hiyou	ひよう	飛鷹
 阳炎	Kagerou	かげろう	陽炎
 长月	Nagatsuki	ながつき	長月
-川内	Sendai	せんだい
+川内	Sendai	せんだい	夜战八嘎	夜战笨蛋
 文月	Fumiduki	ふみづき
 狭雾	Sagiri	さぎり	狭霧
-瑞凤	Zuihou	ずいほう	瑞鳳
+瑞凤	Zuihou	ずいほう	女儿	瑞鳳
 丛云	Murakumo	むらくも	叢雲
-不知火	Shiranui	しらぬい
+不知火	Shiranui	しらぬい	火爷
 能代	Noshiro	のしろ
-利根	Tone	とね
-伊8	I8	yi	い8
-榛名	Haruna	haruna	はるな	小天使	棒各
+利根	Tone	とね	吾辈
+伊8	18	8	8酱	I-8	I8	い8	哈酱	蛤酱
+榛名	Haruna	はるな	哈露娜	小天使	棒各
 亲潮	Oyashio	おやしお	親潮
 高波	Takanami	たかなみ
 羽黑	Haguro	はぐろ	羽黒
 国后	Kunashiri	くなしり	国後
 水无月	Minaduki	みなづき	水無月
 谷风	Tanikaze	たにかぜ	谷風
-秋津洲	Akitsushima	あきつしま
+秋津洲	Akitsushima	kamo	あきつしま	卵用洲	大艇
 加古	Kako	かこ
 秋月	Akiduki	あきづき
 岛风	Shimakaze	しまかぜ	島風
 敷波	Shikinami	しきなみ
-伊26	I26	yi	い26
-金刚	Kongou	こんごう	金剛
+伊26	26	I26	い26	妮姆	尼姆
+金刚	Kongou	こんごう	大傻	金剛
 由良	Yura	ゆら
-翔鹤	Shoukaku	shoukaku	しょうかく	太太	翔鶴
+翔鹤	Shoukaku	しょうかく	太太	翔鶴
 熊野	Kumano	くまの
-西南风	Libeccio	リベッチオ
+西南风	Libeccio	libe	リベッチオ
 五月雨	Samidare	さみだれ
-贾维斯	Jervis	ジャーヴィス
-五十铃	Isuzu	いすず	五十鈴
+贾维斯	Jervis	ジャーヴィス	小傻	杰维斯	爽爽子	爽驱
+五十铃	500	Isuzu	いすず	五十鈴	本子王
 如月	Kisaragi	きさらぎ
 日向	Hyuuga	ひゅうが
-电	Inaduma	いなづま	電
-霞	Kasumi	かすみ
-罗伯茨	
+电	Inaduma	いなづま	电酱	電
+霞	Kasumi	かすみ	霞妈
+罗伯茨	Roberts	SBR	Samuel B. Roberts	萝卜
 鹿岛	Kashima	かしま	鹿島
-天津风	Amatsukaze	あまつかぜ	天津風
-伊19	I19	yi	い19
-妙高	Myoukou	みょうこう
+天津风	Amatsukaze	あまつかぜ	天津風	锅风
+伊19	19	I19	い19	一库
+妙高	Myoukou	みょうこう	颜艺
 雪风	Yukikaze	ゆきかぜ	雪風
 阿武隈	Abukuma	あぶくま
 卷云	Makigumo	まきぐも	巻云	巻雲
-伊58	I58	yi	い58
-雷	Ikaduchi	いかづち
+伊58	58	I58	い58	苦瓜
+雷	Ikaduchi	いかづち	雷妈
 飞龙	Hiryuu	ひりゅう	飛龍
 白露	Shiratsuyu	しらつゆ
-厌战	Warspite	ウォースパイト
+厌战	Warspite	ウォースパイト	老太婆
 松轮	Matsuwa	まつわ	松輪
 潮	Ushio	うしお
 矶风	Isokaze	いそかぜ	磯風
 夕云	Yuugumo	ゆうぐも	夕雲
 早霜	Hayashimo	はやしも
 皋月	Satsuki	さつき	皐月
-马路油	
-龙凤	
-罗马	Roma	ローマ
-瑞鹤	Zuikaku	ずいかく	瑞鶴
+马路油	Maruyu	まるゆ	三式潜航输送艇	丸输	战神	马战神	马陆油
+龙凤	Ryuuhou	りゅうほう	龍鳳
+罗马	LowMA	Roma	low马	ローマ	雪人
+瑞鹤	Zuikaku	ずいかく	小姨子	瑞鶴
 最上	Mogami	もがみ
 阿贺野	Agano	あがの	阿賀野
 若叶	Wakaba	わかば	若葉
 村雨	Murasame	むらさめ
-千代田	Chiyoda	ちよだ
-Z3	マックス・シュルツ
+千代田	Chiyoda	ちよだ	浮不起来	爽代田
+Z3	Max Schultz	マックス・シュルツ	馬克斯·舒爾茨	马克思
 朝风	Asakaze	あさかぜ	朝風
 初霜	Hatsushimo	はつしも
 野分	Nowaki	のわき
 浦风	Urakaze	うらかぜ	浦風
 祥凤	Shouhou	しょうほう	祥鳳
-伊13	I13	yi	い13
+伊13	I13	い13
 岚	Arashi	あらし	嵐

@@ -55,6 +55,12 @@ def export_alias_excel(mode='json'):
   f = open('metadata.json')
   meta = json.load(f)
   f.close()
+  # Print headers
+  if(mode == 'excel'):
+    print('舰娘',end='')
+    for i in range(1,21):
+      print('\t别名'+repr(i),end='')
+    print()
   for group in sorted(meta['2018']['group_stage']): 
     ships = meta['2018']['group_stage'][group]['candidates']
     aliasDB = meta['ShipAliasDB']
