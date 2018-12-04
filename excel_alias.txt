@@ -1,146 +1,145 @@
-舰娘		别名1			别名2			别名3			别名4			别名5			别名6			别名7	别名8			别名9			别名10		别名11		别名12		别名13		别名14	别名15		别名16		别名17		别名18		别名19	别名20
-摩耶	Maya	まや	摩耶
-Maestrale	西北风
-朝潮	Asashio	あさしお	朝潮
-球磨	Kuma	くま	球磨
-风云	Kazagumo	かざぐも	風雲	风云
-Aquila	天鹰	阿奎拉	阿库娅	鹫座
-山城	Yamashiro	やましろ	山城
-Intrepid	无畏
-晓	Akatsuki	lady	あかつき	晓	暁
-朝云	Asagumo	あさぐも	朝云	朝雲
-凉风	Suzukaze	すずかぜ	凉风	涼風
-旗风	Hatakaze	はたかぜ	旗風	旗风
-时雨	Shigure	しぐれ	大天使	忠犬	时雨	時雨
-北上	Kitakami	きたかみ	北上
-Gotland	哥特兰
-葛城	Katsuragi	かつらぎ	葛城
-曙	Akebono	bono	あけぼの	小叮当	曙	铃铛
-那智	Nachi	neizhi	なち	那智
-铃谷	JK	Suzuya	すずや	鈴谷	铃谷
-扶桑	Fusou	ふそう	扶桑
-长门	Nagato	zhangmen	ながと	長門	长萌	长门
-Iowa	LowA	爱荷华	衣阿华	鸭华	鸭滑
-三日月	Mikaduki	みかづき	三日月	三明
-满潮	Michishio	みちしお	満潮	满潮
-荒潮	Arashio	あらしお	荒潮
-Prinz	Eugen	Eugen	Prinz	布丁	欧根	毆根
-萩风	Hagikaze	hagikaze	はぎかぜ	篍风	艹秋风	荻风	获风	萩萩	萩風	萩风	阿萩
-长良	Nagara	ながら	長良	长良
-千岁	Chitose	ちとせ	千岁	千歳
-高雄	Takao	たかお	高雄
-Gambier	Bay	Bay	Gambier	干贝	甘比尔湾
+摩耶	Maya	まや
+西北风	Maestrale
+朝潮	Asashio	あさしお
+球磨	Kuma	くま
+风云	Kazagumo	かざぐも	風雲
+阿奎拉	Aquila	天鹰	阿库娅	鹫座
+山城	Yamashiro	やましろ
+无畏	Intrepid	美国土豆
+晓	Akatsuki	lady	あかつき	暁
+朝云	Asagumo	あさぐも	朝雲	赵云
+凉风	Suzukaze	すずかぜ	涼風
+旗风	Hatakaze	はたかぜ	旗風
+时雨	Shigure	しぐれ	大天使	忠犬	時雨
+北上	Kitakami	きたかみ
+哥特兰	Godland	Gotland	瑞典轻巡
+葛城	Katsuragi	かつらぎ
+曙	Akebono	bono	あけぼの	小叮当	铃铛
+那智	Nachi	なち
+铃谷	JK	Suzuya	すずや	鈴谷
+扶桑	Fusou	ふそう
+长门	Nagato	ながと	長門	长萌
+衣阿华	Iowa	LowA	爱荷华	鸭华	鸭滑
+三日月	Mikaduki	みかづき	三明
+满潮	Michishio	みちしお	満潮
+荒潮	Arashio	あらしお
+欧根	Eugen	Prinz	Prinz Eugen	布丁	月刊重巡	毆根	飞啊飞啊
+萩风	Hagikaze	はぎかぜ	篍风	艹秋风	荻风	获风	萩	萩萩	萩風	阿萩
+长良	Nagara	ながら	長良
+千岁	Chitose	ちとせ	千歳
+高雄	Takao	たかお
+甘比尔湾	Bay	Gambier	Gambier Bay	冈比亚	冈比尔	干瘪尔呗	干贝	甘比亚	甘比尔	甘贝尔
 神鹰	shinyou	しんよう	沙恩霍斯特
-古鹰	Furutaka	ふるたか	古鷹	古鹰
-日振	Hiburi	ひぶり	日振
-夕张	Yuubari	ゆうばり	于八日	夕张	夕張	意大利帅哥
-那珂	2411	Naka	neike	なか	偶像	那珂
-初雪	Hatsuyuki	はつゆき	初雪
-深雪	Miyuki	みゆき	深雪
-Italia	Littorio	利托里奥	呆利	意呆	意大利
-瑞穗	Mizuho	みずほ	瑞穂	瑞穗
-浦波	Uranami	うらなみ	浦波
-足柄	Ashigara	あしがら	狼姐	足柄	饿狼
-加贺	Kaga	かが	加賀	加贺	正妻空母
-滨波	Hamanami	はまなみ	浜波	滨波	胖波
-武藏	Musashi	aibo	wuzang	むさし	大姐头	武蔵	武藏	相棒
-多摩	Tama	たま	多摩
-凤翔	Houshou	ほうしょう	凤翔	老板娘	鳳翔
+古鹰	Furutaka	ふるたか	古鷹
+日振	Hiburi	ひぶり
+夕张	Yuubari	ゆうばり	于八日	夕張	意大利帅哥	蜜瓜
+那珂	2411	Naka	なか	偶像
+初雪	Hatsuyuki	はつゆき
+深雪	Miyuki	みゆき
+意大利	Italia	Littorio	利托里奥	呆利	意呆
+瑞穗	Mizuho	みずほ	瑞穂
+浦波	Uranami	うらなみ
+足柄	Ashigara	あしがら	狼姐	饿狼
+加贺	Kaga	かが	加賀	正妻空母
+滨波	Hamanami	はまなみ	浜波	胖波
+武藏	Musashi	aibo	むさし	大姐头	武蔵	相棒
+多摩	Tama	たま
+凤翔	Houshou	ほうしょう	老板娘	鳳翔
 福江	fukae	ふかえ
-滨风	Hamakaze	はまかぜ	乳风	浜風	浜风	滨风
-速吸	Hayasui	はやすい	速吸
-大凤	Taihou	たいほう	呆猴	塔威女神	大凤	大鳳	大鸟	太凤	太后	平胸萝莉	能登凤	萝莉凤	论外凤
-松风	Matsukaze	まつかぜ	松風	松风
-舞风	Maikaze	まいかぜ	舞風	舞风
-Saratoga	Sara	サラトガ	萨拉	萨拉托加
-雾岛	Kirishima	きりしま	切麦狂魔	四傻	雾岛	霧島
-龙田	Tatsuta	たつた	龍田	龙田
-睦月	Mutsuki	むつき	眭月	睦月	陆夫人	陆月
-黑潮	Kuroshio	ggk	くろしお	谷小町	谷谷开	黑潮	黒潮
-春风	Harukaze	はるかぜ	春風	春风
-比睿	Hiei	ひえい	二傻	比叡	比睿
-甘古特	Ganguto	Ganguーto	Гангут	Гангут	два	ガングート	十月革命	哥萨克	大同志	大响	大毛子
-白雪	Shirayuki	しらゆき	白雪
-初风	Hatsukaze	はつかぜ	初風	初风
-霰	Arare	xian	あられ	阿拉蕾	霰
-初月	Hatsuduki	はつづき	初月
-卯月	Uduki	pion	pyon	うづき	兔子	卬月	卯月	卵月	卵用	噗噗
-佐渡	Sado	さど	佐渡
-山云	Yamagumo	やまぐも	山云	山雲
-Nelson	ネルソン	奈尔逊	巨傻	纳孙	纳尔逊	老纳	老衲
-山风	Yamakaze	やまかぜ	山風	山风
-子日	Nenohi	ねのひ	子日
-Ташкент	Tashukento	tashengan	タシュケント	中不点	中同志	塔什干	塔塔	小同志	小毛子	毛驱	脱了很大同志
-占守	Shimushu	しむしゅ	占守	西姆咻
-伊势	Ise	いせ	伊势	伊勢
-天雾	Amagiri	あまぎり	天雾	天霧
-Bismarck	B子	bis	bismarck	bsm	俾四麦	俾斯麥	俾斯麦	四胖	波斯猫	胖胖胖胖	麦姐	麦子
-云龙	Unryuu	うんりゅう	云龙	老李	雲龍
-爱宕	Atago	あたご	愛宕	爱大狗	爱宕
-伊14	14	I-14	I14	yi	い14	イヨ	伊佑
-Ark	Royal	Ark	アークロイヤル	剑鱼组	方舟	方舟子	皇家方舟
-吕500	500	low酱	ro酱	ろ500	ろーちゃん	ろ酱	吕酱
-隼鹰	Jun'you	Junnyou	じゅんよう	酒鬼	隼鷹	隼鹰
-冲波	Okinami	おきなみ	冲波	沖波	蔡英文
-衣笠	Kinugasa	きぬがさ	衣笠
+滨风	Hamakaze	はまかぜ	乳风	浜風	浜风
+速吸	Hayasui	はやすい
+大凤	Taihou	たいほう	呆猴	塔威女神	大鳳	大鸟	太凤	太后	平胸萝莉	能登凤	萝莉凤	论外凤
+松风	Matsukaze	まつかぜ	松風
+舞风	Maikaze	まいかぜ	舞風
+萨拉托加	Sara	Saratoga	サラトガ	萨拉
+雾岛	Kirishima	きりしま	切麦狂魔	四傻	霧島
+龙田	Tatsuta	たつた	龍田
+睦月	Mutsuki	むつき	眭月	陆夫人	陆月
+黑潮	Kuroshio	ggk	くろしお	谷小町	谷谷开	黒潮
+春风	Harukaze	はるかぜ	春風
+比睿	Hiei	ひえい	二傻	比叡
+甘古特	Ganguto	Гангут	Гангут два	ガングート	十月革命	哥萨克	大同志	大响	大毛子
+白雪	Shirayuki	しらゆき
+初风	Hatsukaze	はつかぜ	初風
+霰	Arare	あられ	阿拉蕾
+初月	Hatsuduki	はつづき
+卯月	Uduki	pion	pyon	うづき	兔子	卬月	卵月	卵用	噗噗
+佐渡	Sado	さど
+山云	Yamagumo	やまぐも	山雲
+纳尔逊	Nelson	ネルソン	奈尔逊	巨傻	纳孙	老纳	老衲
+山风	Yamakaze	やまかぜ	山風
+子日	Nenohi	ねのひ
+塔什干	Tashukento	Ташкент	タシュケント	中不点	中同志	塔塔	小同志	小毛子	毛驱	脱了很大同志
+占守	Shimushu	しむしゅ	西姆咻
+伊势	Ise	いせ	伊勢
+天雾	Amagiri	あまぎり	天霧
+俾斯麦	Bismarck	B子	bis	bsm	俾四麦	俾斯麥	四胖	波斯猫	胖胖胖胖	麦姐	麦子
+云龙	Unryuu	うんりゅう	老李	雲龍
+爱宕	Atago	あたご	愛宕	爱大狗
+伊14	14	I-14	I14	い14	イヨ	伊佑
+皇家方舟	Ark	Ark Royal	アークロイヤル	剑鱼组	方舟	方舟子
+吕500	500	low酱	ro酱	ろ500	ろーちゃん	ろ酱	吕酱	啰酱
+隼鹰	Junnyou	じゅんよう	酒鬼	隼鷹
+冲波	Okinami	おきなみ	沖波	蔡英文
+衣笠	Kinugasa	きぬがさ
 夕立	Yuudachi	p.*o.*i	poi	ぽい	ゆうだち	婆姨	狂犬	狗子
 木曾	Kiso	きそ	曾哥	曾爷
 择捉	Etorofu	えとろふ	エロトフ	択捉	擇足
-Z1	Leberecht	Maass	レーベレヒト・マース
-弥生	Yayoi	やよい	弥生
-初春	Hatsuharu	はつはる	初春
-大井	Ooi	おおい	大井
-酒匂	Sakawa	jiu	さかわ	酒妹	酒韵
+Z1	Leberecht Maass	レーベレヒト・マース
+弥生	Yayoi	やよい
+初春	Hatsuharu	はつはる
+大井	Ooi	おおい
+酒匂	Sakawa	さかわ	酒妹	酒韵
 吹雪	Fubuki	whobuki	ふぶき	吹吹	欠雷
-Zara	zala	zhala	ザラ	扎拉
-神风	Kamikaze	かみかぜ	神風	神风
-伊168	168	I168	yi	い168
-龙骧	RJ	Ryuujou	りゅうじょう	砧板	龍驤
+扎拉	Zara	zala	ザラ
+神风	Kamikaze	かみかぜ	神風
+伊168	168	I168	い168	伊姆亚	伊姆鸭
+龙骧	RJ	Ryuujou	りゅうじょう	砧板	菜板	龍驤
 矶波	Isonami	いそなみ	磯波
-绫波	Ayanami	あやなみ	綾波	绫包子	鬼神	黑豹
-路易吉	504	Luigi	Torelli	UIT-25	伊504	路易吉·托雷利
-响	Bep	Hibiki	ひびき	不死鸟	响爷	響
-特斯特	Commandant	Teste	Teste	塔斯特	法国poi	特斯特司令官	特斯特长官	高露洁
+绫波	0波	Ayanami	あやなみ	綾波	绫包子	退环境	鬼神	黑豹
+路易吉	504	Luigi	Luigi Torelli	UIT-25	伊504	路易吉·托雷利
+响	Bep	Hibiki	Верный	ひびき	不死鸟	信赖	响爷	小同志	響
+特斯特	CT	Commandant Teste	TST	Teste	test	塔斯特	法 国poi	法国水母	法母	特斯塔	特斯拉	特斯特司令官	特斯特长官	高露洁
 明石	Akashi	あかし	明老板
 菊月	Kikuduki	きくづき
-清霜	Kiyoshimo	きよしも
-黎塞留	Richelieu	リシュリュー	主教	黎姐
+清霜	Kiyoshimo	bb霜	きよしも
+黎塞留	Richelieu	リシュリュー	主教	法国BB	黎姐
 青叶	Aoba	あおば	记者	青葉
 涟	Sazanami	さざなみ	漣
 名取	Natori	なとり
-波拉	Pola	ポーラ
+波拉	Pola	ポーラ	酒鬼
 藤波	Fujinami	ふじなみ
 海风	Umikaze	うみかぜ	海風
 天龙	Tenryuu	てんりゅう	天龍
-大鹰	Kasuga	Maru	Taiyou	かすがまる	たいよう	春日丸
-齐柏林	780	Graf	Zeppelin	Zeppelin	齐柏林伯爵
+大鹰	Kasuga Maru	Taiyou	かすがまる	たいよう	春日丸	索尼子
+齐柏林	780	GZ	Graf	Graf Zeppelin	Zeppelin	齐柏林伯爵
 赤城	Akagi	あかぎ	吃撑
-对马	Tsushima	つしま	対馬
+对马	Tsushima	つしま	临安	対馬	対马	汁吸马	温柔少女	魔性海防
 大淀	Ooyodo	おおよど	任务娘	大屁股	大波胡	大腚
-大和	Yamato	やまと	伞姐	压码头	打伞的大姐姐	旅馆
-伊400	400	I400	yi	い400	しおん
-朝霜	Asashimo	あさしも
-矢矧	Yahagi	やはぎ	中和
+大和	Yamato	やまと	伞姐	压码头	宇宙战舰	打伞的大姐姐	旅馆
+伊400	400	I400	い400	しおん
+朝霜	Asashimo	あさしも	赵爽
+矢矧	Yahagi	やはぎ	中和	蚯蚓
 秋津丸	Akitsumaru	あきつまる	あきつ丸	僵尸	僵尸丸	烈风拳
 岸波	Kishinami	きしなみ
 春雨	Harusame	はるさめ
 大东	Daitou	だいとう	大東
-三隈	3V	Mikuma	くまりんこ	みくま	三熊
-照月	Teruduki	てるづき	照月	电气脉冲锤	电气锤
+三隈	3V	Mikuma	くまりんこ	みくま	三熊	枪给
+照月	Teruduki	てるづき	电气脉冲锤	电气锤
 秋云	Akigumo	あきぐも	秋雲
-鸟海	Choukai	ちょうかい	鳥海
-伊401	401	I401	yi	い401	しおい
-大鲸	Taigei	たいげい	大鯨	太给
+鸟海	Choukai	ちょうかい	乌梅	乌海	鳥海
+伊401	401	I401	い401	しおい
+大鲸	Taigei	たいげい	买菜时雨	大鯨	太给	鲸
 神通	Jintsuu	じんつう	女武神	精子
 天城	Amagi	あまぎ
-香取	Katori	かとり	老师
+香取	Katori	かとり
 长波	Naganami	zhangbo	ながなみ	長波
-筑摩	Chikuma	ちくま
+筑摩	Chikuma	ちくま	七姑妈
 U511	511	U酱	ゆ-511	ゆ酱
 望月	Mochiduki	もちづき
 大潮	Ooshio	おおしお
-凉月	Suzutsuki	suzutsuki	すずつき	凉月	水泥姬	涼月
-胧	Oboro	おぼろ	朧
+凉月	Suzutsuki	suzutsuki	すずつき	水泥姬	涼月	凉月
+胧	Oboro	おぼろ	朧	蟹
 苍龙	Souryuu	そうりゅう	蒼龍
 时津风	Tokitsukaze	ときつかぜ	時津風
 陆奥	Mutsu	むつ	陸奥
@@ -159,7 +158,7 @@ U511	511	U酱	ゆ-511	ゆ酱
 能代	Noshiro	のしろ
 利根	Tone	とね
 伊8	I8	yi	い8
-榛名	Haruna	haruna	はるな	小天使	棒各	榛名
+榛名	Haruna	haruna	はるな	小天使	棒各
 亲潮	Oyashio	おやしお	親潮
 高波	Takanami	たかなみ
 羽黑	Haguro	はぐろ	羽黒
@@ -174,7 +173,7 @@ U511	511	U酱	ゆ-511	ゆ酱
 伊26	I26	yi	い26
 金刚	Kongou	こんごう	金剛
 由良	Yura	ゆら
-翔鹤	Shoukaku	shoukaku	しょうかく	太太	翔鶴	翔鹤
+翔鹤	Shoukaku	shoukaku	しょうかく	太太	翔鶴
 熊野	Kumano	くまの
 西南风	Libeccio	リベッチオ
 五月雨	Samidare	さみだれ
@@ -191,7 +190,7 @@ U511	511	U酱	ゆ-511	ゆ酱
 妙高	Myoukou	みょうこう
 雪风	Yukikaze	ゆきかぜ	雪風
 阿武隈	Abukuma	あぶくま
-卷云	Makigumo	まきぐも	巻雲
+卷云	Makigumo	まきぐも	巻云	巻雲
 伊58	I58	yi	い58
 雷	Ikaduchi	いかづち
 飞龙	Hiryuu	ひりゅう	飛龍

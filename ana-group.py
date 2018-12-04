@@ -2,6 +2,8 @@
 
 # Script for NGA saimoe group analysis
 # ChangeLogs
+## v1.4: 增加验证功能-beta，匹配前去除候选舰娘中的重复别名
+## v1.3: 输出格式适配腾讯文档，改为<TAB>分隔
 ## v1.2: 直接输出excel公式统计单帖选择数、总计、分页统计
 ## v1.1: 支持繁体与中文名谐音
 ## v1: use external metadata for analysis

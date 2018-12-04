@@ -78,7 +78,17 @@ def export_alias_excel(mode='json'):
         print(name+'\t'+'\t'.join(alias))
       elif(mode == 'csv'):
         print(name+','+','.join(alias))
-          
+
+def name_diff():
+  f = open('Ship.json')
+  shipDB = json.load(f)
+  f.close()
+  for ship in shipDB:
+    if(ship['id'] > 1500 or ship['wiki_id'].find('a') > -1):
+      continue
+    name_convert = zhconv.convert(ship['name']['ja'], 'zh-cn')
+    if(ship['name']['zh_cn'] != name_convert):
+      print(ship['name']['zh_cn']+"\t"+ship['name']['ja']+"\t"+name_convert)
 
 if __name__ == "__main__":
   mode = 'json'
