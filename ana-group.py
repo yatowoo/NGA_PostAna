@@ -91,6 +91,9 @@ def pass_validation(row):
   text = text.replace('字数补丁','')
   text = text.replace('字数','')
   # Replace common delimiter with standard delimiter
+  text = text.replace('-', '|')
+  text = text.replace('；', '|')
+  text = text.replace(';', '|')
   text = text.replace('。', '|')
   text = text.replace('，', '|')
   text = text.replace('、', '|')
