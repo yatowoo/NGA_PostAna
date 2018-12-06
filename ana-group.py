@@ -143,6 +143,8 @@ def pinyin_match(post_content, name):
     return True
   return False
 
+# 初始化文件
+print('[-] INFO - '+SAIMOE_YEAR+' '+SAIMOE_STAGE+' '+SAIMOE_GROUP+' loading ...')
 csvfile = open(sys.argv[1])
 raw = csv.DictReader(csvfile)
 
@@ -158,6 +160,12 @@ header = ['post_no','uid','reg_time','post_time','text', '验证', '选择数'] 
 writer = csv.DictWriter(result_file, fieldnames=header, extrasaction='ignore', dialect="excel-tab")
 writer.writeheader()
 
+# 计数前准备
+print('[-] INFO - All file loaded, ready for analysis.')
+  # 初始化计数器
+VOTE_COUNT = {}
+for name in candidates:
+  VOTE_COUNT[name] = 0
 data = []
 excel_row_no = 1 # 导入Excel后的行号，第一行为标题
 excel_start_col = chr( ord('A') + len(header) - len(candidates))
@@ -173,6 +181,7 @@ for row in raw:
     # 预处理中文繁体
     post_content = zhconv.convert(row['text'], 'zh-cn')
     MATCH_COUNT['总计'] += 1
+    VOTE_COUNT[name] += 1
     if(re.search(name, post_content, re.I)):
       # 本名
       row[name] = 1
@@ -189,6 +198,7 @@ for row in raw:
     else:
       row[name] = ''
       MATCH_COUNT['总计'] -= 1
+      VOTE_COUNT[name] -= 1
   # 检查匹配结果
     # 检查注册时间
   if(not pass_register_time_check(row)):
@@ -211,10 +221,16 @@ for row in raw:
       validation_file.write(row['post_no']+'\t'+row['text']+'\t'+repr(row['Nselection'])+'\t'+repr(row['Nword'])+'\n')
   writer.writerow(row)
   data.append(row)
+# 输出计数效率统计
 MATCH_COUNT['总楼层'] = len(data)
 print('[-] INFO - Match efficiency test : ')
 print(json.dumps(MATCH_COUNT, ensure_ascii=False, indent=2))
 logfile.write('------> End of analysis log\n')
+# 输出计数初步结果
+print('[-] INFO - Preliminary result')
+for name in sorted(VOTE_COUNT, key=lambda name:VOTE_COUNT[name], reverse=True):
+  print(name+'\t'+repr(VOTE_COUNT[name]))
+print('[-] INFO - All rows analysed, ready for result output')
 # End of post analysis
 
 # Output excel formula to sum the result in total & pages

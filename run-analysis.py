@@ -68,4 +68,5 @@ for group in sorted(metadata[SAIMOE_YEAR]['group_stage']):
   cmd = './ana-group.py '+ csvfile + ' ' + SAIMOE_YEAR + ' ' + SAIMOE_STAGE + ' ' + group
   print(cmd)
   if(not debug):
-    os.system(cmd)
+    os.system('echo "\n\n\n\n------> New analysis :" $(date) >> run.log')
+    os.system(cmd+' >> run.log')
