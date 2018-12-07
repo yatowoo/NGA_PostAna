@@ -183,7 +183,6 @@ for row in raw:
     # 预处理中文繁体
     post_content = zhconv.convert(row['text'], 'zh-cn')
     MATCH_COUNT['总计'] += 1
-    VOTE_COUNT[name] += 1
     if(re.search(name, post_content, re.I)):
       # 本名
       row[name] = 1
@@ -200,7 +199,6 @@ for row in raw:
     else:
       row[name] = ''
       MATCH_COUNT['总计'] -= 1
-      VOTE_COUNT[name] -= 1
   # 检查匹配结果
     # 检查注册时间
   if(not pass_register_time_check(row)):
@@ -221,6 +219,10 @@ for row in raw:
     else:
       row['验证'] = '×'
       validation_file.write(row['post_no']+'\t'+row['text']+'\t'+repr(row['Nselection'])+'\t'+repr(row['Nword'])+'\n')
+  # 统计初步结果
+  for name in candidates:
+    if(row[name]):
+      VOTE_COUNT[name] += 1
   writer.writerow(row)
   data.append(row)
 # 输出计数效率统计

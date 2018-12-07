@@ -20,10 +20,13 @@ SAIMOE_STAGE = 'group_stage'
 # Command-line arguments
 debug = False
 local = False
+all = False
 if(len(sys.argv) > 1):
   # Run mode
   debug = (sys.argv[1] == 'debug')
   local = (sys.argv[1] == 'local')
+  if(len(sys.argv) > 2):
+    all = (sys.argv[2] == 'all')
 
 # Create output directory
 print('\n------\n\tNGA舰萌计票辅助\n------\n')
@@ -48,7 +51,8 @@ for group in sorted(metadata[SAIMOE_YEAR]['group_stage']):
     # Check file last modified time
     if(file_info.st_mtime > deadline):
       print("[-] INFO - Thread " + repr(thread['tid']) + " has already been latest version")
-      continue
+      if(not all):
+        continue
     else:
       print("[-] INFO - Thread " + repr(thread['tid']) + " will be updated to latest version")
 
