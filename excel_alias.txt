@@ -189,26 +189,26 @@ U511	511	U酱	ゆ-511	ゆ酱
 天津风	Amatsukaze	あまつかぜ	天津風	锅风
 伊19	19	I19	い19	一库
 妙高	Myoukou	みょうこう	颜艺
-雪风	Yukikaze	ゆきかぜ	雪風
-阿武隈	Abukuma	あぶくま
-卷云	Makigumo	まきぐも	巻云	巻雲
-伊58	58	I58	い58	苦瓜
+雪风	Yukikaze	ゆきかぜ	丹阳	亲王	雪亲王	雪風
+阿武隈	AWW	Abukuma	あぶくま	八万钢	阿布库玛	阿布熊	雪菜
+卷云	Makigumo	まきぐも	小卷	巻云	巻雲
+伊58	58	I58	い58	苦瓜	锅鸭
 雷	Ikaduchi	いかづち	雷妈
 飞龙	Hiryuu	ひりゅう	飛龍
 白露	Shiratsuyu	しらつゆ
 厌战	Warspite	ウォースパイト	老太婆
 松轮	Matsuwa	まつわ	松輪
 潮	Ushio	うしお
-矶风	Isokaze	いそかぜ	磯風
+矶风	Isokaze	いそかぜ	磯風	驱逐王
 夕云	Yuugumo	ゆうぐも	夕雲
 早霜	Hayashimo	はやしも
 皋月	Satsuki	さつき	皐月
 马路油	Maruyu	まるゆ	三式潜航输送艇	丸输	战神	马战神	马陆油
 龙凤	Ryuuhou	りゅうほう	龍鳳
 罗马	LowMA	Roma	low马	ローマ	雪人
-瑞鹤	Zuikaku	ずいかく	小姨子	瑞鶴
+瑞鹤	Zuikaku	ずいかく	ひゅー	小姨子	瑞鶴
 最上	Mogami	もがみ
-阿贺野	Agano	あがの	阿賀野
+阿贺野	Agano	ahy	あがの	阿賀野
 若叶	Wakaba	わかば	若葉
 村雨	Murasame	むらさめ
 千代田	Chiyoda	ちよだ	浮不起来	爽代田
@@ -218,5 +218,5 @@ Z3	Max Schultz	マックス・シュルツ	馬克斯·舒爾茨	马克思
 野分	Nowaki	のわき
 浦风	Urakaze	うらかぜ	浦風
 祥凤	Shouhou	しょうほう	祥鳳
-伊13	I13	い13
+伊13	113	13	I13	い13	小瞳	瞳酱
 岚	Arashi	あらし	嵐
