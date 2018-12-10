@@ -22,7 +22,7 @@ import zhconv
 from pypinyin import lazy_pinyin
 
 # 统一不同匹配策略命中次数
-MATCH_COUNT = {'总计':0, '尝试':0, '本名':0, '别名':0, '谐音':0, '总楼层':0}
+MATCH_COUNT = {'总计':0, '尝试':0, '本名':0, '别名':0, '谐音':0, '总楼层':0, '新号':0, '超票':0, '验证通过':0, '验证失败':0}
 
 def date2unix(str):
   return int(time.mktime(time.strptime(str,"%Y-%m-%d %H:%M:%S")))
@@ -207,17 +207,21 @@ for row in raw:
       row[name] = ''
     logfile.write('新号\t'+row['post_no']+'\t'+row['reg_time']+'\t'+row['text']+'\n')
     row['验证'] = '-'
+    MATCH_COUNT['新号'] += 1
   else:
     # 检查选择舰娘数
     if(not pass_selection_num_check(row)):
       logfile.write('超票\t'+row['post_no']+'\t'+row['text']+'\n')
       row['验证'] = '?'
+      MATCH_COUNT['超票'] += 1
     # 根据分词进行验证
     elif(pass_validation(row)):
       row['验证'] = '●'
+      MATCH_COUNT['验证通过'] += 1
     # 验证失败则导出以供分析
     else:
       row['验证'] = '×'
+      MATCH_COUNT['验证失败'] += 1
       validation_file.write(row['post_no']+'\t'+row['text']+'\t'+repr(row['Nselection'])+'\t'+repr(row['Nword'])+'\n')
   # 统计初步结果
   for name in candidates:
@@ -228,7 +232,7 @@ for row in raw:
 # 输出计数效率统计
 MATCH_COUNT['总楼层'] = len(data)
 print('[-] INFO - Match efficiency test : ')
-print(json.dumps(MATCH_COUNT, ensure_ascii=False, indent=2))
+print(json.dumps(MATCH_COUNT, ensure_ascii=False, indent=2, sort_keys=True))
 logfile.write('------> End of analysis log\n')
 # 输出计数初步结果
 print('[-] INFO - Preliminary result')
