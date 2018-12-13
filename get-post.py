@@ -63,6 +63,7 @@ file.write("[\n")
 nga_cookie = {}
 refresh_guest(nga_cookie)
 last_page = ""
+n_pages = 100
 for pageno in range(1,MAX_PAGES):
   time.sleep(REQUEST_DELAY)
   res = requests.get(base_url+api_param+'&page='+repr(pageno), headers=chrome_header,cookies=nga_cookie)
@@ -73,7 +74,7 @@ for pageno in range(1,MAX_PAGES):
     continue
   # Check the last page of thread
     # Notice : lite=js response include "time"="[timestamp]"
-  if(len(res.text) == len(last_page)):
+  if(len(res.text) == len(last_page) and pageno >= n_pages):
   #if(res.text[:-20] == last_page[:-20]):
     break
   else:
