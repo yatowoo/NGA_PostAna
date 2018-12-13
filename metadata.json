@@ -96,6 +96,62 @@
         "selection_max": 4,
         "deadline": "2018-12-12 10:00:00"
       }
+    },
+    "repechage":{
+      "A": {
+        "candidates": ["速吸", "吹雪", "贾维斯", "大鲸", "满潮", "矶风", "多摩"],
+        "selection_max": 2,
+        "deadline": "2018-12-17 10:00:00"
+      },
+      "B": {
+        "candidates": ["阳炎", "大淀", "大井", "雷", "秋津洲", "晓", "长门"],
+        "selection_max": 2,
+        "deadline": "2018-12-17 10:00:00"
+      },
+      "C": {
+        "candidates": ["鹿岛", "伊13", "罗马", "哥特兰", "伊14", "春风", "羽黑"],
+        "selection_max": 2,
+        "deadline": "2018-12-17 10:00:00"
+      },
+      "D": {
+        "candidates": ["瑞穗", "路易吉", "皇家方舟", "黎塞留", "鸟海", "川内", "矢矧"],
+        "selection_max": 2,
+        "deadline": "2018-12-17 10:00:00"
+      }
+    },
+    "1v1":{
+      "16-SA":{
+        "candidates": ["潜水新栖姬", "防空栖姬"],
+        "selection_max": 1
+      },
+      "16-SB":{
+        "candidates": ["港湾栖姬", "战舰レ级"],
+        "selection_max": 1
+      },
+      "16-SC":{
+        "candidates": ["北方栖姬", "深海海月姬"],
+        "selection_max": 1
+      },
+      "16-SD":{
+        "candidates": ["集积地栖姬", "空母ヲ级"],
+        "selection_max": 1
+      },
+      "16-SE":{
+        "candidates": ["欧洲水姬", "护卫栖水姬"],
+        "selection_max": 1
+      },
+      "16-SF":{
+        "candidates": ["深海双子栖姬", "战舰栖姬"],
+        "selection_max": 1
+      },
+      "16-SG":{
+        "candidates": ["欧洲栖姬", "战舰水鬼"],
+        "selection_max": 1
+      },
+      "16-SI":{
+        "candidates": ["深海鹤栖姬", "驱逐栖姬"],
+        "selection_max": 1
+      }
     }
   },
   "ShipAliasDB":{
