@@ -6,6 +6,7 @@ import os
 import json
 import time
 import sys
+import argparse
 
 def date2unix(str):
   return int(time.mktime(time.strptime(str,"%Y-%m-%d %H:%M:%S")))
@@ -14,27 +15,25 @@ metafile = open("metadata.json")
 metadata = json.load(metafile)
 metafile.close()
 
-SAIMOE_YEAR = '2018'
-SAIMOE_STAGE = 'group_stage'
-
 # Command-line arguments
-debug = False
-local = False
-all = False
-if(len(sys.argv) > 1):
-  # Run mode
-  debug = (sys.argv[1] == 'debug')
-  local = (sys.argv[1] == 'local')
-  if(len(sys.argv) > 2):
-    all = (sys.argv[2] == 'all')
+parser = argparse.ArgumentParser(description='NGA Post Analysis for Kancolle Saimoe')
+parser.add_argument('-l', '--local',help='Do not update thread data, analysis with existed local files', action="store_true", default=False)
+parser.add_argument('-d', '--debug',help='Do not run any commands, only check metadata and output commands for analysis', action='store_true', default=False)
+parser.add_argument('-a', '--all', help='Analyse all selected thread, ignore deadline', action='store_true', default=False)
+parser.add_argument('-i','--info', nargs='+', help='Group information, SAIMOE_YEAR SAIMOE_STAGE SAIMOE_GROUP (if not assigned, group before deadline will be selected)', default=['2018','repechage'])
+
+args = parser.parse_args()
+
+SAIMOE_YEAR = args.info[0]
+SAIMOE_STAGE = args.info[1]
 
 # Create output directory
 print('\n------\n\tNGA舰萌计票辅助\n------\n')
 cmd = 'mkdir -p output'
 print('[-] INFO - Check output dir. : '+cmd)
 os.system(cmd)
-for group in sorted(metadata[SAIMOE_YEAR]['group_stage']):
-  thread = metadata[SAIMOE_YEAR]['group_stage'][group]
+for group in sorted(metadata[SAIMOE_YEAR][SAIMOE_STAGE]):
+  thread = metadata[SAIMOE_YEAR][SAIMOE_STAGE][group]
   if(not thread.get('tid')):
     continue
   print("\n---> Processing : " + SAIMOE_YEAR + ' ' + SAIMOE_STAGE + ' ' + group)
@@ -45,13 +44,13 @@ for group in sorted(metadata[SAIMOE_YEAR]['group_stage']):
     file_info = os.stat(postfile)
   except FileNotFoundError:
     print("[-] NEW post found in metadata.json")
-    local = False
+    args.local = False
   else:
     deadline = date2unix(thread['deadline'])
     # Check file last modified time
     if(file_info.st_mtime > deadline):
       print("[-] INFO - Thread " + repr(thread['tid']) + " has already been latest version")
-      if(not all):
+      if(not args.all):
         continue
     else:
       print("[-] INFO - Thread " + repr(thread['tid']) + " will be updated to latest version")
@@ -61,16 +60,16 @@ for group in sorted(metadata[SAIMOE_YEAR]['group_stage']):
   # Get post by NGA tid
   cmd = './get-post.py '+ repr(thread['tid'])
   print(cmd)
-  if(not debug and not local):
+  if(not args.debug and not args.local):
     os.system(cmd)
   # Export post from raw json to csv
   cmd = './export-post.py '+ postfile + ' ' + csvfile
   print(cmd)
-  if(not debug):
+  if(not args.debug):
     os.system(cmd)
   # Analysis post content as csv
   cmd = './ana-group.py '+ csvfile + ' ' + SAIMOE_YEAR + ' ' + SAIMOE_STAGE + ' ' + group
   print(cmd)
-  if(not debug):
+  if(not args.debug):
     os.system('echo "\n\n\n\n------> New analysis :" $(date) >> run.log')
     os.system(cmd+' >> run.log')
