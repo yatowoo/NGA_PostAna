@@ -8,6 +8,7 @@ import requests
 import bs4
 import json
 import unicodedata
+import os
 
 def rm_ctrl_ch(str):
   return "".join(ch for ch in str if unicodedata.category(ch)[0]!="C")
@@ -29,6 +30,7 @@ except ValueError:
   exit()
 
 MAX_PAGES = 100
+MAX_RETRY = 3
 REQUEST_DELAY = 0.5 # second
 OUTPUT_FILENAME = 'output/NGA-' + repr(NGA_TID) + '.json'
 
@@ -65,8 +67,23 @@ refresh_guest(nga_cookie)
 last_page = ""
 n_pages = 100
 for pageno in range(1,MAX_PAGES):
-  time.sleep(REQUEST_DELAY)
-  res = requests.get(base_url+api_param+'&page='+repr(pageno), headers=chrome_header,cookies=nga_cookie)
+  for i_req in range(0,MAX_RETRY):
+    try:
+      time.sleep(REQUEST_DELAY)
+      res = requests.get(base_url+api_param+'&page='+repr(pageno), headers=chrome_header,cookies=nga_cookie)
+    except ConnectionError as e:
+      if(i_req + 1 == MAX_RETRY):
+        print('[x] Connection error for page {}, exceed MAX_RETRY/{}'.format(pageno, MAX_RETRY))
+        cmd = 'rm -f '+OUTPUT_FILENAME
+        file.close()
+        print('[+] Delete output file : '+cmd)
+        os.system(cmd)
+        exit()
+      else:
+        print('[+] Connection error for page {}, and retry for {}/{} times'.format(pageno, i_req, MAX_RETRY))
+        continue
+    else:
+      break
   res.encoding = nga_encoding
   if(res.status_code == 403):
     refresh_guest(nga_cookie)
