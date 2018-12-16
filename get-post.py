@@ -71,7 +71,7 @@ for pageno in range(1,MAX_PAGES):
     try:
       time.sleep(REQUEST_DELAY)
       res = requests.get(base_url+api_param+'&page='+repr(pageno), headers=chrome_header,cookies=nga_cookie)
-    except ConnectionError as e:
+    except requests.exceptions.RequestException as e:
       if(i_req + 1 == MAX_RETRY):
         print('[x] Connection error for page {}, exceed MAX_RETRY/{}'.format(pageno, MAX_RETRY))
         cmd = 'rm -f '+OUTPUT_FILENAME
