@@ -38,7 +38,7 @@
 初雪	Hatsuyuki	はつゆき
 深雪	Miyuki	みゆき
 意大利	Italia	Littorio	利托里奥	呆利	意呆
-瑞穗	Mizuho	みずほ	瑞穂
+瑞穗	Mizuho	みずほ	瑞惠	瑞穂
 浦波	Uranami	うらなみ
 足柄	Ashigara	あしがら	狼姐	饿狼
 加贺	Kaga	かが	加賀	正妻空母
@@ -104,7 +104,7 @@ Z1	Leberecht Maass	レーベレヒト・マース
 明石	Akashi	あかし	明老板
 菊月	Kikuduki	きくづき
 清霜	Kiyoshimo	bb霜	きよしも
-黎塞留	Richelieu	リシュリュー	主教	法国BB	黎姐
+黎塞留	Richelieu	リシュリュー	主教	法国BB	理解	黎姐
 青叶	Aoba	あおば	记者	青葉
 涟	Sazanami	さざなみ	漣
 名取	Natori	なとり
@@ -120,7 +120,7 @@ Z1	Leberecht Maass	レーベレヒト・マース
 大和	Yamato	やまと	伞姐	压码头	宇宙战舰	打伞的大姐姐	旅馆
 伊400	400	I400	い400	しおん
 朝霜	Asashimo	あさしも	赵爽
-矢矧	Yahagi	やはぎ	中和	蚯蚓
+矢矧	Yahagi	やはぎ	中和	矢引	矢矢引	蚯蚓
 秋津丸	Akitsumaru	あきつまる	あきつ丸	僵尸	僵尸丸	烈风拳
 岸波	Kishinami	きしなみ
 春雨	Harusame	はるさめ
@@ -148,9 +148,9 @@ U511	511	U	U酱	ゆ-511	ゆ酱
 鬼怒	Kinu	きぬ
 神威	Kamoi	かもい
 飞鹰	Hiyou	ひよう	飛鷹
-阳炎	Kagerou	かげろう	陽炎
+阳炎	Kagerou	かげろう	肠炎	陽炎
 长月	Nagatsuki	ながつき	長月
-川内	Sendai	せんだい	夜战八嘎	夜战笨蛋
+川内	Sendai	せんだい	仙台	夜战八嘎	夜战笨蛋
 文月	Fumiduki	ふみづき
 狭雾	Sagiri	さぎり	狭霧
 瑞凤	Zuihou	ずいほう	女儿	瑞鳳
@@ -241,7 +241,7 @@ Z3	Max Schultz	マックス・シュルツ	馬克斯·舒爾茨	马克思
 战舰ル级	ru	撸爷
 中间栖姬	中途岛	中间
 战舰タ级	TA姐	ta	塔	塔姐
-深海鹤栖姬	深海瑞鹤	瑞鹤	鹤	鹤姬	鹤栖姬
+深海鹤栖姬	深海瑞鹤	火鸡	瑞鹤	鹤	鹤姬	鹤栖姬
 欧洲水姬	欧洲
 轻巡栖鬼	那珂	那珂野	那贺野
 轻巡栖姬	深海神通	神通
