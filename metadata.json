@@ -123,6 +123,67 @@
         "deadline": "2018-12-17 10:00:00"
       }
     },
+    "group64":{
+      "A": {
+        "tid": 15927280,
+        "candidates": ["甘比尔湾", "金刚", "夕张", "厌战"],
+        "selection_max": 2,
+        "deadline": "2018-12-21 10:00:00"
+      },
+      "B": {
+        "tid": 15927283,
+        "candidates": ["扎拉", "塔什干", "霞", "由良"],
+        "selection_max": 2,
+        "deadline": "2018-12-21 10:00:00"
+      },
+      "C": {
+        "tid": 15927290,
+        "candidates": ["秋月", "满潮", "晓", "神通"],
+        "selection_max": 2,
+        "deadline": "2018-12-21 10:00:00"
+      },
+      "D": {
+        "tid": 15927293,
+        "candidates": ["江风", "大和", "贾维斯", "齐柏林"],
+        "selection_max": 2,
+        "deadline": "2018-12-21 10:00:00"
+      },
+      "E": {
+        "candidates": ["阿武隈", "北上", "雪风", "波拉"],
+        "selection_max": 2},
+      "F": {
+        "candidates": ["瑞鹤", "欧根", "鸟海", "山风"],
+        "selection_max": 2},
+      "G": {
+        "candidates": ["滨风", "白露", "龙凤", "哥特兰"],
+        "selection_max": 2},
+      "H": {
+        "candidates": ["鹿岛", "意大利", "响", "夕立"],
+        "selection_max": 2},
+      "I": {
+        "candidates": ["时雨", "不知火", "翔鹤", "摩耶"],
+        "selection_max": 2},
+      "J": {
+        "candidates": ["凉月", "神风", "绫波", "长门"],
+        "selection_max": 2},
+      "K": {
+        "candidates": ["龙骧", "岛风", "瑞凤", "朝潮"],
+        "selection_max": 2},
+      "L": {
+        "candidates": ["加贺", "皇家方舟", "Iowa", "吕500"],
+        "selection_max": 2},
+      "M": {
+        "candidates": ["铃谷", "大凤", "天津风", "武藏"],
+        "selection_max": 2},
+      "N": {
+        "candidates": ["春雨", "海风", "萨拉托加", "初月"],
+        "selection_max": 2},
+      "O": {"candidates": ["U511", "村雨", "俾斯麦", "黑潮"],
+        "selection_max": 2},
+      "P": {
+        "candidates": ["浦风", "时津风", "照月", "榛名"],
+        "selection_max": 2}
+    },
     "1v1":{
       "16-SA":{
         "candidates": ["潜水新栖姬", "防空栖姬"],
@@ -189,11 +250,11 @@
     "长良": ["ながら", "Nagara", "長良"],
     "千岁": ["Chitose", "ちとせ", "千歳"],
     "高雄": ["たかお", "Takao"],
-    "甘比尔湾": ["Gambier", "Bay", "Gambier Bay", "干贝", "冈比尔", "冈比亚", "甘比亚", "甘比尔", "干瘪尔呗", "甘贝尔"],
+    "甘比尔湾": ["Gambier", "Bay", "Gambier Bay", "干贝", "冈比尔", "冈比亚", "甘比亚", "甘比尔", "干瘪尔呗", "甘贝尔",  "GB", "贝"],
     "神鹰": ["しんよう", "shinyou", "沙恩霍斯特"],
     "古鹰": ["ふるたか", "Furutaka", "古鷹"],
     "日振": ["ひぶり", "Hiburi"],
-    "夕张": ["Yuubari", "夕張", "ゆうばり", "于八日", "意大利帅哥", "蜜瓜"],
+    "夕张": ["Yuubari", "夕張", "ゆうばり", "于八日", "意大利帅哥", "蜜瓜", "瓜"],
     "那珂": ["Naka", "なか", "偶像",  "2411"],
     "初雪": ["Hatsuyuki", "はつゆき"],
     "深雪": ["Miyuki", "みゆき"],
