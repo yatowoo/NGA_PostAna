@@ -20,12 +20,29 @@ parser = argparse.ArgumentParser(description='NGA Post Analysis for Kancolle Sai
 parser.add_argument('-l', '--local',help='Do not update thread data, analysis with existed local files', action="store_true", default=False)
 parser.add_argument('-d', '--debug',help='Do not run any commands, only check metadata and output commands for analysis', action='store_true', default=False)
 parser.add_argument('-a', '--all', help='Analyse all selected thread, ignore deadline', action='store_true', default=False)
-parser.add_argument('-i','--info', nargs='+', help='Group information, SAIMOE_YEAR SAIMOE_STAGE SAIMOE_GROUP (if not assigned, group before deadline will be selected)', default=['2018','repechage'])
+parser.add_argument('-i','--info', nargs='+', help='Group information, SAIMOE_YEAR SAIMOE_STAGE (if not specified, latest votes will be selected)')
 
 args = parser.parse_args()
 
-SAIMOE_YEAR = args.info[0]
-SAIMOE_STAGE = args.info[1]
+# Select groups for analysis
+latest_deadline = 0
+if( not args.info):
+  for year in metadata:
+    if( not year.isdigit()):
+      continue
+    for stage in metadata[year]:
+      if(stage == 'regtime_limit'):
+        continue
+      for gname,group in metadata[year][stage].items():
+        if( group.get('tid') and group.get('deadline')):
+          ddl = date2unix(group['deadline'])
+          if( ddl > latest_deadline):
+            latest_deadline = ddl
+            SAIMOE_YEAR = year
+            SAIMOE_STAGE = stage
+else:
+  SAIMOE_YEAR = args.info[0]
+  SAIMOE_STAGE = args.info[1]
 
 # Create output directory
 print('\n------\n\tNGA舰萌计票辅助\n------\n')
