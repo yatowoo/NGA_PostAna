@@ -195,7 +195,7 @@ for row in raw:
       # 谐音 / 错字 (移除单字舰娘，减少误判)
       row[name] = 1
       MATCH_COUNT['谐音'] += 1
-      print('谐音\t'+row['post_no']+'\t'+row['text'])
+      logfile.write('谐音\t'+row['post_no']+'\t'+row['text']+'\n')
     else:
       row[name] = ''
       MATCH_COUNT['总计'] -= 1
