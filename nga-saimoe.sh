@@ -24,4 +24,6 @@ do
   echo -e '\n\n' >> validation.log;
 done
 cp validation.log $WEB_DIR/
+# Web index page
+cp index.html $WEB_DIR/
 set +v

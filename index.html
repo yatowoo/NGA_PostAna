@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NGA Kansumu Saimoe Monitor</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>NGA舰萌 投票数据监控</h1>
+  <p>实际结果以NGA舰版为准</p> 
+</div>
+ 
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 text-center">
+	  <h3><a href="run.log" class="label text-white bg-success">初步结果</a></h3>
+      <p></p>
+      <p>名称与谐音匹配</p>
+    </div>
+    <div class="col-sm-4 text-center">
+      <h3><a href="validation.log" class="label text-white bg-danger">自主验证</a></h3>
+      <p></p>
+      <p>对比投票数与分词数</p>
+    </div>
+    <div class="col-sm-4 text-center">
+      <h3><a href="run.out" class="label text-white bg-info">运行日志</a></h3>
+      <p></p>
+      <p>记录抓取与分析过程</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
