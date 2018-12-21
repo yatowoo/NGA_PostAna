@@ -149,17 +149,29 @@
         "deadline": "2018-12-21 10:00:00"
       },
       "E": {
+        "tid": 15954617,
         "candidates": ["阿武隈", "北上", "雪风", "波拉"],
-        "selection_max": 2},
+        "selection_max": 2,
+        "deadline":"2018-12-24 10:00:00"
+      },
       "F": {
+        "tid": 15954627,
         "candidates": ["瑞鹤", "欧根", "鸟海", "山风"],
-        "selection_max": 2},
+        "selection_max": 2,
+        "deadline":"2018-12-24 10:00:00"
+      },
       "G": {
+        "tid": 15954642,
         "candidates": ["滨风", "白露", "龙凤", "哥特兰"],
-        "selection_max": 2},
+        "selection_max": 2,
+        "deadline":"2018-12-24 10:00:00"
+      },
       "H": {
+        "tid": 15954651,
         "candidates": ["鹿岛", "意大利", "响", "夕立"],
-        "selection_max": 2},
+        "selection_max": 2,
+        "deadline":"2018-12-24 10:00:00"
+      },
       "I": {
         "candidates": ["时雨", "不知火", "翔鹤", "摩耶"],
         "selection_max": 2},
