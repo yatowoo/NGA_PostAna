@@ -35,8 +35,7 @@
       <p>记录抓取与分析过程</p>
     </div>
   </div>
-  <div class="row">
-    <canvas id="canvas"></canvas>
+  <div class="row" id="chart_pad">
   </div>
 </div>
 
@@ -50,67 +49,75 @@
     "purple": "rgb(153, 102, 255)",
     "grey": "rgb(201, 203, 207)"
   };
-  var config = {
-    type: 'line',
-    data: {
-      labels: [],
-      datasets: [],
-    },
-    options: {
-      responsive: true,
-      title: {
-        display: true,
-        text: 'Loading data...'
-      },
-      tooltips: {
-        mode: 'index',
-        intersect: false,
-      },
-      hover: {
-        mode: 'nearest',
-        intersect: true
-      },
-      scales: {
-        xAxes: [{
-          display: true,
-          scaleLabel: {
-            display: true,
-            labelString: 'Hours'
-          }
-        }],
-        yAxes: [{
-          display: true,
-          scaleLabel: {
-            display: true,
-            labelString: 'Votes'
-          }
-        }]
-      }
-    }
-  };
+
+  var temp_data;
   window.onload = function() {
     // Get history data from server file
     var colorNames = Object.keys(window.chartColors);
-    var temp_data;
-    $.getJSON('history.json','', function(data){
-      temp_data = data;
-      config.options.title.text = data.title;
-      data.duration = data[data.candidates[0]].length;
-      config.data.labels = Array.from({length:data.duration},(x,i)=>(i + data.start_hour)%24);
-      data.candidates.forEach(name => {
-        var colorName = colorNames[config.data.datasets.length % colorNames.length];
-			  var newColor = window.chartColors[colorName];
-			  var newDataset = {
-				  label: name,
-				  backgroundColor: newColor,
-				  borderColor: newColor,
-				  data: data[name],
-				  fill: false
+    window.voteChart = {}
+    $.getJSON('history.json','', function(response){
+      temp_data = response;
+      response.forEach(data => {
+        var config = {
+          type: 'line',
+          data: {
+            labels: [],
+            datasets: [],
+          },
+          options: {
+            responsive: true,
+            title: {
+              display: true,
+              text: 'Loading data...'
+            },
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+            },
+            hover: {
+              mode: 'nearest',
+              intersect: true
+            },
+            scales: {
+              xAxes: [{
+                display: true,
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Hours'
+                }
+              }],
+              yAxes: [{
+                display: true,
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Votes'
+                }
+              }]
+            }
+          }
         };
-        config.data.datasets.push(newDataset);
+      
+        config.options.title.text = data.title;
+        data.duration = data[data.candidates[0]].length;
+        config.data.labels = Array.from({length:data.duration},(x,i)=>(i + data.start_hour)%24);
+        config.data.datasets = []
+        data.candidates.forEach(name => {
+          var colorName = colorNames[config.data.datasets.length % colorNames.length];
+          var newColor = window.chartColors[colorName];
+          var newDataset = {
+            label: name,
+            backgroundColor: newColor,
+            borderColor: newColor,
+            data: data[name],
+            fill: false
+          };
+          config.data.datasets.push(newDataset);
+        });
+        var canvas_id = data.title.charAt(data.title.length - 1)
+        $('#chart_pad').append('<div class="col-lg-6"><canvas id="result_' + canvas_id + '"></canvas></div>')
+        var ctx = document.getElementById('result_'+canvas_id).getContext('2d');
+        window.voteChart[canvas_id] = new Chart(ctx, config);
       });
-      var ctx = document.getElementById('canvas').getContext('2d');
-		  window.voteChart = new Chart(ctx, config);
     });
 	};
 </script>
