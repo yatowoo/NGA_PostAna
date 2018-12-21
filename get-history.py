@@ -10,30 +10,35 @@ import datetime
 log = []
 history = ''
 current_vote = set()
+
+def buildLogEntry(history):
+  if( history != '' and re.search('---.* ..:0.:', history)):
+    entry = {}
+    entry['text'] = history
+    # Analysis Date
+    entry['date'] = re.search('---.*: (.*)\n', history).group(1)
+    entry['date_format'] = '%a %b %d %H:%M:%S %Z %Y'
+    # Group info
+    group_name = re.search('INFO - (.*) loading',history).group(1)
+    entry['group'] = group_name
+    current_vote.add(group_name)
+    # Analysis efficiency
+    eff_raw = re.search('test : \n(.*)\n.*Preliminary',history,re.S).group(1)
+    # Preliminary result
+    text = re.search('result\n(.*)\n.*INFO',history,re.S).group(1)
+    entry['result'] = {}
+    for row in text.split('\n'):
+      entry['result'][row.split()[0]] = int(row.split()[1])
+    log.append(entry)
+
 with open('run_history.log') as f:
   for line in f:
     if(line.startswith('---')):
-      if( history != '' and re.search('---.* ..:0.:', history)):
-        entry = {}
-        entry['text'] = history
-        # Analysis Date
-        entry['date'] = re.search('---.*: (.*)\n', history).group(1)
-        entry['date_format'] = '%a %b %d %H:%M:%S %Z %Y'
-        # Group info
-        group_name = re.search('INFO - (.*) loading',history).group(1)
-        entry['group'] = group_name
-        current_vote.add(group_name)
-        # Analysis efficiency
-        eff_raw = re.search('test : \n(.*)\n.*Preliminary',history,re.S).group(1)
-        # Preliminary result
-        text = re.search('result\n(.*)\n.*INFO',history,re.S).group(1)
-        entry['result'] = {}
-        for row in text.split('\n'):
-          entry['result'][row.split()[0]] = int(row.split()[1])
-        log.append(entry)
+      buildLogEntry(history)
       history = line
     else:
       history += line
+buildLogEntry(history)
 
 # Generate output for ChartJS
 start_hour = time.strptime(log[0]['date'], log[0]['date_format']).tm_hour
