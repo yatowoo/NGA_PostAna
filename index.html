@@ -8,11 +8,12 @@
   <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.staticfile.org/Chart.js/2.7.3/Chart.bundle.min.js"></script>
 </head>
 <body>
 
 <div class="jumbotron text-center">
-  <h1>NGA舰萌 投票数据监控</h1>
+  <h1>NGA舰萌 投票监控</h1>
   <p>实际结果以NGA舰版为准</p> 
 </div>
  
@@ -34,7 +35,91 @@
       <p>记录抓取与分析过程</p>
     </div>
   </div>
+  <div class="row" id="chart_pad">
+  </div>
 </div>
 
+<script>
+  window.chartColors = {
+    "red": "rgb(215,25,28)",
+    "orange": "rgb(253,174,97)",
+    "green": "rgb(171,221,164)",
+    "blue": "rgb(43,131,186)",
+    "yellow": "rgb(255, 205, 86)",
+    "purple": "rgb(153, 102, 255)",
+    "grey": "rgb(201, 203, 207)"
+  };
+
+  var temp_data;
+  window.onload = function() {
+    // Get history data from server file
+    var colorNames = Object.keys(window.chartColors);
+    window.voteChart = {}
+    $.getJSON('history.json','', function(response){
+      temp_data = response;
+      response.forEach(data => {
+        var config = {
+          type: 'line',
+          data: {
+            labels: [],
+            datasets: [],
+          },
+          options: {
+            responsive: true,
+            title: {
+              display: true,
+              text: 'Loading data...'
+            },
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+            },
+            hover: {
+              mode: 'nearest',
+              intersect: true
+            },
+            scales: {
+              xAxes: [{
+                display: true,
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Hours'
+                }
+              }],
+              yAxes: [{
+                display: true,
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Votes'
+                }
+              }]
+            }
+          }
+        };
+      
+        config.options.title.text = data.title;
+        data.duration = data[data.candidates[0]].length;
+        config.data.labels = Array.from({length:data.duration},(x,i)=>(i + data.start_hour)%24);
+        config.data.datasets = []
+        data.candidates.forEach(name => {
+          var colorName = colorNames[config.data.datasets.length % colorNames.length];
+          var newColor = window.chartColors[colorName];
+          var newDataset = {
+            label: name,
+            backgroundColor: newColor,
+            borderColor: newColor,
+            data: data[name],
+            fill: false
+          };
+          config.data.datasets.push(newDataset);
+        });
+        var canvas_id = data.title.charAt(data.title.length - 1)
+        $('#chart_pad').append('<div class="col-lg-6"><canvas id="result_' + canvas_id + '"></canvas></div>')
+        var ctx = document.getElementById('result_'+canvas_id).getContext('2d');
+        window.voteChart[canvas_id] = new Chart(ctx, config);
+      });
+    });
+	};
+</script>
 </body>
 </html>

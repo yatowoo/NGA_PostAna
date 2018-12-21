@@ -25,5 +25,7 @@ do
 done
 cp validation.log $WEB_DIR/
 # Web index page
-cp index.html $WEB_DIR/
+# Generate result history for ChartJS display
+./get-history.py
+cp index.html history.json $WEB_DIR/
 set +v
