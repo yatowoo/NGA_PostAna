@@ -33,7 +33,7 @@ txt = []
 uid = []
 post_no = []
 sep = ','
-output.write("post_no"+sep+"uid"+sep+"reg_time"+sep+"post_time"+sep+"text"+"\n")
+output.write("楼层"+sep+"用户ID"+sep+"注册时间"+sep+"回帖时间"+sep+"回帖内容"+"\n")
 for page in raw:
   for rowno in range(page['data']['__R__ROWS']):
     row = page['data']['__R'][repr(rowno)]
