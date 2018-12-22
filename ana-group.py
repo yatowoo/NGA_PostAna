@@ -79,7 +79,7 @@ def pass_selection_num_check(row):
   return True
 
 # Validate result with number of splitted words
-MEANINGLESS_WORD = ['zsbd', 'zs', '字数补丁', '字数布丁', '紫薯布丁', '字数', '紫薯', '补丁', 'sgnb', '冲鸭']
+MEANINGLESS_WORD = ['zsbd', 'zs', '字数补丁', '字数布丁', '紫薯布丁', '字数', '紫薯', '补丁', 'sgnb', '冲鸭', 'exe', 'jpg', 'txt']
 NGA_TAG = ['quote', 'img', 'del']
 def pass_validation(row):
   text = row['回帖内容']
@@ -111,12 +111,13 @@ def pass_validation(row):
 
   # Remove meaningless words / characters in post content
   for w in MEANINGLESS_WORD:
-    text = text.replace(w, '')
-  text = re.sub('~`@#$%^&*()_+=', '', text)
+    text = re.sub(w, '', text, flags=re.I)
+  text = re.sub('[~`@#$%^…&*()_\-+=]', '', text)
   
   # Replace common delimiter with standard delimiter
-  text = re.sub('[!！\-:：;；.。,，、 ]', '|', text)
+  text = re.sub('[!！:：;；.。,，、 ]', '|', text)
   text = text.replace('<br/>','|')
+  text = text.replace('&amp;','|')
 
   # Remove same entry in splitted list
   word_set = set(text.split('|'))
@@ -124,6 +125,23 @@ def pass_validation(row):
     word_set.remove('')
   # Validate matching result
   word_num = len(word_set)
+  # Dev - correct word number by counting matched word
+  try:
+    if(word_num == 1 and selection_num > 1):
+      word_num = 0
+      text = text.replace('|', '')
+      for name in candidates:
+        if(row[name]):
+          for alias in ([name]+aliasDB[name]):
+            if(re.search(alias, text, re.I)):
+              text = re.sub(alias, '', text, flags=re.I)
+              word_num += 1
+              break
+      if(text):
+        word_num += 1
+  except Exception as e:
+    print(text)
+    raise e
   row['Nword'] = word_num
   if(selection_num != word_num):
     return False
