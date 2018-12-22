@@ -79,6 +79,8 @@ def pass_selection_num_check(row):
   return True
 
 # Validate result with number of splitted words
+MEANINGLESS_WORD = ['zsbd', 'zs', '字数补丁', '字数布丁', '紫薯布丁', '字数', '紫薯', '补丁', 'sgnb', '冲鸭']
+NGA_TAG = ['quote', 'img', 'del']
 def pass_validation(row):
   text = row['回帖内容']
   text = text.lower()
@@ -102,23 +104,20 @@ def pass_validation(row):
       elif(name == '罗伯茨'):
         text = text.replace('samuel b.roberts', 'SamuelBRoberts')
         text = text.replace('samuel b. roberts', 'SamuelBRoberts')
-  # Remove useless characters in post content
-  text = text.replace('zsbd','')
-  text = text.replace('紫薯布丁','')
-  text = text.replace('字数补丁','')
-  text = text.replace('字数','')
+  # Remove NGA tags [s:], [img][/img] [quote][/quote] [del][/del]
+  text = re.sub('\[s:.*?\]', '', text)
+  for tag in NGA_TAG:
+    text = re.sub('\['+tag+'\].*?\[/'+tag+'\]', '', text)
+
+  # Remove meaningless words / characters in post content
+  for w in MEANINGLESS_WORD:
+    text = text.replace(w, '')
+  text = re.sub('~`@#$%^&*()_+=', '', text)
+  
   # Replace common delimiter with standard delimiter
-  text = text.replace('！', '|')
-  text = text.replace('!', '|')
-  text = text.replace('-', '|')
-  text = text.replace('；', '|')
-  text = text.replace(';', '|')
-  text = text.replace('.', '|')
-  text = text.replace('。', '|')
-  text = text.replace('，', '|')
-  text = text.replace('、', '|')
+  text = re.sub('[!！\-:：;；.。,，、 ]', '|', text)
   text = text.replace('<br/>','|')
-  text = text.replace(' ','|')
+
   # Remove same entry in splitted list
   word_set = set(text.split('|'))
   if({''}.issubset(word_set)):
