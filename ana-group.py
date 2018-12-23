@@ -79,10 +79,10 @@ def pass_selection_num_check(row):
   return True
 
 # Validate result with number of splitted words
-MEANINGLESS_WORD = ['zsbd', 'zs', '字数补丁', '字数布丁', '紫薯布丁', '字数', '紫薯', '补丁', 'sgnb', '冲鸭', 'exe', 'jpg', 'txt']
+MEANINGLESS_WORD = ['zsbd', 'zs', '字数补丁', '字数布丁', '紫薯布丁', '字数', '紫薯', '补丁', "补字数", 'sgnb', '冲鸭', 'exe', 'jpg', 'txt', '单票']
 NGA_TAG = ['quote', 'img', 'del']
 def pass_validation(row):
-  text = row['回帖内容']
+  text = zhconv.convert(row['回帖内容'], 'zh-cn')
   text = text.lower()
   selection_num = 0
   # Remove <BLANK> in name to avoid being splitted
@@ -104,6 +104,8 @@ def pass_validation(row):
       elif(name == '罗伯茨'):
         text = text.replace('samuel b.roberts', 'SamuelBRoberts')
         text = text.replace('samuel b. roberts', 'SamuelBRoberts')
+      elif(name == '甘古特'):
+        text = text.replace('Гангут два','Гангутдва')
   # Remove NGA tags [s:], [img][/img] [quote][/quote] [del][/del]
   text = re.sub('\[s:.*?\]', '', text)
   for tag in NGA_TAG:
