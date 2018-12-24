@@ -114,7 +114,7 @@ def pass_validation(row):
   # Remove meaningless words / characters in post content
   for w in MEANINGLESS_WORD:
     text = re.sub(w, '', text, flags=re.I)
-  text = re.sub('[~`@#$%^…&*()_\-+=]', '', text)
+  text = re.sub('[~`@#$%^…&*()_\-+=]·', '', text)
   
   # Replace common delimiter with standard delimiter
   text = re.sub('[!！:：;；.。,，、 ]', '|', text)
