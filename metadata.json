@@ -197,16 +197,29 @@
         "deadline":"2018-12-27 10:00:00"
       },
       "M": {
+        "tid": 16000892,
         "candidates": ["铃谷", "大凤", "天津风", "武藏"],
-        "selection_max": 2},
+        "selection_max": 2,
+        "deadline":"2018-12-30 10:00:00"
+      },
       "N": {
+        "tid": 16000907,
         "candidates": ["春雨", "海风", "萨拉托加", "初月"],
-        "selection_max": 2},
-      "O": {"candidates": ["U511", "村雨", "俾斯麦", "黑潮"],
-        "selection_max": 2},
+        "selection_max": 2,
+        "deadline":"2018-12-30 10:00:00"
+      },
+      "O": {
+        "tid": 16000924,
+        "candidates": ["U511", "村雨", "俾斯麦", "黑潮"],
+        "selection_max": 2,
+        "deadline":"2018-12-30 10:00:00"
+      },
       "P": {
+        "tid": 16000941,
         "candidates": ["浦风", "时津风", "照月", "榛名"],
-        "selection_max": 2}
+        "selection_max": 2,
+        "deadline":"2018-12-30 10:00:00"
+      }
     },
     "1v1":{
       "16-SA":{
