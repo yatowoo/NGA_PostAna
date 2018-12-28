@@ -79,8 +79,8 @@ def pass_selection_num_check(row):
   return True
 
 # Validate result with number of splitted words
-MEANINGLESS_WORD = ['zsbd', 'zs', '字数补丁', '字数布丁', '紫薯布丁', '字数', '紫薯', '补丁', "补字数", 'sgnb', '冲鸭', 'exe', 'jpg', 'txt', '单票']
-NGA_TAG = ['quote', 'img', 'del']
+MEANINGLESS_WORD = ['zsbd', 'zs', '字数补丁', '字数布丁', '紫薯布丁', '字数', '紫薯', '补丁', "补字数", 'sgnb', '冲鸭', 'exe', 'jpg', 'txt', '单票', '单投']
+NGA_TAG = ['quote', 'img', 'del', 'b']
 def pass_validation(row):
   text = zhconv.convert(row['回帖内容'], 'zh-cn')
   text = text.lower()
@@ -114,7 +114,7 @@ def pass_validation(row):
   # Remove meaningless words / characters in post content
   for w in MEANINGLESS_WORD:
     text = re.sub(w, '', text, flags=re.I)
-  text = re.sub('[~`@#$%^…&*()_\-+=]·', '', text)
+  text = re.sub('[~`@#$%^…&*()（）_\-+=]·', '', text)
   
   # Replace common delimiter with standard delimiter
   text = re.sub('[!！:：;；.。,，、 ]', '|', text)

@@ -12,9 +12,9 @@
 凉风	Suzukaze	すずかぜ	涼風
 旗风	Hatakaze	はたかぜ	旗風
 时雨	Shigure	しぐれ	大天使	忠犬	時雨
-北上	Kitakami	きたかみ
-哥特兰	Godland	Gotland	瑞典轻巡
-葛城	Katsuragi	かつらぎ
+北上	Kitakami	きたかみ	大魔王	春希	超级北上大人
+哥特兰	Godland	Gotland	哥特	瑞典轻巡
+葛城	Katsuragi	かつらぎ	葛平
 曙	Akebono	bono	あけぼの	小叮当	铃铛
 那智	Nachi	なち
 铃谷	JK	Suzuya	すずや	鈴谷
@@ -22,18 +22,18 @@
 长门	Nagato	ながと	長門	长萌
 衣阿华	Iowa	LowA	爱荷华	鸭华	鸭滑
 三日月	Mikaduki	みかづき	三明
-满潮	Michishio	みちしお	満潮
-荒潮	Arashio	あらしお
+满潮	252	Michishio	みちしお	満潮
+荒潮	251	Arashio	あらしお
 欧根	Eugen	Prinz	Prinz Eugen	布丁	月刊重巡	毆根	飞啊飞啊
 萩风	Hagikaze	はぎかぜ	篍风	艹秋风	荻风	获风	萩	萩萩	萩風	阿萩
 长良	Nagara	ながら	長良
 千岁	Chitose	ちとせ	千歳
 高雄	Takao	たかお
-甘比尔湾	Bay	Gambier	Gambier Bay	冈比亚	冈比尔	干瘪尔呗	干贝	甘比亚	甘比尔	甘贝尔
+甘比尔湾	Bay	GB	Gambier	Gambier Bay	冈比亚	冈比尔	干瘪尔呗	干贝	甘比亚	甘比尔	甘贝尔	贝
 神鹰	shinyou	しんよう	沙恩霍斯特
 古鹰	Furutaka	ふるたか	古鷹
 日振	Hiburi	ひぶり
-夕张	Yuubari	ゆうばり	于八日	夕張	意大利帅哥	蜜瓜
+夕张	Yuubari	ゆうばり	于八日	夕張	意大利帅哥	瓜	蜜瓜
 那珂	2411	Naka	なか	偶像
 初雪	Hatsuyuki	はつゆき
 深雪	Miyuki	みゆき
@@ -47,7 +47,7 @@
 多摩	Tama	たま
 凤翔	Houshou	ほうしょう	老板娘	鳳翔
 福江	fukae	ふかえ
-滨风	Hamakaze	はまかぜ	乳风	浜風	浜风
+滨风	Hamakaze	はまかぜ	乳风	奶子风	小学生叛徒	浜風	浜风	玛修
 速吸	Hayasui	はやすい
 大凤	Taihou	たいほう	呆猴	塔威女神	大鳳	大鸟	太凤	太后	平胸萝莉	能登凤	萝莉凤	论外凤
 松风	Matsukaze	まつかぜ	松風
@@ -59,7 +59,7 @@
 黑潮	Kuroshio	ggk	くろしお	谷小町	谷谷开	黒潮
 春风	Harukaze	はるかぜ	春風
 比睿	Hiei	ひえい	二傻	比叡
-甘古特	Ganguto	Гангут	Гангут два	ガングート	十月革命	哥萨克	大同志	大响	大毛子
+甘古特	Ganguto	Гангут	Гангут два	ガングート	十月革命	同志	哥萨克	大同志	大响	大毛子
 白雪	Shirayuki	しらゆき
 初风	Hatsukaze	はつかぜ	初風
 霰	Arare	あられ	阿拉蕾
@@ -70,11 +70,11 @@
 纳尔逊	Nelson	ネルソン	奈尔逊	巨傻	纳孙	老纳	老衲
 山风	Yamakaze	やまかぜ	山風
 子日	Nenohi	ねのひ
-塔什干	Tashukento	Ташкент	タシュケント	中不点	中同志	塔塔	小同志	小毛子	毛驱	脱了很大同志
+塔什干	Tashukento	Ташкент	タシュケント	中不点	中号同志	中同志	同志	塔塔	小同志	小毛子	毛驱	脱了很大同志
 占守	Shimushu	しむしゅ	西姆咻
 伊势	14	Ise	いせ	伊勢
 天雾	Amagiri	あまぎり	天霧
-俾斯麦	Bismarck	B子	bis	bsm	俾四麦	俾斯麥	四胖	波斯猫	胖胖胖胖	麦姐	麦子
+俾斯麦	Bismarck	B子	bis	bsm	俾四麦	俾斯曼	俾斯麥	四胖	波斯猫	胖胖胖胖	麦姐	麦子
 云龙	Unryuu	うんりゅう	老李	雲龍
 爱宕	Atago	あたご	愛宕	爱大狗
 伊14	14	I-14	I14	い14	イヨ	伊佑
@@ -89,7 +89,7 @@
 Z1	Leberecht Maass	レーベレヒト・マース
 弥生	Yayoi	やよい
 初春	Hatsuharu	はつはる
-大井	Ooi	おおい
+大井	Ooi	おおい	冬马
 酒匂	Sakawa	さかわ	酒妹	酒韵
 吹雪	Fubuki	whobuki	ふぶき	吹吹	欠雷
 扎拉	Zara	zala	ザラ
@@ -99,7 +99,7 @@ Z1	Leberecht Maass	レーベレヒト・マース
 矶波	Isonami	いそなみ	磯波
 绫波	0波	Ayanami	あやなみ	綾波	绫包子	退环境	鬼神	黑豹
 路易吉	504	Luigi	Luigi Torelli	UIT-25	伊504	路易吉·托雷利
-响	Bep	Hibiki	Верный	ひびき	不死鸟	信赖	响爷	小同志	響
+响	Bep	Hibiki	Верный	ひびき	不死鸟	信赖	同志	响爷	小同志	響
 特斯特	CT	Commandant Teste	TST	Teste	test	塔斯特	法国poi	法国水母	特斯塔	特斯拉	特斯特司令官	特斯特长官	高露洁
 明石	Akashi	あかし	明老板
 菊月	Kikuduki	きくづき
@@ -142,7 +142,7 @@ U511	511	U	U酱	ゆ-511	ゆ酱
 凉月	Suzutsuki	すずつき	水泥姬	涼月	凉月
 胧	Oboro	おぼろ	朧	蟹
 苍龙	Souryuu	そうりゅう	蒼龍
-时津风	Tokitsukaze	ときつかぜ	失禁风	時津風
+时津风	Tokitsukaze	ときつかぜ	失禁风	时劲风	時津風
 陆奥	Mutsu	むつ	三号炮塔	肉奥	陸奥
 江风	Kawakaze	かわかぜ	口-口风	江風
 鬼怒	Kinu	きぬ
@@ -159,7 +159,7 @@ U511	511	U	U酱	ゆ-511	ゆ酱
 能代	Noshiro	のしろ
 利根	Tone	とね	吾辈
 伊8	18	8	8酱	I-8	I8	い8	哈酱	蛤酱
-榛名	Haruna	はるな	哈露娜	小天使	春菜	棒各
+榛名	Haruna	はるな	哈露娜	哈鲁娜	小天使	春菜	棒各
 亲潮	Oyashio	おやしお	親潮
 高波	Takanami	たかなみ
 羽黑	Haguro	はぐろ	羽黒
@@ -178,7 +178,7 @@ U511	511	U	U酱	ゆ-511	ゆ酱
 熊野	Kumano	くまの
 西南风	Libeccio	lib	libe	リベッチオ	利贝
 五月雨	Samidare	さみだれ
-贾维斯	Jervis	ジャーヴィス	小傻	小爽	杰维斯	爽爽子	爽驱
+贾维斯	Jervis	ジャーヴィス	小傻	小爽	小贾	杰维斯	爽哥	爽爽子	爽驱
 五十铃	12铃	500	Isuzu	いすず	五十鈴	本子王
 如月	Kisaragi	きさらぎ
 日向	Hyuuga	ひゅうが
@@ -186,17 +186,17 @@ U511	511	U	U酱	ゆ-511	ゆ酱
 霞	Kasumi	かすみ	霞妈
 罗伯茨	P90	Roberts	SAM	SBR	Samuel	Samuel B. Roberts	萝卜
 鹿岛	Kashima	かしま	鹿島
-天津风	Amatsukaze	tenga	あまつかぜ	天津風	疼啊	锅风
+天津风	Amatsukaze	tenga	あまつかぜ	吊带	吊带风	天津風	疼啊	锅风
 伊19	19	I19	い19	一库
 妙高	Myoukou	みょうこう	颜艺
-雪风	Yukikaze	ゆきかぜ	丹阳	亲王	雪亲王	雪風
+雪风	Yukikaze	ゆきかぜ	丹阳	亲王	祥瑞	雪亲王	雪風
 阿武隈	AWW	Abukuma	あぶくま	八万钢	阿布库玛	阿布熊	雪菜
 卷云	Makigumo	まきぐも	小卷	巻云	巻雲
 伊58	58	I58	い58	苦瓜	锅鸭
 雷	Ikaduchi	いかづち	雷妈
 飞龙	Hiryuu	ひりゅう	飛龍
-白露	Shiratsuyu	しらつゆ
-厌战	Warspite	ウォースパイト	老太婆
+白露	Shiratsuyu	しらつゆ	一级棒
+厌战	Warspite	ウォースパイト	老太太	老太婆	老奶奶
 松轮	Matsuwa	まつわ	松輪
 潮	Ushio	うしお
 矶风	Isokaze	いそかぜ	磯風	驱逐王
@@ -206,7 +206,7 @@ U511	511	U	U酱	ゆ-511	ゆ酱
 马路油	Maruyu	まるゆ	三式潜航输送艇	丸输	战神	马战神	马陆油
 龙凤	Ryuuhou	りゅうほう	龍鳳
 罗马	LowMA	Roma	low马	ローマ	雪人
-瑞鹤	Zuikaku	ずいかく	ひゅー	小姨子	瑞鶴
+瑞鹤	Zuikaku	ずいかく	ひゅー	小姨子	瑞瑞	瑞鶴
 最上	Mogami	もがみ
 阿贺野	Agano	ahy	あがの	阿賀野
 若叶	Wakaba	わかば	若葉
