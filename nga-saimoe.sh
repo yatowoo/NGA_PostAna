@@ -4,17 +4,24 @@
 CODE_DIR=/home/wu_topgun/CODE/NGA_PostAna
 SCRIPT_NAME=nga-saimoe.sh
 WEB_DIR=/var/www/html/nga_saimoe
+mkdir -p $WEB_DIR 
+echo '\n------> Git Sync : '$(date) >> $WEB_DIR/crontab.log
 exec 2>&1 >> $WEB_DIR/crontab.log
-set -v
+set -x
+# Sync code with remote repo. on GitHub
 cd $CODE_DIR
 git pull
 rm /etc/cron.hourly/$SCRIPT_NAME
 cp $SCRIPT_NAME /etc/cron.hourly/$SCRIPT_NAME
+# Run analysis
 echo > run.log
+echo '\n\n------> stdout : '$(date) > run.out
+echo '\n\n------> stderr : '$(date) > run.err
 ./run-analysis.py 1>run.out 2>run.err
 cat run.log >> run_history.log
-mkdir -p $WEB_DIR 
-cp run.* $WEB_DIR/
+cat run.out >> run_history.out
+cat run.err >> run_history.err
+cp run.* run_history.* $WEB_DIR/
 # Validation file
 echo > validation.log
 for file in $(ls output/*validation*);
@@ -28,4 +35,4 @@ cp validation.log $WEB_DIR/
 # Generate result history for ChartJS display
 ./get-history.py
 cp index.html history.json $WEB_DIR/
-set +v
+set +x
