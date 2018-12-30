@@ -91,18 +91,13 @@ for pageno in range(1,MAX_PAGES):
     continue
   # Check the last page of thread
     # Notice : lite=js response include "time"="[timestamp]"
-  if(len(res.text) == len(last_page) and pageno >= n_pages):
-  #if(res.text[:-20] == last_page[:-20]):
-    break
-  else:
-    last_page = res.text
-    if(pageno > 1):
-      file.write(",\n")
+  if(pageno > 1):
+    file.write(",\n")
   # Remove control character before json.loads
   raw_text = rm_ctrl_ch(res.text[33:])
   try:
     raw = json.loads(raw_text)
-  except ValueError as e:
+  except Exception as e:
     print("\n\n\n\n")
     print(e)
     print(raw_text)
@@ -112,12 +107,14 @@ for pageno in range(1,MAX_PAGES):
   rows = raw['data']['__ROWS']
   rows_page = raw['data']['__R__ROWS']
   rows_per_page = raw['data']['__R__ROWS_PAGE']
-  n_pages = int((rows+1)/rows_per_page)+1
+  n_pages = int((rows-1)/rows_per_page)+1
   if(pageno == 1):
     print("[-] Connected to NGA thread "+repr(NGA_TID))
     print("\t"+raw['data']['__T']['subject'])
     print("\tRows : "+repr(rows)+", Pages : "+repr(n_pages))
   print("\r[-] Page " + repr(pageno) + " / " + repr(n_pages) + " - "+repr(res.status_code)+" OK", end='')
+  if(pageno == n_pages):
+    break
 print("\n[-] INFO - Finished")
 
 file.write("\n]")
