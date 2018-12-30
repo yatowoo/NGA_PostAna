@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>NGA Kansumu Saimoe Monitor</title>
+  <title>NGA Kanmusu Saimoe Monitor</title>
   <meta charset="utf-8">
+  <link rel="icon" href="nga.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
   <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
@@ -14,27 +15,39 @@
 
 <div class="jumbotron text-center">
   <h1>NGA舰萌 投票监控</h1>
-  <p>实际结果以NGA舰版为准</p> 
+  <p>算法存在误差，实际结果以NGA舰版为准</p>
+  <div class="row">
+    <div class="col-sm-2 text-center offset-sm-3">
+      <a class="btn btn-primary" href="https://docs.qq.com/sheet/DT3lTUWRsQm96VGJn">在线计票辅助</a>
+    </div>
+    <div class="col-sm-2 text-center">
+      <a class="btn btn-primary" href="https://bbs.nga.cn/read.php?tid=15719835">NGA舰版萌战贴</a>
+    </div>
+    <div class="col-sm-2 text-center">
+      <a class="btn btn-primary" href="https://github.com/yatowoo/NGA_PostAna">GitHub仓库</a>
+    </div>
+  </div>
 </div>
  
 <div class="container">
   <div class="row">
     <div class="col-sm-4 text-center">
-	  <h3><a href="run.log" class="label text-white bg-success">初步结果</a></h3>
+	  <a title="历史误差约3%" href="run.log" class="btn btn-success"><h3>初步结果</h3></a>
       <p></p>
-      <p>名称与谐音匹配</p>
+      <p>舰娘名称、别名与谐音匹配</p>
     </div>
     <div class="col-sm-4 text-center">
-      <h3><a href="validation.log" class="label text-white bg-danger">自主验证</a></h3>
+      <a title="分词准确率约95%，验证通过但漏计可能小于1%" href="validation.log" class="btn btn-danger"><h3>自主验证</h3></a>
       <p></p>
       <p>对比投票数与分词数</p>
     </div>
     <div class="col-sm-4 text-center">
-      <h3><a href="run.out" class="label text-white bg-info">运行日志</a></h3>
+      <a href="run.out" class="btn btn-info"><h3>运行日志</h3></a>
       <p></p>
       <p>记录抓取与分析过程</p>
     </div>
   </div>
+  <hr style="margin: 2rem">
   <div class="row" id="chart_pad">
   </div>
 </div>
@@ -42,12 +55,12 @@
 <script>
   window.chartColors = {
     "red": "rgb(215,25,28)",
-    "orange": "rgb(253,174,97)",
-    "green": "rgb(171,221,164)",
     "blue": "rgb(43,131,186)",
+    "green": "rgb(171,221,164)",
+    "orange": "rgb(253,174,97)",
+    "grey": "rgb(201, 203, 207)",
     "yellow": "rgb(255, 205, 86)",
-    "purple": "rgb(153, 102, 255)",
-    "grey": "rgb(201, 203, 207)"
+    "purple": "rgb(153, 102, 255)"
   };
 
   var temp_data;
