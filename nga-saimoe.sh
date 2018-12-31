@@ -14,9 +14,9 @@ git pull
 rm /etc/cron.hourly/$SCRIPT_NAME
 cp $SCRIPT_NAME /etc/cron.hourly/$SCRIPT_NAME
 # Run analysis
-echo '\n\n------> ana-group.py stdout : '$(date)> run.log
-echo '\n\n------> run-analysi.py stdout : '$(date) > run.out
-echo '\n\n------> run-analysi.py stderr : '$(date) > run.err
+echo -e '\n\n------> ana-group.py stdout : '$(date)> run.log
+echo -e '\n\n------> run-analysi.py stdout : '$(date) > run.out
+echo -e '\n\n------> run-analysi.py stderr : '$(date) > run.err
 ./run-analysis.py 1>>run.out 2>>run.err
 cat run.log >> run_history.log
 cat run.out >> run_history.out
