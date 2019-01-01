@@ -228,6 +228,30 @@
       }
     },
     "1v1":{
+      "32-A":{
+        "tid": 16043440,
+        "candidates": ["神通", "夕立"],
+        "selection_max": 1,
+        "deadline": "2019-01-04 10:00:00"
+      },
+      "32-B":{
+        "tid": 16043442,
+        "candidates": ["响", "北上"],
+        "selection_max": 1,
+        "deadline": "2019-01-04 10:00:00"
+      },
+      "32-C":{
+        "tid": 16043445,
+        "candidates": ["凉月", "绫波"],
+        "selection_max": 1,
+        "deadline": "2019-01-04 10:00:00"
+      },
+      "32-D":{
+        "tid": 16043453,
+        "candidates": ["欧根", "白露"],
+        "selection_max": 1,
+        "deadline": "2019-01-04 10:00:00"
+      },             
       "16-SA":{
         "candidates": ["潜水新栖姬", "防空栖姬"],
         "selection_max": 1
