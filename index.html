@@ -130,9 +130,9 @@
         $('#chart_pad').append('<div class="col-lg-6"><canvas id="result_' + canvas_id + '"></canvas></div>')
         var ctx = document.getElementById('result_'+canvas_id).getContext('2d');
         window.voteChart[canvas_id] = new Chart(ctx, config);
-        if(config.data.labels.length >= 24){
+        if(config.data.labels.length >= 24 && confi.data.datasets.length > 2)
           window.voteChart[canvas_id].aspectRatio = 1.0;
-        }else
+        else
           window.voteChart[canvas_id].aspectRatio = 1.618;
       });
     });
