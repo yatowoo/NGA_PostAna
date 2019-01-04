@@ -21,11 +21,11 @@
  
 <div class="container">
   <div class="row">
-    <div class="col-sm-2 text-center">
-      <p>侧边栏</p>
-      <p>选择小组</p>
+    <div class="col-sm-3 text-center">
+      <ul class="list-group" id="sidebar">
+      </ul>
     </div>
-    <div class="col-sm-10 text-center">
+    <div class="col-sm-9 text-center">
       <p>记录表格</p>
       <table class="table table-striped table-borded table-hover">
         <thead><tr>
@@ -65,6 +65,11 @@
 </div>
 
 <script>
+  window.onload = function() {
+    groups = $('b');
+    for ( i = 0; i < groups.length ; i ++)
+      $("#sidebar").append('<a class="list-group-item" href="#' + groups[i].id + '">' + groups[i].id+'</a>');
+  };
 </script>
 </body>
 </html>
