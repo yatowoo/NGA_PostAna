@@ -43,7 +43,8 @@
       continue;
     else if(strpos($line, "------>") !== false){
       $line = str_replace("------> output/", "", $line);
-      echo "<tr><td></td><td>" . $line . "</td><tr>";
+      $line = str_replace("-validation.csv\n", "", $line);
+      echo "<tr><td></td><td><b id=\"" . $line . "\">" . $line . "</b></td><tr>";
     }
     else if(strpos($line, "超票") !== false){
       $line = str_replace("超票\t", "", $line);
