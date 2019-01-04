@@ -4,6 +4,7 @@
 
 # Data - post and result
 output/
+history.json
 
 ### Python ###
 # Byte-compiled / optimized / DLL files

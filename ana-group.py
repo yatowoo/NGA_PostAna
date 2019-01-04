@@ -230,6 +230,7 @@ for row in raw:
   else:
     # 检查选择舰娘数
     if(not pass_selection_num_check(row)):
+      validation_file.write('超票\t'+row['楼层']+'\t'+row['回帖内容']+'\n')
       logfile.write('超票\t'+row['楼层']+'\t'+row['回帖内容']+'\n')
       row['验证'] = '?'
       MATCH_COUNT['超票'] += 1
