@@ -21,11 +21,11 @@
  
 <div class="container">
   <div class="row">
-    <div class="col-sm-3 text-center">
+    <div class="col-sm-2 text-center">
       <ul class="list-group" id="sidebar">
       </ul>
     </div>
-    <div class="col-sm-9 text-center">
+    <div class="col-sm-10 text-center">
       <p>记录表格</p>
       <table class="table table-striped table-borded table-hover">
         <thead><tr>
@@ -67,8 +67,10 @@
 <script>
   window.onload = function() {
     groups = $('b');
-    for ( i = 0; i < groups.length ; i ++)
-      $("#sidebar").append('<a class="list-group-item" href="#' + groups[i].id + '">' + groups[i].id+'</a>');
+    for ( i = 0; i < groups.length ; i ++){
+      var gname = groups[i].id.split('-');
+      $("#sidebar").append('<a class="list-group-item" href="#' + groups[i].id + '">Group ' + gname[gname.length-1]+'</a>');
+    }
   };
 </script>
 </body>
