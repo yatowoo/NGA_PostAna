@@ -251,7 +251,31 @@
         "candidates": ["欧根", "白露"],
         "selection_max": 1,
         "deadline": "2019-01-04 10:00:00"
-      },             
+      },
+      "32-E":{
+        "tid": 16048078,
+        "candidates": ["瑞凤", "厌战"],
+        "selection_max": 1,
+        "deadline": "2019-01-07 10:00:00"
+      },
+      "32-F":{
+        "tid": 16048084,
+        "candidates": ["时雨", "俾斯麦"],
+        "selection_max": 1,
+        "deadline": "2019-01-07 10:00:00"
+      },
+      "32-G":{
+        "tid": 16048092,
+        "candidates": ["照月", "榛名"],
+        "selection_max": 1,
+        "deadline": "2019-01-07 10:00:00"
+      },
+      "32-H":{
+        "tid": 16048106,
+        "candidates": ["金刚", "塔什干"],
+        "selection_max": 1,
+        "deadline": "2019-01-07 10:00:00"
+      },     
       "16-SA":{
         "candidates": ["潜水新栖姬", "防空栖姬"],
         "selection_max": 1
