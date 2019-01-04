@@ -35,5 +35,5 @@ cp validation.log $WEB_DIR/
 # Web index page
 # Generate result history for ChartJS display
 ./get-history.py
-cp index.html history.json nga.ico $WEB_DIR/
+cp index.html validation.php history.json nga.ico $WEB_DIR/
 set +x
