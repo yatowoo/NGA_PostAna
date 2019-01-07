@@ -275,7 +275,31 @@
         "candidates": ["金刚", "塔什干"],
         "selection_max": 1,
         "deadline": "2019-01-07 10:00:00"
-      },     
+      },
+      "32-I":{
+        "tid": 16088156,
+        "candidates": ["初月", "铃谷"],
+        "selection_max": 1,
+        "deadline": "2019-01-10 10:00:00"
+      },
+      "32-J":{
+        "tid": 16088167,
+        "candidates": ["大和", "齐柏林"],
+        "selection_max": 1,
+        "deadline": "2019-01-10 10:00:00"
+      },
+      "32-K":{
+        "tid": 16088179,
+        "candidates": ["阿武隈", "大凤"],
+        "selection_max": 1,
+        "deadline": "2019-01-10 10:00:00"
+      },
+      "32-L":{
+        "tid": 16088190,
+        "candidates": ["U511", "吕500"],
+        "selection_max": 1,
+        "deadline": "2019-01-10 10:00:00"
+      },   
       "16-SA":{
         "candidates": ["潜水新栖姬", "防空栖姬"],
         "selection_max": 1
