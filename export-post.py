@@ -44,7 +44,7 @@ for page in raw:
     output.write(sep + repr(uid))
     output.write(sep + print_time(page['data']['__U'][repr(uid)]['regdate']))
     output.write(sep + print_time(row['postdatetimestamp']))
-    output.write(sep + row['content'].replace(',',' '))
+    output.write(sep + str(row['content']).replace(',',' '))
     output.write('\n')
     
 output.close()
