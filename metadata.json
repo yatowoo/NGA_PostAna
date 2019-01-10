@@ -299,7 +299,31 @@
         "candidates": ["U511", "吕500"],
         "selection_max": 1,
         "deadline": "2019-01-10 10:00:00"
-      },   
+      },
+      "32-M":{
+        "tid": 16106927,
+        "candidates": ["瑞鹤", "哥特兰"],
+        "selection_max": 1,
+        "deadline": "2019-01-13 10:00:00"
+      },
+      "32-N":{
+        "tid": 16106934,
+        "candidates": ["翔鹤", "朝潮"],
+        "selection_max": 1,
+        "deadline": "2019-01-13 10:00:00"
+      },
+      "32-O":{
+        "tid": 16106942,
+        "candidates": ["加贺", "萨拉托加"],
+        "selection_max": 1,
+        "deadline": "2019-01-13 10:00:00"
+      },
+      "32-P":{
+        "tid": 16106950,
+        "candidates": ["霞", "秋月"],
+        "selection_max": 1,
+        "deadline": "2019-01-13 10:00:00"
+      },
       "16-SA":{
         "candidates": ["潜水新栖姬", "防空栖姬"],
         "selection_max": 1
