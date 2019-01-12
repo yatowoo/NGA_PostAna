@@ -1,10 +1,10 @@
-for i in range(50,55):
+for i in range(87,95):
   thread = tlist[i].split('\t')
-  gname = '2' + chr(ord('A')+i-50)
+  gname = '16-' + chr(ord('A')+i-87)
   meta[gname] = {}
   meta[gname]['tid'] = int(thread[1])
   meta[gname]['selection_max'] = 1
-  meta[gname]['deadline'] = "2016-02-01 00:00:00"
+  meta[gname]['deadline'] = "2017-01-25 10:00:00"
   tfile = 'output/NGA-' + thread[1] + '.json'
   f = open(tfile)
   raw = json.load(f)
@@ -12,7 +12,7 @@ for i in range(50,55):
   head = raw[0]['data']['__R']['0']['content']
   cdd = re.search('\[quote\](.*?)\[/quote\]',head,re.S).groups()[0]
   cdd = re.sub('\[img\].*?\[/img\]','',cdd,re.S)
-  meta[gname]['candidates'] = cdd.replace('<br/>',' ').split()
+  meta[gname]['candidates'] = cdd.replace('<br/>',' ').split()[1:]
 
 for gname in sorted(meta.keys()):
   g = meta[gname]

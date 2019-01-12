@@ -723,6 +723,194 @@
       }
     }
   },
+  "2016":{
+    "group_stage":{
+      "N":{
+        "tid": 10604045,
+        "candidates": ["萨拉托加", "伊168", "衣阿华", "欧根亲王", "深雪", "江风", "瑞穗", "春雨", "能代", "丛云", "亲潮", "舞风", "防空栖姬", "驱逐水鬼", "荒潮"],
+        "selection_max": 1,
+        "deadline": "2017-01-08 10:00:00"
+      }
+    },
+    "group_stage2":{
+      "A":{
+        "tid": 10669650,
+        "candidates": ["大凤", "睦月", "海风", "滨风"],
+        "selection_max": 1,
+        "deadline": "2017-01-08 10:00:00"
+      },
+      "B":{
+        "tid": 10669683,
+        "candidates": ["大和", "铃谷", "衣阿华", "雪风"],
+        "selection_max": 1,
+        "deadline": "2017-01-08 10:00:00"
+      },
+      "C":{
+        "tid": 10669709,
+        "candidates": ["夕立", "电", "羽黑", "鹿岛"],
+        "selection_max": 1,
+        "deadline": "2017-01-08 10:00:00"
+      },
+      "D":{
+        "tid": 10669725,
+        "candidates": ["响", "长门", "球磨", "空母ヲ级"],
+        "selection_max": 1,
+        "deadline": "2017-01-08 10:00:00"
+      },
+      "E":{
+        "tid": 10689997,
+        "candidates": ["照月", "神通", "霞", "初月"],
+        "selection_max": 1,
+        "deadline": "2017-01-08 10:00:00"
+      },
+      "F":{
+        "tid": 10690034,
+        "candidates": ["欧根", "春雨", "春风", "龙凤"],
+        "selection_max": 1,
+        "deadline": "2017-01-08 10:00:00"
+      },
+      "G":{
+        "tid": 10690079,
+        "candidates": ["齐柏林", "龙骧", "加贺", "赤城"],
+        "selection_max": 1,
+        "deadline": "2017-01-08 10:00:00"
+      },
+      "H":{
+        "tid": 10690132,
+        "candidates": ["吕500", "晓", "山风", "朝潮"],
+        "selection_max": 1,
+        "deadline": "2017-01-08 10:00:00"
+      },
+      "J":{
+        "tid": 10703634,
+        "candidates": ["俾斯麦", "大鲸", "伊58", "阿武隈"],
+        "selection_max": 1,
+        "deadline": "2017-01-08 10:00:00"
+      },
+      "M":{
+        "tid": 10727361,
+        "candidates": ["北方栖姬", "卯月", "U511", "神风"],
+        "selection_max": 1,
+        "deadline": "2017-01-08 10:00:00"
+      },
+      "N":{
+        "tid": 10727362,
+        "candidates": ["金刚", "绫波", "江风", "摩耶"],
+        "selection_max": 1,
+        "deadline": "2017-01-08 10:00:00"
+      },
+      "O":{
+        "tid": 10727364,
+        "candidates": ["翔鹤", "葛城", "鸟海", "波拉"],
+        "selection_max": 1,
+        "deadline": "2017-01-08 10:00:00"
+      },
+      "P":{
+        "tid": 10727366,
+        "candidates": ["时雨", "夕张", "时津风", "瑞鹤"],
+        "selection_max": 1,
+        "deadline": "2017-01-08 10:00:00"
+      }
+    },
+    "1v1":{
+      "32-A":{
+        "tid": 10760897,
+        "candidates": ["阿武隈", "萨拉托加"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      },
+      "32-B":{
+        "tid": 10760898,
+        "candidates": ["Warspite", "照月"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      },
+      "32-C":{
+        "tid": 10760899,
+        "candidates": ["U-511", "齐柏林"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      },
+      "32-D":{
+        "tid": 10760900,
+        "candidates": ["春风", "北上"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      },
+      "32-E":{
+        "tid": 10772086,
+        "candidates": ["睦月", "俾斯麦"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      },
+      "32-F":{
+        "tid": 10772088,
+        "candidates": ["秋月", "瑞鹤"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      },
+      "32-G":{
+        "tid": 10772090,
+        "candidates": ["Pola", "时雨"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      },
+      "32-H":{
+        "tid": 10772091,
+        "candidates": ["金刚", "翔鹤"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      },
+      "32-I":{
+        "tid": 10794929,
+        "candidates": ["朝潮", "大和"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      },
+      "32-J":{
+        "tid": 10794930,
+        "candidates": ["鹿岛", "ヲ级型正航改flagship"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      },
+      "32-K":{
+        "tid": 10794931,
+        "candidates": ["大凤", "响/Верный"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      },
+      "32-L":{
+        "tid": 10794932,
+        "candidates": ["北方栖姬", "夕立"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      },
+      "32-M":{
+        "tid": 10816086,
+        "candidates": ["雪风", "霞"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      },
+      "32-N":{
+        "tid": 10816089,
+        "candidates": ["摩耶", "欧根亲王"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      },
+      "32-O":{
+        "tid": 10816090,
+        "candidates": ["榛名", "加贺"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      },
+      "32-P":{
+        "tid": 10816092,
+        "candidates": ["吕500", "天津风"],
+        "selection_max": 1,
+        "deadline": "2017-01-20 10:00:00"
+      }
+    }
+  },
   "ShipAliasDB":{
     "峰云": ["峯雲", "みねぐも", "Minegumo"],
     "早波": ["はやなみ", "Hayanami"],
