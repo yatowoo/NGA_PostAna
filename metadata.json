@@ -516,6 +516,7 @@
     }
   },
   "2015":{
+    "regtime_limit":"2019-01-01 00:00:00",
     "group_stage":{
       "A": {
         "candidates": ["岚", "夕立", "长门", "天龙", "Z1", "天城", "江风", "意大利", "加贺", "足柄", "深雪", "响", "天津风", "北上", "比睿"],
@@ -724,6 +725,7 @@
     }
   },
   "2016":{
+    "regtime_limit":"2019-01-01 00:00:00",
     "group_stage":{
       "N":{
         "tid": 10604045,
@@ -908,6 +910,102 @@
         "candidates": ["吕500", "天津风"],
         "selection_max": 1,
         "deadline": "2017-01-20 10:00:00"
+      },
+      "16-A":{
+        "tid": 10844095,
+        "candidates": ["瑞鹤", "俾斯麦"],
+        "selection_max": 1,
+        "deadline": "2017-01-25 10:00:00"
+      },
+      "16-B":{
+        "tid": 10844096,
+        "candidates": ["翔鹤", "时雨"],
+        "selection_max": 1,
+        "deadline": "2017-01-25 10:00:00"
+      },
+      "16-C":{
+        "tid": 10844098,
+        "candidates": ["U-511", "北上"],
+        "selection_max": 1,
+        "deadline": "2017-01-25 10:00:00"
+      },
+      "16-D":{
+        "tid": 10844100,
+        "candidates": ["照月", "萨拉托加"],
+        "selection_max": 1,
+        "deadline": "2017-01-25 10:00:00"
+      },
+      "16-E":{
+        "tid": 10855118,
+        "candidates": ["欧根亲王", "霞"],
+        "selection_max": 1,
+        "deadline": "2017-01-25 10:00:00"
+      },
+      "16-F":{
+        "tid": 10855119,
+        "candidates": ["天津风", "榛名"],
+        "selection_max": 1,
+        "deadline": "2017-01-25 10:00:00"
+      },
+      "16-G":{
+        "tid": 10855121,
+        "candidates": ["鹿岛", "大和"],
+        "selection_max": 1,
+        "deadline": "2017-01-25 10:00:00"
+      },
+      "16-H":{
+        "tid": 10855122,
+        "candidates": ["夕立", "大凤"],
+        "selection_max": 1,
+        "deadline": "2017-01-25 10:00:00"
+      },
+      "8-A":{
+        "tid": 10896774,
+        "candidates": ["萨拉托加", "U-511"],
+        "selection_max": 1,
+        "deadline": "2017-02-13 10:00:00"
+      },
+      "8-B":{
+        "tid": 10896778,
+        "candidates": ["翔鹤", "瑞鹤"],
+        "selection_max": 1,
+        "deadline": "2017-02-13 10:00:00"
+      },
+      "8-C":{
+        "tid": 10896779,
+        "candidates": ["大凤", "大和"],
+        "selection_max": 1,
+        "deadline": "2017-02-13 10:00:00"
+      },
+      "8-D":{
+        "tid": 10896780,
+        "candidates": ["榛名", "欧根亲王"],
+        "selection_max": 1,
+        "deadline": "2017-02-13 10:00:00"
+      },
+      "4-A":{
+        "tid": 10919098,
+        "candidates": ["大凤", "榛名"],
+        "selection_max": 1,
+        "deadline": "2017-02-13 10:00:00"
+      },
+      "4-B":{
+        "tid": 10919099,
+        "candidates": ["萨拉托加", "翔鹤"],
+        "selection_max": 1,
+        "deadline": "2017-02-13 10:00:00"
+      },
+      "bronze":{
+        "tid": 10949622,
+        "candidates": ["萨拉托加", "榛名"],
+        "selection_max": 1,
+        "deadline": "2017-02-13 10:00:00"
+      },
+      "final":{
+        "tid": 10962732,
+        "candidates": ["翔鹤", "大凤"],
+        "selection_max": 1,
+        "deadline": "2017-02-13 10:00:00"
       }
     }
   },
