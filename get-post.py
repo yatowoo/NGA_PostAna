@@ -10,8 +10,9 @@ import json
 import unicodedata
 import os
 
-def rm_ctrl_ch(str):
-  return "".join(ch for ch in str if unicodedata.category(ch)[0]!="C")
+def rm_ctrl_ch(text):
+  text = text.replace('\\x5C','\\\\')
+  return "".join(ch for ch in text if unicodedata.category(ch)[0]!="C")
 
 def refresh_guest(ngack):
   ngack['guestJs'] = repr(int(time.time())-10)
