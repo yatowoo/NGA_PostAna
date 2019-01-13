@@ -24,6 +24,7 @@ def buildLogEntry(history):
     current_vote.add(group_name)
     # Analysis efficiency
     eff_raw = re.search('test : \n(.*)\n.*Preliminary',history,re.S).group(1)
+    entry['efficiency'] = json.loads(eff_raw)
     # Preliminary result
     text = re.search('result\n(.*)\n.*INFO',history,re.S).group(1)
     entry['result'] = {}
@@ -47,6 +48,8 @@ for group in current_vote:
   output[group] = {}
   output[group]['title'] = group
   output[group]['start_hour'] = start_hour
+  for k in log[0]['efficiency'].keys():
+    output[group][k] = []
 
 for entry in log:
   g = output[entry['group']]
@@ -56,6 +59,8 @@ for entry in log:
       g[name] = []
   for name in g['candidates']:
     g[name].append(entry['result'][name])
+  for k in entry['efficiency']:
+    g[k].append(entry['efficiency'][k])
 
 with open('history.json','w+') as f:
   json.dump(
