@@ -325,20 +325,28 @@
         "deadline": "2019-01-13 10:00:00"
       },
       "16-SA":{
+        "tid": 16133995,
         "candidates": ["潜水新栖姬", "防空栖姬"],
-        "selection_max": 1
+        "selection_max": 1,
+        "deadline": "2019-01-16 10:00:00"
       },
       "16-SB":{
+        "tid": 16134006,
         "candidates": ["港湾栖姬", "战舰レ级"],
-        "selection_max": 1
+        "selection_max": 1,
+        "deadline": "2019-01-16 10:00:00"
       },
       "16-SC":{
+        "tid": 16134014,
         "candidates": ["北方栖姬", "深海海月姬"],
-        "selection_max": 1
+        "selection_max": 1,
+        "deadline": "2019-01-16 10:00:00"
       },
       "16-SD":{
+        "tid": 16134023,
         "candidates": ["集积地栖姬", "空母ヲ级"],
-        "selection_max": 1
+        "selection_max": 1,
+        "deadline": "2019-01-16 10:00:00"
       },
       "16-SE":{
         "candidates": ["欧洲水姬", "护卫栖水姬"],
