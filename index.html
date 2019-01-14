@@ -117,6 +117,14 @@
                   display: true,
                   labelString: 'Votes'
                 }
+              },{
+                display: true,
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Rows',
+                },
+                id: "yR",
+                position: "right"
               }]
             }
           }
@@ -133,11 +141,23 @@
           config.data.datasets.push(newDataset(name, data[name], newColor, false));
         });
         config.data.datasets.push(newDataset('总楼层', data['总楼层'], chartColors.grey, true));
-        var canvas_id = data.title.split(' ')[2]
-        $('#chart_pad').append('<div class="col-lg-6"><canvas id="result_' + canvas_id + '"></canvas></div>')
+        // New rows number
+        var newNRows = [];
+        var oldNRows = 0;
+        data['总楼层'].forEach(nrows =>{
+          newNRows.push(nrows - oldNRows);
+          oldNRows = nrows;
+        });
+        var ds = newDataset('新增楼层', newNRows, chartColors.grey, true);
+        ds.fill = true;
+        ds.yAxisID = "yR";
+        config.data.datasets.push(ds);
+
+        var canvas_id = data.title.split(' ')[2];
+        $('#chart_pad').append('<div class="col-lg-6"><canvas id="result_' + canvas_id + '"></canvas></div>');
         var ctx = document.getElementById('result_'+canvas_id).getContext('2d');
         window.voteChart[canvas_id] = new Chart(ctx, config);
-        if(config.data.labels.length >= 24 && config.data.datasets.length > 3)
+        if(config.data.labels.length >= 48 && config.data.datasets.length > 3)
           window.voteChart[canvas_id].aspectRatio = 1.0;
         else
           window.voteChart[canvas_id].aspectRatio = 1.618;
