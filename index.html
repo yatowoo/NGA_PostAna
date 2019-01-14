@@ -35,11 +35,11 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4 text-center">
-	    <a title="历史误差约3%" href="run.log" class="btn btn-success btn-lg">初步结果</a>
+	    <a title="历史误差约5%" href="run.log" class="btn btn-success btn-lg">初步结果</a>
       <p>舰娘名称、别名与谐音匹配</p>
     </div>
     <div class="col-sm-4 text-center">
-      <a title="分词准确率约95%，验证通过但漏计可能小于1%" href="validation.php" class="btn btn-danger btn-lg">自主验证</a>
+      <a title="分词准确率约90%，验证通过但漏计可能小于1%" href="validation.php" class="btn btn-danger btn-lg">自主验证</a>
       <p>对比投票数与分词数</p>
     </div>
     <div class="col-sm-4 text-center">
@@ -67,12 +67,14 @@
 
   function newDataset(name, newData, newColor, isHidden){
     return {
+      type: "line",
       label: name,
       backgroundColor: newColor,
       borderColor: newColor,
       data: newData,
       fill: false,
-      hidden: isHidden
+      hidden: isHidden,
+      yAxisID: "default"
     };
   };
 
@@ -84,7 +86,7 @@
       temp_data = response;
       response.forEach(data => {
         var config = {
-          type: 'line',
+          type: "bar",
           data: {
             labels: [],
             datasets: [],
@@ -115,13 +117,15 @@
                 display: true,
                 scaleLabel: {
                   display: true,
-                  labelString: 'Votes'
-                }
+                  labelString: '投票数 [±5%]'
+                },
+                id: "default",
+                position: "left"
               },{
                 display: true,
                 scaleLabel: {
                   display: true,
-                  labelString: 'Rows',
+                  labelString: '楼层数',
                 },
                 id: "yR",
                 position: "right"
@@ -140,7 +144,6 @@
           var newColor = window.chartColors[colorName];
           config.data.datasets.push(newDataset(name, data[name], newColor, false));
         });
-        config.data.datasets.push(newDataset('总楼层', data['总楼层'], chartColors.grey, true));
         // New rows number
         var newNRows = [];
         var oldNRows = 0;
@@ -148,10 +151,13 @@
           newNRows.push(nrows - oldNRows);
           oldNRows = nrows;
         });
-        var ds = newDataset('新增楼层', newNRows, chartColors.grey, true);
+        var ds = newDataset('新增楼层', newNRows, chartColors.grey, false);
         ds.fill = true;
+        ds.type = "bar";
         ds.yAxisID = "yR";
         config.data.datasets.push(ds);
+        // Total rows number
+        config.data.datasets.push(newDataset('总楼层', data['总楼层'], chartColors.grey, true));
 
         var canvas_id = data.title.split(' ')[2];
         $('#chart_pad').append('<div class="col-lg-6"><canvas id="result_' + canvas_id + '"></canvas></div>');
