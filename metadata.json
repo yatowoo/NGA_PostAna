@@ -328,41 +328,49 @@
         "tid": 16133995,
         "candidates": ["潜水新栖姬", "防空栖姬"],
         "selection_max": 1,
-        "deadline": "2019-01-16 10:00:00"
+        "deadline": "2019-01-15 10:00:00"
       },
       "16-SB":{
         "tid": 16134006,
         "candidates": ["港湾栖姬", "战舰レ级"],
         "selection_max": 1,
-        "deadline": "2019-01-16 10:00:00"
+        "deadline": "2019-01-15 10:00:00"
       },
       "16-SC":{
         "tid": 16134014,
         "candidates": ["北方栖姬", "深海海月姬"],
         "selection_max": 1,
-        "deadline": "2019-01-16 10:00:00"
+        "deadline": "2019-01-15 10:00:00"
       },
       "16-SD":{
         "tid": 16134023,
         "candidates": ["集积地栖姬", "空母ヲ级"],
         "selection_max": 1,
-        "deadline": "2019-01-16 10:00:00"
+        "deadline": "2019-01-15 10:00:00"
       },
       "16-SE":{
+        "tid": 16151944,
         "candidates": ["欧洲水姬", "护卫栖水姬"],
-        "selection_max": 1
+        "selection_max": 1,
+        "deadline": "2019-01-17 10:00:00"
       },
       "16-SF":{
+        "tid": 16151962,
         "candidates": ["深海双子栖姬", "战舰栖姬"],
-        "selection_max": 1
+        "selection_max": 1,
+        "deadline": "2019-01-17 10:00:00"
       },
       "16-SG":{
+        "tid": 16151971,
         "candidates": ["欧洲栖姬", "战舰水鬼"],
-        "selection_max": 1
+        "selection_max": 1,
+        "deadline": "2019-01-17 10:00:00"
       },
-      "16-SI":{
+      "16-SH":{
+        "tid": 16151986,
         "candidates": ["深海鹤栖姬", "驱逐栖姬"],
-        "selection_max": 1
+        "selection_max": 1,
+        "deadline": "2019-01-17 10:00:00"
       }
     }
   },
