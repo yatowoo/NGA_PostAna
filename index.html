@@ -58,9 +58,9 @@
     "blue": "rgb(43,131,186)",
     "green": "rgb(171,221,164)",
     "orange": "rgb(253,174,97)",
-    "grey": "rgb(201, 203, 207)",
+    "purple": "rgb(153, 102, 255)",
     "yellow": "rgb(255, 205, 86)",
-    "purple": "rgb(153, 102, 255)"
+    "grey": "rgb(201, 203, 207)"
   };
 
   var temp_data;
@@ -144,7 +144,13 @@
           var newColor = window.chartColors[colorName];
           config.data.datasets.push(newDataset(name, data[name], newColor, false));
         });
-        // New rows number
+        var checkItems = ['总楼层', '验证失败', '超票', '新号'];
+        checkItems.forEach(name => {
+          var colorName = colorNames[config.data.datasets.length % colorNames.length];
+          var newColor = window.chartColors[colorName];
+          config.data.datasets.push(newDataset(name, data[name], newColor, true));
+        });
+        // Number of new rows
         var newNRows = [];
         var oldNRows = 0;
         data['总楼层'].forEach(nrows =>{
@@ -156,8 +162,6 @@
         ds.type = "bar";
         ds.yAxisID = "yR";
         config.data.datasets.push(ds);
-        // Total rows number
-        config.data.datasets.push(newDataset('总楼层', data['总楼层'], chartColors.grey, true));
 
         var canvas_id = data.title.split(' ')[2];
         $('#chart_pad').append('<div class="col-lg-6"><canvas id="result_' + canvas_id + '"></canvas></div>');
