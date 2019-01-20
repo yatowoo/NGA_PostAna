@@ -348,6 +348,30 @@
         "selection_max": 1,
         "deadline": "2019-01-20 10:00:00"
       },
+      "16-E":{
+        "tid": 16192140,
+        "candidates": ["铃谷", "大和"],
+        "selection_max": 1,
+        "deadline": "2019-01-23 10:00:00"
+      },
+      "16-F":{
+        "tid": 16192146,
+        "candidates": ["大凤", "吕500"],
+        "selection_max": 1,
+        "deadline": "2019-01-23 10:00:00"
+      },
+      "16-G":{
+        "tid": 16192149,
+        "candidates": ["瑞鹤", "翔鹤"],
+        "selection_max": 1,
+        "deadline": "2019-01-23 10:00:00"
+      },
+      "16-H":{
+        "tid": 16192154,
+        "candidates": ["萨拉托加", "霞"],
+        "selection_max": 1,
+        "deadline": "2019-01-23 10:00:00"
+      },
       "16-SA":{
         "tid": 16133995,
         "candidates": ["潜水新栖姬", "防空栖姬"],
