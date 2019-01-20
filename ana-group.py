@@ -79,8 +79,27 @@ def pass_selection_num_check(row):
   return True
 
 # Validate result with number of splitted words
-MEANINGLESS_WORD = ['zsbd', 'zs', '字数补丁', '字数布丁', '紫薯布丁', '字数', '紫薯', '补丁', "补字数", 'sgnb', '冲鸭', 'exe', 'jpg', 'txt', '单票', '单投']
-NGA_TAG = ['quote', 'img', 'del', 'b']
+MEANINGLESS_WORD = ['zsbd', 'zs', '字数补丁', '字数布丁', '紫薯布丁', '字数', '紫薯', '补丁', "补字数", 'sgnb', '冲鸭', 'exe', 'jpg', 'txt', '单票', '单投', "_\(:з&#39;∠\)_", "&#92;"]
+NGA_TAG = ['quote', 'collapse', 'img', 'del', 'url']
+def trim_content(text, delimiter='|'):
+  # Remove NGA tags
+  text = re.sub('\[s:.*?\]', '', text)
+  text = re.sub('\[/?b\]','',text)
+  text = re.sub('\[/?size.*?\]','',text)
+  for tag in NGA_TAG:
+    text = re.sub('\['+tag+'\].*?\[/'+tag+'\]', '', text)
+
+  # Remove meaningless words / characters in post content
+  for w in MEANINGLESS_WORD:
+    text = re.sub(w, '', text, flags=re.I)
+  text = re.sub('[~`@#$%^…&*()（）_\-+=·——]', '', text)
+
+  # Replace delimiter (if for match, remove them)
+  text = re.sub('[!！:：;；.。,，、　 ]', delimiter, text)
+  text = text.replace('<br/>',delimiter)
+  text = text.replace('&amp;',delimiter)
+  return text
+
 def pass_validation(row):
   text = zhconv.convert(row['回帖内容'], 'zh-cn')
   text = text.lower()
@@ -106,20 +125,9 @@ def pass_validation(row):
         text = text.replace('samuel b. roberts', 'SamuelBRoberts')
       elif(name == '甘古特'):
         text = text.replace('Гангут два','Гангутдва')
-  # Remove NGA tags [s:], [img][/img] [quote][/quote] [del][/del]
-  text = re.sub('\[s:.*?\]', '', text)
-  for tag in NGA_TAG:
-    text = re.sub('\['+tag+'\].*?\[/'+tag+'\]', '', text)
-
-  # Remove meaningless words / characters in post content
-  for w in MEANINGLESS_WORD:
-    text = re.sub(w, '', text, flags=re.I)
-  text = re.sub('[~`@#$%^…&*()（）_\-+=]·', '', text)
   
-  # Replace common delimiter with standard delimiter
-  text = re.sub('[!！:：;；.。,，、 ]', '|', text)
-  text = text.replace('<br/>','|')
-  text = text.replace('&amp;','|')
+  # Split text
+  text = trim_content(text, delimiter='|')
 
   # Remove same entry in splitted list
   word_set = set(text.split('|'))
@@ -201,6 +209,8 @@ for row in raw:
   for name in candidates:
     # 预处理中文繁体
     post_content = zhconv.convert(row['回帖内容'], 'zh-cn')
+    # 移除特殊字符
+    post_content = trim_content(post_content, delimiter='')
     MATCH_COUNT['总计'] += 1
     if(re.search(name, post_content, re.I)):
       # 本名
