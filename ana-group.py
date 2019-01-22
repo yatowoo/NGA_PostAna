@@ -87,7 +87,7 @@ def trim_content(text, delimiter='|'):
   text = re.sub('\[/?b\]','',text)
   text = re.sub('\[/?size.*?\]','',text)
   for tag in NGA_TAG:
-    text = re.sub('\['+tag+'\].*?\[/'+tag+'\]', '', text)
+    text = re.sub('\['+tag+'.*?\].*?\[/'+tag+'\]', '', text)
 
   # Remove meaningless words / characters in post content
   for w in MEANINGLESS_WORD:
@@ -95,7 +95,7 @@ def trim_content(text, delimiter='|'):
   text = re.sub('[~`@#$%^…&*()（）_\-+=·——]', '', text)
 
   # Replace delimiter (if for match, remove them)
-  text = re.sub('[!！:：;；.。,，、　 ]', delimiter, text)
+  text = re.sub('[?？!！:：;；.。,，、　 ]', delimiter, text)
   text = text.replace('<br/>',delimiter)
   text = text.replace('&amp;',delimiter)
   return text
