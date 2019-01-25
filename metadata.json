@@ -420,6 +420,30 @@
         "selection_max": 1,
         "deadline": "2019-01-17 10:00:00"
       },
+      "8-A":{
+        "tid": 16236483,
+        "candidates": ["夕立", "凉月"],
+        "selection_max": 1,
+        "deadline": "2019-01-28 10:00:00"
+      },
+      "8-B":{
+        "tid": 16236488,
+        "candidates": ["时雨", "榛名"],
+        "selection_max": 1,
+        "deadline": "2019-01-28 10:00:00"
+      },
+      "8-C":{
+        "tid": 16236504,
+        "candidates": ["大和", "大凤"],
+        "selection_max": 1,
+        "deadline": "2019-01-28 10:00:00"
+      },
+      "8-D":{
+        "tid": 16236517,
+        "candidates": ["瑞鹤", "萨拉托加"],
+        "selection_max": 1,
+        "deadline": "2019-01-28 10:00:00"
+      },
       "8-SA":{
         "tid": 16216603,
         "candidates": ["防空栖姬", "港湾栖姬"],
