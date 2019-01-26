@@ -31,8 +31,9 @@ except ValueError:
   exit()
 
 MAX_PAGES = 100
-MAX_RETRY = 3
-REQUEST_DELAY = 0.5 # second
+MAX_RETRY = 10
+REQUEST_DELAY = 0.2 # second
+CONNECTION_TIMEOUT = (3.05, 1)
 OUTPUT_FILENAME = 'output/NGA-' + repr(NGA_TID) + '.json'
 
 chrome_header = {
@@ -71,17 +72,17 @@ for pageno in range(1,MAX_PAGES):
   for i_req in range(0,MAX_RETRY):
     try:
       time.sleep(REQUEST_DELAY)
-      res = requests.get(base_url+api_param+'&page='+repr(pageno), headers=chrome_header,cookies=nga_cookie)
+      res = requests.get(base_url+api_param+'&page='+repr(pageno), headers=chrome_header,cookies=nga_cookie, timeout=CONNECTION_TIMEOUT)
     except requests.exceptions.RequestException as e:
       if(i_req + 1 == MAX_RETRY):
-        print('[x] Connection error for page {}, exceed MAX_RETRY/{}'.format(pageno, MAX_RETRY))
+        print('\n[x] Connection error for page {}, exceed MAX_RETRY/{}'.format(pageno, MAX_RETRY))
         cmd = 'rm -f '+OUTPUT_FILENAME
         file.close()
         print('[+] Delete output file : '+cmd)
         os.system(cmd)
         exit()
       else:
-        print('[+] Connection error for page {}, and retry for {}/{} times'.format(pageno, i_req, MAX_RETRY))
+        print('\n  [+] Connection error for page {}, and retry for {}/{} times'.format(pageno, i_req, MAX_RETRY)+' - '+repr(int(time.time())))
         continue
     else:
       break
