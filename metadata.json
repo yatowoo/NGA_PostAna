@@ -492,6 +492,20 @@
         "selection_max": 1,
         "deadline": "2019-02-04 10:00:00"
       }
+    },
+    "final":{
+      "bronze":{
+        "tid": 16326988,
+        "candidates": ["夕立", "大凤"],
+        "selection_max": 1,
+        "deadline": "2019-02-08 10:00:00"
+      },
+      "bronze-S":{
+        "tid": 16326998,
+        "candidates": ["防空栖姬", "战舰栖姬"],
+        "selection_max": 1,
+        "deadline": "2019-02-08 10:00:00"
+      }
     }
   },
   "2017":{
