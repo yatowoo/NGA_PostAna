@@ -505,6 +505,18 @@
         "candidates": ["防空栖姬", "战舰栖姬"],
         "selection_max": 1,
         "deadline": "2019-02-08 10:00:00"
+      },
+      "saimoe":{
+        "tid": 16353685,
+        "candidates": ["时雨", "瑞鹤"],
+        "selection_max": 1,
+        "deadline": "2019-02-13 10:00:00"
+      },
+      "saimoe_shinkai":{
+        "tid": 16353703,
+        "candidates": ["北方栖姬", "深海鹤栖姬"],
+        "selection_max": 1,
+        "deadline": "2019-02-13 10:00:00"
       }
     }
   },
