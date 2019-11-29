@@ -62,12 +62,12 @@ base_url = 'http://bbs.ngacn.cc/read.php?tid=' + repr(NGA_TID)
 api_param = '&lite=js'
 nga_encoding = 'gbk'
 # Output
-file = open(OUTPUT_FILENAME + '.json',"w")
-file.write("[\n")
+outputJSON = open(OUTPUT_FILENAME + '.json',"w")
+outputJSON.write("[\n")
 
-output = open(OUTPUT_FILENAME + '.csv',"w")
+outputCSV = open(OUTPUT_FILENAME + '.csv',"w")
 sep = ','
-output.write("楼层"+sep+"用户ID"+sep+"注册时间"+sep+"回帖时间"+sep+"回帖内容"+"\n")
+outputCSV.write("楼层"+sep+"用户ID"+sep+"注册时间"+sep+"回帖时间"+sep+"回帖内容"+"\n")
 
 # guestJs should be refreshed in 600 sec.
 nga_cookie = {}
@@ -83,7 +83,7 @@ for pageno in range(1,MAX_PAGES):
       if(i_req + 1 == MAX_RETRY):
         print('\n[x] Connection error for page {}, exceed MAX_RETRY/{}'.format(pageno, MAX_RETRY))
         cmd = 'rm -f '+OUTPUT_FILENAME
-        file.close()
+        outputJSON.close()
         print('[+] Delete output file : '+cmd)
         os.system(cmd)
         exit()
@@ -100,7 +100,7 @@ for pageno in range(1,MAX_PAGES):
   # Check the last page of thread
     # Notice : lite=js response include "time"="[timestamp]"
   if(pageno > 1):
-    file.write(",\n")
+    outputJSON.write(",\n")
   # Remove control character before json.loads
   raw_text = rm_ctrl_ch(res.text[33:])
   try:
@@ -110,7 +110,7 @@ for pageno in range(1,MAX_PAGES):
     print(e)
     print(raw_text)
     exit()
-  file.write(json.dumps(raw,ensure_ascii=False,indent=2))
+  outputJSON.write(json.dumps(raw,ensure_ascii=False,indent=2))
   # processing info.
   rows = raw['data']['__ROWS']
   rows_page = raw['data']['__R__ROWS']
@@ -125,17 +125,17 @@ for pageno in range(1,MAX_PAGES):
     row = raw['data']['__R'][repr(rowno)]
     if(row['lou'] == 0):
       continue
-    output.write(repr(row['lou'])) # post no.
+    outputCSV.write(repr(row['lou'])) # post no.
     uid = row['authorid']
-    output.write(sep + repr(uid))
-    output.write(sep + print_time(raw['data']['__U'][repr(uid)]['regdate']))
-    output.write(sep + print_time(row['postdatetimestamp']))
-    output.write(sep + str(row['content']).replace(',',' '))
-    output.write('\n')
+    outputCSV.write(sep + repr(uid))
+    outputCSV.write(sep + print_time(raw['data']['__U'][repr(uid)]['regdate']))
+    outputCSV.write(sep + print_time(row['postdatetimestamp']))
+    outputCSV.write(sep + str(row['content']).replace(',',' '))
+    outputCSV.write('\n')
   if(pageno == n_pages):
     break
 print("\n[-] INFO - Finished")
 
-file.write("\n]")
-file.close()
-output.close()
+outputJSON.write("\n]")
+outputJSON.close()
+outputCSV.close()
