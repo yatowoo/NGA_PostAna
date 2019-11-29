@@ -73,16 +73,11 @@ for group in sorted(metadata[SAIMOE_YEAR][SAIMOE_STAGE]):
       print("[-] INFO - Thread " + repr(thread['tid']) + " will be updated to latest version")
 
   print("[-] INFO - Start analysis for " + SAIMOE_YEAR + ' ' + SAIMOE_STAGE + ' ' + group)
-  csvfile = 'output/' + SAIMOE_YEAR + '-' + SAIMOE_STAGE + '-' + group + '.csv'
+  csvfile = 'output/NGA-' + repr(thread['tid']) + '.csv'
   # Get post by NGA tid
   cmd = './get-post.py '+ repr(thread['tid'])
   print(cmd)
   if(not args.debug and not args.local):
-    os.system(cmd)
-  # Export post from raw json to csv
-  cmd = './export-post.py '+ postfile + ' ' + csvfile
-  print(cmd)
-  if(not args.debug):
     os.system(cmd)
   # Analysis post content as csv
   cmd = './ana-group.py '+ csvfile + ' ' + SAIMOE_YEAR + ' ' + SAIMOE_STAGE + ' ' + group
