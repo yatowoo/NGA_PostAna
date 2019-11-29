@@ -17,6 +17,8 @@ def rm_ctrl_ch(text):
 def refresh_guest(ngack):
   ngack['guestJs'] = repr(int(time.time())-10)
 
+def print_time(timestamp):
+  return time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(timestamp))
 # User Params
 user_tid = None
 if(len(sys.argv) == 2):
@@ -34,7 +36,7 @@ MAX_PAGES = 100
 MAX_RETRY = 10
 REQUEST_DELAY = 0.2 # second
 CONNECTION_TIMEOUT = (3.05, 1)
-OUTPUT_FILENAME = 'output/NGA-' + repr(NGA_TID) + '.json'
+OUTPUT_FILENAME = 'output/NGA-' + repr(NGA_TID)
 
 chrome_header = {
           'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36', 
@@ -60,8 +62,12 @@ base_url = 'http://bbs.ngacn.cc/read.php?tid=' + repr(NGA_TID)
 api_param = '&lite=js'
 nga_encoding = 'gbk'
 # Output
-file = open(OUTPUT_FILENAME,"w")
+file = open(OUTPUT_FILENAME + '.json',"w")
 file.write("[\n")
+
+output = open(OUTPUT_FILENAME + '.csv',"w")
+sep = ','
+output.write("楼层"+sep+"用户ID"+sep+"注册时间"+sep+"回帖时间"+sep+"回帖内容"+"\n")
 
 # guestJs should be refreshed in 600 sec.
 nga_cookie = {}
@@ -115,9 +121,21 @@ for pageno in range(1,MAX_PAGES):
     print("\t"+raw['data']['__T']['subject'])
     print("\tRows : "+repr(rows)+", Pages : "+repr(n_pages))
   print("\r[-] Page " + repr(pageno) + " / " + repr(n_pages) + " - "+repr(res.status_code)+" OK", end='')
+  for rowno in range(raw['data']['__R__ROWS']):
+    row = raw['data']['__R'][repr(rowno)]
+    if(row['lou'] == 0):
+      continue
+    output.write(repr(row['lou'])) # post no.
+    uid = row['authorid']
+    output.write(sep + repr(uid))
+    output.write(sep + print_time(raw['data']['__U'][repr(uid)]['regdate']))
+    output.write(sep + print_time(row['postdatetimestamp']))
+    output.write(sep + str(row['content']).replace(',',' '))
+    output.write('\n')
   if(pageno == n_pages):
     break
 print("\n[-] INFO - Finished")
 
 file.write("\n]")
 file.close()
+output.close()
