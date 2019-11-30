@@ -3,8 +3,13 @@
 # Edit at https://www.gitignore.io/?templates=python,visualstudiocode
 
 # Data - post and result
-output/
+output*/*
 history.json
+*.err
+*.out
+*.log
+*.zip
+*.csv
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
