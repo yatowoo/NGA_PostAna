@@ -24,7 +24,7 @@ cat output/run.err >> output/run_history.err
 cp output/run.* output/run_history.* $WEB_DIR/
 # Validation file
 echo > output/validation.log
-for file in $(ls output/*validation*);
+for file in $(ls output/*validation*.csv);
 do
   echo '------> '$file >> output/validation.log;
   cat $file >> output/validation.log;
