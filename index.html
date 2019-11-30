@@ -164,7 +164,7 @@
         config.data.datasets.push(ds);
 
         var canvas_id = data.title.split(' ')[2];
-        $('#chart_pad').append('<div class="col-lg-6"><canvas id="result_' + canvas_id + '"></canvas></div>');
+        $('#chart_pad').append('<div class="col-lg-6"><canvas id="result_' + canvas_id + '"></canvas><a class="btn btn-info" title="可手动导入Excel进行计票" href="'+ data.title.split(' ').join('-') + '-result.csv' + '">导出CSV</a></div>');
         var ctx = document.getElementById('result_'+canvas_id).getContext('2d');
         window.voteChart[canvas_id] = new Chart(ctx, config);
         if(config.data.labels.length >= 48 && config.data.datasets.length > 3)

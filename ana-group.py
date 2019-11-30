@@ -178,7 +178,7 @@ csvfile = open(sys.argv[1])
 raw = csv.DictReader(csvfile)
 
 dirname = os.path.dirname(sys.argv[1])
-filename = os.path.basename(sys.argv[1]).split('.')[0]
+filename = SAIMOE_YEAR+'-'+SAIMOE_STAGE+'-'+SAIMOE_GROUP
 
 result_file = open(dirname +"/" + filename + "-result.csv","w")
 validation_file = open(dirname +"/" + filename + "-validation.csv","w")
