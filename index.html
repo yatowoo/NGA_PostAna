@@ -60,7 +60,28 @@
     "orange": "rgb(253,174,97)",
     "purple": "rgb(153, 102, 255)",
     "yellow": "rgb(255, 205, 86)",
-    "grey": "rgb(201, 203, 207)"
+    "black": "rgb(34, 34, 34)",
+    "pink": "rgb(255, 192, 203)",
+    "cyan": "rgb(0, 255, 255)",
+    "teal": "rgb(0, 128, 128)",
+    "olive": "rgb(128, 128, 0)",
+    "magenta": "rgb(255,0,255)",
+    "gold": "rgb(255, 215, 0)",
+    "grey": "rgb(201, 203, 207)",
+    "salmon": "rgb(250, 128, 114)",
+    "deepsky": "rgb(0, 191, 255)",
+    "lime": "rgb(0, 255, 0)",
+    "tomato": "rgb(255, 99, 71)",
+    "violet": "rgb(238, 130, 238)",
+    "khaki": "rgb(240, 130, 140)",
+    "silver": "rgb(192, 192, 192)"
+  };
+
+  window.chartColorsLight = {
+    "redL": "rgb(255, 204, 204)",
+    "blueL": "rgb(102,204,255)",
+    "greenL": "rgb(153,255,204)",
+    "purpleL": "rgb(204, 204, 255)"
   };
 
   var temp_data;
@@ -81,6 +102,7 @@
   window.onload = function() {
     // Get history data from server file
     var colorNames = Object.keys(window.chartColors);
+    var colorNamesLight = Object.keys(window.chartColorsLight);
     window.voteChart = {}
     $.getJSON('history.json','', function(response){
       temp_data = response;
@@ -145,9 +167,10 @@
           config.data.datasets.push(newDataset(name, data[name], newColor, false));
         });
         var checkItems = ['总楼层', '验证失败', '超票', '新号'];
+        var idxInfo = 0;
         checkItems.forEach(name => {
-          var colorName = colorNames[config.data.datasets.length % colorNames.length];
-          var newColor = window.chartColors[colorName];
+          var colorName = colorNamesLight[(idxInfo++) % colorNamesLight.length];
+          var newColor = window.chartColorsLight[colorName];
           config.data.datasets.push(newDataset(name, data[name], newColor, true));
         });
         // Number of new rows
@@ -167,7 +190,11 @@
         $('#chart_pad').append('<div class="col-lg-6"><canvas id="result_' + canvas_id + '"></canvas><a class="btn btn-info" title="可手动导入Excel进行计票" href="'+ data.title.split(' ').join('-') + '-result.csv' + '">导出CSV</a></div>');
         var ctx = document.getElementById('result_'+canvas_id).getContext('2d');
         window.voteChart[canvas_id] = new Chart(ctx, config);
-        if(config.data.labels.length >= 48 && config.data.datasets.length > 3)
+        if(config.data.datasets.length > 15)
+          window.voteChart[canvas_id].aspectRatio = 0.618;
+        else if(config.data.datasets.length > 10)
+          window.voteChart[canvas_id].aspectRatio = 1.0;
+        else if(config.data.labels.length >= 48 && config.data.datasets.length > 3)
           window.voteChart[canvas_id].aspectRatio = 1.0;
         else
           window.voteChart[canvas_id].aspectRatio = 1.618;
