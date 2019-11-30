@@ -1,7 +1,7 @@
 #!/bin/bash -
 
 # Crontab Script for NGA Saimoe Analysis
-CODE_DIR=/home/wu_topgun/CODE/NGA_PostAna
+CODE_DIR=/home/ubuntu/NGA_PostAna
 SCRIPT_NAME=nga-saimoe.sh
 WEB_DIR=/var/www/html/nga_saimoe
 mkdir -p $WEB_DIR 
@@ -11,29 +11,28 @@ set -x
 # Sync code with remote repo. on GitHub
 cd $CODE_DIR
 git pull
-rm /etc/cron.hourly/$SCRIPT_NAME
-cp $SCRIPT_NAME /etc/cron.hourly/$SCRIPT_NAME
 # Run analysis
-echo > run.log
-echo -e '\n\n------> run-analysis.py stdout : '$(date) > run.out
-echo -e '\n\n------> run-analysis.py stderr : '$(date) > run.err
-echo -e '\n\n------> ana-group.py analysis log : '$(date) > analysis.log
-./run-analysis.py 1>>run.out 2>>run.err
-cat run.log >> run_history.log
-cat run.out >> run_history.out
-cat run.err >> run_history.err
-cp run.* run_history.* $WEB_DIR/
+mkdir -p output
+echo > output/run.log
+echo -e '\n\n------> run-analysis.py stdout : '$(date) > output/run.out
+echo -e '\n\n------> run-analysis.py stderr : '$(date) > output/run.err
+echo -e '\n\n------> ana-group.py analysis log : '$(date) > output/analysis.log
+./run-analysis.py 1>>output/run.out 2>>output/run.err
+cat run.log >> output/run_history.log
+cat run.out >> output/run_history.out
+cat run.err >> output/run_history.err
+cp output/run.* output/run_history.* $WEB_DIR/
 # Validation file
-echo > validation.log
+echo > output/validation.log
 for file in $(ls output/*validation*);
 do
-  echo '------> '$file >> validation.log;
-  cat $file >> validation.log;
-  echo -e '\n\n' >> validation.log;
+  echo '------> '$file >> output/validation.log;
+  cat $file >> output/validation.log;
+  echo -e '\n\n' >> output/validation.log;
 done
-cp validation.log $WEB_DIR/
+cp output/validation.log $WEB_DIR/
 # Web index page
 # Generate result history for ChartJS display
-./get-history.py
+./get-history.py output/run_history.log
 cp index.html validation.php history.json nga.ico output/*result*csv $WEB_DIR/
 set +x

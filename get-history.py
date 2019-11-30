@@ -2,10 +2,12 @@
 
 # Generate json data for display
 
-import json
-import re
-import time
-import datetime
+import json, re, time, datetime, sys, os
+
+if(len(sys.argv) > 1):
+  HISTORY_FILE = sys.argv[1]
+else:
+  HISTORY_FILE = 'run_history.log'
 
 log = []
 history = ''
@@ -32,7 +34,7 @@ def buildLogEntry(history):
       entry['result'][row.split()[0]] = int(row.split()[1])
     log.append(entry)
 
-with open('run_history.log') as f:
+with open(HISTORY_FILE) as f:
   for line in f:
     if(line.startswith('---')):
       buildLogEntry(history)
