@@ -18,9 +18,9 @@ echo -e '\n\n------> run-analysis.py stdout : '$(date) > output/run.out
 echo -e '\n\n------> run-analysis.py stderr : '$(date) > output/run.err
 echo -e '\n\n------> ana-group.py analysis log : '$(date) > output/analysis.log
 ./run-analysis.py 1>>output/run.out 2>>output/run.err
-cat run.log >> output/run_history.log
-cat run.out >> output/run_history.out
-cat run.err >> output/run_history.err
+cat output/run.log >> output/run_history.log
+cat output/run.out >> output/run_history.out
+cat output/run.err >> output/run_history.err
 cp output/run.* output/run_history.* $WEB_DIR/
 # Validation file
 echo > output/validation.log
