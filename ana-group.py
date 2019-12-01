@@ -100,6 +100,20 @@ def trim_content(text, delimiter='|'):
   text = text.replace('&amp;',delimiter)
   return text
 
+def alias_match(post_content, name):
+  for alias in aliasDB[name]:
+    MATCH_COUNT['尝试'] += 1
+    if(re.search(alias, post_content, re.I)):
+      return True
+  return False
+
+def pinyin_match(post_content, name):
+  real_pinyin = ''.join(lazy_pinyin(name))
+  input_pinyin = ''.join(lazy_pinyin(post_content))
+  if(re.search(real_pinyin, input_pinyin, re.I)):
+    return True
+  return False
+
 def pass_validation(row):
   text = zhconv.convert(row['回帖内容'], 'zh-cn')
   text = text.lower()
@@ -136,41 +150,36 @@ def pass_validation(row):
   # Validate matching result
   word_num = len(word_set)
   # Dev - correct word number by counting matched word
+  hit_num = 0
   try:
-    if(word_num == 1 and selection_num > 1):
-      word_num = 0
+    if(selection_num > 1):
       text = text.replace('|', '')
-      for name in candidates:
+      for name in sorted(candidates, key=(lambda x:len(x)), reverse=True):
         if(row[name]):
+          REAL_HIT = False
           for alias in ([name]+aliasDB[name]):
             if(re.search(alias, text, re.I)):
               text = re.sub(alias, '', text, flags=re.I)
-              word_num += 1
+              hit_num += 1
+              REAL_HIT = True
               break
+          # Check multi-hit
+          if(not REAL_HIT and not pinyin_match(text, name)):
+            print('[X] ' + row['回帖内容'] + '\t|\t' + name)
+            row[name] = 0
       if(text):
-        word_num += 1
+        hit_num += 1
   except Exception as e:
     print(text)
     raise e
-  row['Nword'] = word_num
-  if(selection_num != word_num):
+  if(hit_num > word_num):
+    row['Nword'] = hit_num
+  else:
+    row['Nword'] = word_num
+  if(selection_num != row['Nword']):
     return False
   else:
     return True
-
-def alias_match(post_content, name):
-  for alias in aliasDB[name]:
-    MATCH_COUNT['尝试'] += 1
-    if(re.search(alias, post_content, re.I)):
-      return True
-  return False
-
-def pinyin_match(post_content, name):
-  real_pinyin = ''.join(lazy_pinyin(name))
-  input_pinyin = ''.join(lazy_pinyin(post_content))
-  if(re.search(real_pinyin, input_pinyin, re.I)):
-    return True
-  return False
 
 # 初始化文件
 print('[-] INFO - '+SAIMOE_YEAR+' '+SAIMOE_STAGE+' '+SAIMOE_GROUP+' loading ...')
@@ -238,16 +247,16 @@ for row in raw:
     row['验证'] = '-'
     MATCH_COUNT['新号'] += 1
   else:
+    # 根据分词进行验证
+    if(pass_validation(row)):
+      row['验证'] = '●'
+      MATCH_COUNT['验证通过'] += 1
     # 检查选择舰娘数
-    if(not pass_selection_num_check(row)):
+    elif(not pass_selection_num_check(row)):
       validation_file.write('超票\t'+row['楼层']+'\t'+row['回帖内容']+'\n')
       logfile.write('超票\t'+row['楼层']+'\t'+row['回帖内容']+'\n')
       row['验证'] = '?'
       MATCH_COUNT['超票'] += 1
-    # 根据分词进行验证
-    elif(pass_validation(row)):
-      row['验证'] = '●'
-      MATCH_COUNT['验证通过'] += 1
     # 验证失败则导出以供分析
     else:
       row['验证'] = '×'
