@@ -117,11 +117,9 @@ def pinyin_match(post_content, name):
 def pass_validation(row):
   text = zhconv.convert(row['回帖内容'], 'zh-cn')
   text = text.lower()
-  selection_num = 0
   # Remove <BLANK> in name to avoid being splitted
   for name in candidates:
     if(row[name]):
-      selection_num += 1
       if(name == '欧根'):
         text = text.replace('prinz eugen', 'PrinzEugen')
       elif(name == '甘比尔湾'):
@@ -152,31 +150,39 @@ def pass_validation(row):
   # Dev - correct word number by counting matched word
   hit_num = 0
   try:
-    if(selection_num > 1):
-      text = text.replace('|', '')
-      for name in sorted(candidates, key=(lambda x:len(x)), reverse=True):
-        if(row[name]):
-          REAL_HIT = False
-          for alias in ([name]+aliasDB[name]):
-            if(re.search(alias, text, re.I)):
-              text = re.sub(alias, '', text, flags=re.I)
-              hit_num += 1
-              REAL_HIT = True
-              break
-          # Check multi-hit
-          if(not REAL_HIT and not pinyin_match(text, name)):
-            print('[X] ' + row['回帖内容'] + '\t|\t' + name)
-            row[name] = 0
-      if(text):
-        hit_num += 1
+    text = text.replace('|', '')
+    for name in sorted(candidates, key=(lambda x:len(x)), reverse=True):
+      if(row[name]):
+        REAL_HIT = False
+        for alias in ([name]+aliasDB[name]):
+          if(re.search(alias, text, re.I)):
+            text = re.sub(alias, '', text, flags=re.I)
+            hit_num += 1
+            REAL_HIT = True
+            break
+        # Check multi-hit
+        if(not REAL_HIT and not pinyin_match(text, name)):
+          print('[X] 重复识别 - ' + row['回帖内容'] + '\t|\t' + name)
+          row[name] = None
+    if(text):
+      hit_num += 1
   except Exception as e:
     print(text)
     raise e
-  if(hit_num > word_num):
-    row['Nword'] = hit_num
-  else:
+  # 分词数
+  if(word_num > 1):
     row['Nword'] = word_num
+  else:
+    row['Nword'] = hit_num
+  # 选择数
+  selection_num = 0
+  for name in candidates:
+    if(row[name]):
+      selection_num += 1
+  # 校验
   if(selection_num != row['Nword']):
+    # Debug
+    print('[+] 分词失败 - ' +  repr(selection_num) + '/' + repr(row['Nword']) + ' | ' + row['回帖内容'])
     return False
   else:
     return True
