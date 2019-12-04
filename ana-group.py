@@ -204,7 +204,7 @@ validation_file = open(dirname +"/" + filename + "-validation.csv","w")
 logfile = open('analysis.log','a+')
 logfile.write('\n------> Analysis log for NGA舰萌'+SAIMOE_YEAR+' '+SAIMOE_STAGE+' '+SAIMOE_GROUP+'组\n')
 logfile.write('Date : '+ time.strftime("%Y-%m-%d %H:%M:%S") + '\n')
-header = ['楼层','用户ID','注册时间','回帖时间','回帖内容', '验证', '选择数'] + candidates
+header = ['页码','楼层','用户ID','注册时间','回帖时间','回帖内容', '验证', '选择数'] + candidates
 writer = csv.DictWriter(result_file, fieldnames=header, extrasaction='ignore', dialect="excel-tab")
 writer.writeheader()
 

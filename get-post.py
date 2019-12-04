@@ -67,7 +67,7 @@ outputJSON.write("[\n")
 
 outputCSV = open(OUTPUT_FILENAME + '.csv',"w")
 sep = ','
-outputCSV.write("楼层"+sep+"用户ID"+sep+"注册时间"+sep+"回帖时间"+sep+"回帖内容"+"\n")
+outputCSV.write("页码"+sep+"楼层"+sep+"用户ID"+sep+"注册时间"+sep+"回帖时间"+sep+"回帖内容"+"\n")
 
 # guestJs should be refreshed in 600 sec.
 nga_cookie = {}
@@ -125,7 +125,8 @@ for pageno in range(1,MAX_PAGES):
     row = raw['data']['__R'][repr(rowno)]
     if(row['lou'] == 0):
       continue
-    outputCSV.write(repr(row['lou'])) # post no.
+    outputCSV.write(repr(pageno)) # page no.
+    outputCSV.write(sep + repr(row['lou'])) # post no.
     uid = row['authorid']
     outputCSV.write(sep + repr(uid))
     outputCSV.write(sep + print_time(raw['data']['__U'][repr(uid)]['regdate']))
