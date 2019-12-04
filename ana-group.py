@@ -259,16 +259,18 @@ for row in raw:
     if(pass_validation(row)):
       row['验证'] = '●'
       MATCH_COUNT['验证通过'] += 1
-    # 检查选择舰娘数
-    elif(not pass_selection_num_check(row)):
-      validation_file.write('超票\t'+row['楼层']+'\t'+row['回帖内容']+'\n')
-      logfile.write('超票\t'+row['楼层']+'\t'+row['回帖内容']+'\n')
-      row['验证'] = '?'
-      MATCH_COUNT['超票'] += 1
     # 验证失败则导出以供分析
     else:
       row['验证'] = '×'
       MATCH_COUNT['验证失败'] += 1
+    # 检查选择舰娘数
+    if(not pass_selection_num_check(row)):
+      validation_file.write('超票\t'+row['楼层']+'\t'+row['回帖内容']+'\n')
+      logfile.write('超票\t'+row['楼层']+'\t'+row['回帖内容']+'\n')
+      row['验证'] = '?'
+      MATCH_COUNT['超票'] += 1
+    # 输出验证失败楼层
+    if(row['验证'] == '×'):
       validation_file.write(row['楼层']+'\t'+row['回帖内容']+'\t'+repr(row['Nselection'])+'\t'+repr(row['Nword'])+'\n')
   # 统计初步结果
   for name in candidates:
@@ -325,7 +327,7 @@ for row in data:
 fPage = get_empty_row()
 fPage['选择数'] = current_page
 for name in candidates:
-  fPage[name] = "=SUM($" + excel_col[name] + "$" + repr(current_page_start_excel_row) + ":$" + excel_col[name] + "$" + repr(row['excel_row_no'] -1) + ")"
+  fPage[name] = "=SUM($" + excel_col[name] + "$" + repr(current_page_start_excel_row) + ":$" + excel_col[name] + "$" + repr(row['excel_row_no']) + ")"
 writer.writerow(fPage)
 
 
