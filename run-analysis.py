@@ -55,6 +55,11 @@ for group in sorted(metadata[SAIMOE_YEAR][SAIMOE_STAGE]):
     continue
   print("\n---> Processing : " + SAIMOE_YEAR + ' ' + SAIMOE_STAGE + ' ' + group)
 
+  deadline = date2unix(thread['deadline'])
+  # Out-of-date, after counting / result publishing
+  if(time.time() - deadline > 50400 and not args.all):
+    print("[-] SKIP finished vote : " + 'https://bbs.nga.cn/read.php?tid=' + repr(thread['tid']))
+    continue
   # Check existence of post data
   postfile = 'output/NGA-' + repr(thread['tid']) + '.json'
   try:
@@ -63,7 +68,6 @@ for group in sorted(metadata[SAIMOE_YEAR][SAIMOE_STAGE]):
     print("[-] NEW post found in metadata.json")
     args.local = False
   else:
-    deadline = date2unix(thread['deadline'])
     # Check file last modified time
     if(file_info.st_mtime > deadline):
       print("[-] INFO - Thread " + repr(thread['tid']) + " has already been latest version")
@@ -71,7 +75,6 @@ for group in sorted(metadata[SAIMOE_YEAR][SAIMOE_STAGE]):
         continue
     else:
       print("[-] INFO - Thread " + repr(thread['tid']) + " will be updated to latest version")
-
   print("[-] INFO - Start analysis for " + SAIMOE_YEAR + ' ' + SAIMOE_STAGE + ' ' + group)
   csvfile = 'output/NGA-' + repr(thread['tid']) + '.csv'
   # Get post by NGA tid

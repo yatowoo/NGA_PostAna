@@ -2,6 +2,8 @@
 
 # Script for NGA saimoe group analysis
 # ChangeLogs
+## v1.6: 采用命中词分离功能，修正重复命中bug，如<荒潮-潮>同组
+## v1.5: 引入整句分词验证
 ## v1.4: 增加验证功能-beta，匹配前去除候选舰娘中的重复别名
 ## v1.3: 输出格式适配腾讯文档，改为<TAB>分隔
 ## v1.2: 直接输出excel公式统计单帖选择数、总计、分页统计
@@ -184,7 +186,7 @@ def pass_validation(row):
   # 校验
   if(selection_num != row['Nword']):
     # Debug
-    print('[+] 分词失败 - ' +  repr(selection_num) + '/' + repr(row['Nword']) + ' | ' + row['回帖内容'])
+    #print('[+] 分词失败 - ' +  repr(selection_num) + '/' + repr(row['Nword']) + ' | ' + row['回帖内容'])
     return False
   else:
     return True
