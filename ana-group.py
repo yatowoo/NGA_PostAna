@@ -137,6 +137,8 @@ def pass_validation(row):
         text = text.replace('samuel b. roberts', 'SamuelBRoberts')
       elif(name == '甘古特'):
         text = text.replace('Гангут два','Гангутдва')
+      elif(name == '德鲁伊特'):
+        text = text.replace('de ruyter','DeRuyter')
   
   # Split text
   text = trim_content(text, delimiter='|')
