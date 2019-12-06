@@ -94,12 +94,13 @@ def trim_content(text, delimiter='|'):
   # Remove meaningless words / characters in post content
   for w in MEANINGLESS_WORD:
     text = re.sub(w, '', text, flags=re.I)
-  text = re.sub('[~`@#$%^…&*()（）_\-+=·—/]', '', text)
+  text = re.sub('[~`@#$%^…&*()（）_\-+=·—]', '', text)
 
   # Replace delimiter (if for match, remove them)
   text = re.sub('[?？!！:：;；.。,，、　 ]', delimiter, text)
   text = text.replace('<br/>',delimiter)
   text = text.replace('&amp;',delimiter)
+  text = text.replace('/',delimiter)
   return text
 
 def alias_match(post_content, name):
