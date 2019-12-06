@@ -8,7 +8,7 @@ from pprint import pprint
 from pypinyin import lazy_pinyin
 import sys
 
-EXPORT_MODE = ['json', 'excel', 'csv']
+EXPORT_MODE = ['json', 'excel', 'csv', 'ext']
 
 NGA_SHIPS = [
     "秋月", "照月", "凉月", "初月", "岛风", "晓", "响/Верный", "雷", "电", "白露", "时雨", "村雨",
@@ -85,6 +85,17 @@ def export_alias_excel(mode='json'):
       elif(mode == 'csv'):
         print(name+','+','.join(alias))
 
+def export_alias_external(YEAR, STAGE, GROUP):
+    db = json.load(open('metadata.json'))
+    cdd = db[YEAR][STAGE][GROUP]['candidates']
+    for ship in cdd:
+      print(ship,end='/')
+      for alias in db['ShipAliasDB'][ship][:-1]:
+        print(alias,end='/')
+      print(db['ShipAliasDB'][ship][-1], end=',')
+    print()
+
+
 def name_diff():
   f = open('Ship.json')
   shipDB = json.load(f)
@@ -105,5 +116,8 @@ if __name__ == "__main__":
       print('\tSupoort export mode : ', end='')
       print(EXPORT_MODE)
       exit()
-  export_alias_excel(mode)
+  if(mode == 'ext'):
+    export_alias_external(YEAR=sys.argv[2], STAGE=sys.argv[3], GROUP=sys.argv[4])
+  else:
+    export_alias_excel(mode)
   
