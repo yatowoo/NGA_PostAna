@@ -192,12 +192,9 @@ def pass_validation(row):
   # 分词数
   if(word_num != hit_num and args.debug):
       print('[+] 分词失败 - ' +  repr(hit_num) + '/' + repr(word_num) + '/' + repr(selection_num) + '\t|\t' + row['楼层'] + '\t|\t' + row['回帖内容'] + '\t|\t' + textForValidatoin)
-  if(word_num > 1):
-    row['Nword'] = word_num
-  else:
-    row['Nword'] = hit_num
+  row['Nword'] = word_num
   # 校验
-  if(selection_num != row['Nword']):
+  if(selection_num != row['Nword'] or selection_num != hit_num):
     return False
   else:
     return True
