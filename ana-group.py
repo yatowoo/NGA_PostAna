@@ -23,6 +23,14 @@ import os
 import zhconv
 from pypinyin import lazy_pinyin
 
+# Command-line arguments
+import argparse
+parser = argparse.ArgumentParser(description='NGA Post Analysis for Kancolle Saimoe - Main script')
+parser.add_argument('post',help='Post data file (csv)')
+parser.add_argument('group',nargs='+',help='Group information, YEAR STAGE GROUP')
+parser.add_argument('-d', '--debug',help='Output more match & validation info for debug', action='store_true', default=False)
+args = parser.parse_args()
+
 # 统一不同匹配策略命中次数
 MATCH_COUNT = {'总计':0, '尝试':0, '本名':0, '别名':0, '谐音':0, '总楼层':0, '新号':0, '超票':0, '验证通过':0, '验证失败':0}
 
@@ -34,9 +42,9 @@ metadata = json.load(metafile)
 metafile.close()
 
 # Read from metadata with arguments
-SAIMOE_YEAR = sys.argv[2]
-SAIMOE_STAGE = sys.argv[3]
-SAIMOE_GROUP = sys.argv[4]
+SAIMOE_YEAR = args.group[0]
+SAIMOE_STAGE = args.group[1]
+SAIMOE_GROUP = args.group[2]
 if(metadata.get(SAIMOE_YEAR)):
   REG_TIME_LIMIT = date2unix(metadata[SAIMOE_YEAR]['regtime_limit'])
 else:
@@ -145,7 +153,7 @@ def pass_validation(row):
   
   # Split text
   text = trim_content(text, delimiter='|')
-
+  textForValidatoin = text
   # Remove same entry in splitted list
   word_set = set(text.split('|'))
   if({''}.issubset(word_set)):
@@ -160,6 +168,7 @@ def pass_validation(row):
       if(row[name]):
         REAL_HIT = False
         for alias in ([name]+aliasDB[name]):
+          alias = re.sub('[ .]','',alias,flags=re.I)
           if(re.search(alias, text, re.I)):
             text = re.sub(alias, '', text, flags=re.I)
             hit_num += 1
@@ -167,34 +176,35 @@ def pass_validation(row):
             break
         # Check multi-hit
         if(not REAL_HIT and not pinyin_match(text, name)):
-          print('[X] 重复识别 - ' + row['回帖内容'] + '\t|\t' + name)
+          if(args.debug):
+            print('[X] 重复识别 - ' + row['回帖内容'] + '\t|\t' + name)
           row[name] = None
     if(text):
       hit_num += 1
   except Exception as e:
     print(text)
     raise e
-  # 分词数
-  if(word_num > 1):
-    row['Nword'] = word_num
-  else:
-    row['Nword'] = hit_num
   # 选择数
   selection_num = 0
   for name in candidates:
     if(row[name]):
       selection_num += 1
+  # 分词数
+  if(word_num != hit_num and args.debug):
+      print('[+] 分词失败 - ' +  repr(hit_num) + '/' + repr(word_num) + '/' + repr(selection_num) + '\t|\t' + row['楼层'] + '\t|\t' + row['回帖内容'] + '\t|\t' + textForValidatoin)
+  if(word_num > 1):
+    row['Nword'] = word_num
+  else:
+    row['Nword'] = hit_num
   # 校验
   if(selection_num != row['Nword']):
-    # Debug
-    #print('[+] 分词失败 - ' +  repr(selection_num) + '/' + repr(row['Nword']) + ' | ' + row['回帖内容'])
     return False
   else:
     return True
 
 # 初始化文件
 print('[-] INFO - '+SAIMOE_YEAR+' '+SAIMOE_STAGE+' '+SAIMOE_GROUP+' loading ...')
-csvfile = open(sys.argv[1])
+csvfile = open(args.post)
 raw = csv.DictReader(csvfile)
 
 dirname = os.path.dirname(sys.argv[1])
