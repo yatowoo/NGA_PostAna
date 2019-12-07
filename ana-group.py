@@ -89,7 +89,7 @@ def pass_selection_num_check(row):
   return True
 
 # Validate result with number of splitted words
-MEANINGLESS_WORD = ['zsbd', 'z.bd', 'zs', '字数补丁', '字数布丁', '紫薯布丁', '字数', '紫薯', '补丁', "补字数", 'sgnb', '冲鸭', '冲(啊)+', '冲{3,}', 'exe', 'jpg', 'txt', '单票', '单投', "_\(:з&#39;∠\)_", "&#92;", 'awsl', '上了', '单推', '(pr){2,}', 'all in', '上了', '全仓', '满仓']
+MEANINGLESS_WORD = ['zsbd', 'z.bd', 'zs', '字数补丁', '字数布丁', '紫薯布丁', '字数', '紫薯', '补丁', "补字数", 'sgnb', '冲鸭', '冲(啊)+', '冲{3,}', 'exe', 'jpg', 'txt', '单票', '单投', "_\(:з&#39;∠\)_", "&#92;", 'awsl', '上了', '单推', '(pr){2,}', 'all in', '上了', '全仓', '满仓', '没了']
 NGA_TAG = ['quote', 'collapse', 'img', 'del', 'url']
 def trim_content(text, delimiter='|'):
   # Remove NGA tags
@@ -192,9 +192,12 @@ def pass_validation(row):
   # 分词数
   if(word_num != hit_num and args.debug):
       print('[+] 分词失败 - ' +  repr(hit_num) + '/' + repr(word_num) + '/' + repr(selection_num) + '\t|\t' + row['楼层'] + '\t|\t' + row['回帖内容'] + '\t|\t' + textForValidatoin)
-  row['Nword'] = word_num
+  if(word_num == 1):
+    row['Nword'] = hit_num
+  else:
+    row['Nword'] = word_num
   # 校验
-  if(selection_num != row['Nword'] or selection_num != hit_num):
+  if(selection_num != hit_num):
     return False
   else:
     return True
