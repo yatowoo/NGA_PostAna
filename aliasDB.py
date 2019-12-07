@@ -61,8 +61,8 @@ def export_alias_excel(mode='json'):
     for i in range(1,21):
       print('\t别名'+repr(i),end='')
     print()
-  for group in sorted(meta['2018']['group_stage']): 
-    ships = meta['2018']['group_stage'][group]['candidates']
+  for group in sorted(meta['2019']['group_stage']):
+    ships = meta['2019']['group_stage'][group]['candidates']
     aliasDB = meta['ShipAliasDB']
     for name in ships:
       pinyin = ''.join(lazy_pinyin(name))
