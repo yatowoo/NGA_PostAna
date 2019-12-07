@@ -89,7 +89,7 @@ def pass_selection_num_check(row):
   return True
 
 # Validate result with number of splitted words
-MEANINGLESS_WORD = ['zsbd', 'z.bd', 'zs', '字数补丁', '字数布丁', '紫薯布丁', '字数', '紫薯', '补丁', "补字数", 'sgnb', '冲鸭', '冲(啊)+', '冲{3,}', 'exe', 'jpg', 'txt', '单票', '单投', "_\(:з&#39;∠\)_", "&#92;", 'awsl', '上了', '单推', '(pr){2,}']
+MEANINGLESS_WORD = ['zsbd', 'z.bd', 'zs', '字数补丁', '字数布丁', '紫薯布丁', '字数', '紫薯', '补丁', "补字数", 'sgnb', '冲鸭', '冲(啊)+', '冲{3,}', 'exe', 'jpg', 'txt', '单票', '单投', "_\(:з&#39;∠\)_", "&#92;", 'awsl', '上了', '单推', '(pr){2,}', 'all in', '上了', '全仓', '满仓']
 NGA_TAG = ['quote', 'collapse', 'img', 'del', 'url']
 def trim_content(text, delimiter='|'):
   # Remove NGA tags
@@ -102,7 +102,7 @@ def trim_content(text, delimiter='|'):
   # Remove meaningless words / characters in post content
   for w in MEANINGLESS_WORD:
     text = re.sub(w, '', text, flags=re.I)
-  text = re.sub('[~`@#$%^…&*()（）_\-+=·—]', '', text)
+  text = re.sub('[~`@#$%^…&*()（）_\-+=·—～]', '', text)
 
   # Replace delimiter (if for match, remove them)
   text = re.sub('[?？!！:：;；.。,，、　 ]', delimiter, text)
@@ -167,7 +167,7 @@ def pass_validation(row):
     for name in sorted(candidates, key=(lambda x:len(x)), reverse=True):
       if(row[name]):
         REAL_HIT = False
-        for alias in ([name]+aliasDB[name]):
+        for alias in sorted([name]+aliasDB[name], key=(lambda x:len(x)), reverse=True):
           alias = re.sub('[ .]','',alias,flags=re.I)
           if(re.search(alias, text, re.I)):
             text = re.sub(alias, '', text, flags=re.I)
