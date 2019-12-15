@@ -348,6 +348,12 @@
         ],
         "selection_max": 5,
         "deadline": "2019-12-16 10:00:00"
+      },
+      "X1": {
+        "tid": 19642423,
+        "candidates": ["筑摩", "瑞穗"],
+        "selection_max": 1,
+        "deadline": "2019-12-16 10:00:00"
       }
     }
   },
