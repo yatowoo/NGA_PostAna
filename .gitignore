@@ -4,6 +4,7 @@
 
 # Data - post and result
 output*/*
+tmp/*
 history.json
 *.err
 *.out
