@@ -1,14 +1,9 @@
 #!/usr/bin/env python3
 #coding=utf-8
 # Cookie for guest : guestJs=time
-import sys
-import time
-import datetime
-import requests
-import bs4
-import json
-import unicodedata
-import os
+import sys, os, time, datetime
+import requests, bs4
+import re, json, unicodedata
 
 def rm_ctrl_ch(text):
   text = text.replace('\\x5C','\\\\')
@@ -136,7 +131,10 @@ for pageno in range(1,MAX_PAGES+1):
     tid = row['tid']
     if(title.find('投票贴') > -1 or title.find('附加赛') > -1):
       print(title)
-      #post = get_nga(base_url + '/read.php?tid=' + repr(tid) + '&lite=js')
+      post = get_nga(base_url + '/read.php?tid=' + repr(tid) + '&lite=js')
+      text = post['data']['__R']['0']['content']
+      candidates = [s.split('，')[1].replace('[/i]','') for s in re.findall('\[i].*?\[/i\]', text, re.I)]
+      print(candidates)
     row = raw['data']['__T'][repr(rowno)]
     outputCSV.write(repr(row['tid'])) # post id
     outputCSV.write(sep + repr(1024 & row['type'])) # locked
