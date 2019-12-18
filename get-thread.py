@@ -32,7 +32,7 @@ except ValueError:
   print("[+] ERROR - Invalid nga tid")
   exit()
 
-MAX_PAGES = 100
+MAX_PAGES = 1
 MAX_RETRY = 10
 REQUEST_DELAY = 0.2 # second
 CONNECTION_TIMEOUT = (3.05, 1)
@@ -77,12 +77,12 @@ outputCSV.write("TID"+sep+"锁定"+sep+"标题"+sep+"用户ID"+sep+"发帖时间
 nga_cookie = {}
 refresh_guest(nga_cookie)
 last_page = ""
-n_pages = 1
-for pageno in range(1,MAX_PAGES):
+
+def get_nga(url):
   for i_req in range(0,MAX_RETRY):
     try:
       time.sleep(REQUEST_DELAY)
-      res = requests.get(base_url+thread_api+'&page='+repr(pageno), headers=chrome_header,cookies=nga_cookie, timeout=CONNECTION_TIMEOUT)
+      res = requests.get(url, headers=chrome_header,cookies=nga_cookie, timeout=CONNECTION_TIMEOUT)
     except requests.exceptions.RequestException as e:
       if(i_req + 1 == MAX_RETRY):
         print('\n[x] Connection error for page {}, exceed MAX_RETRY/{}'.format(pageno, MAX_RETRY))
@@ -100,11 +100,7 @@ for pageno in range(1,MAX_PAGES):
   if(res.status_code == 403):
     refresh_guest(nga_cookie)
     print("[X] Page " + repr(pageno) + " - 403 ERROR")
-    continue
-  # Check the last page of thread
-    # Notice : lite=js response include "time"="[timestamp]"
-  if(pageno > 1):
-    outputJSON.write(",\n")
+    return None
   # Remove control character before json.loads
   raw_text = rm_ctrl_ch(res.text[33:])
   try:
@@ -114,20 +110,33 @@ for pageno in range(1,MAX_PAGES):
     print(e)
     print(raw_text)
     exit()
+    return None
+  finally:
+    return raw
+
+for pageno in range(1,MAX_PAGES+1):
+  raw = get_nga(base_url+thread_api+'&page='+repr(pageno))
+  if(raw is None):
+    continue
+  # Check the last page of thread
+    # Notice : lite=js response include "time"="[timestamp]"
+  if(pageno > 1):
+    outputJSON.write(",\n")
   outputJSON.write(json.dumps(raw,ensure_ascii=False,indent=2))
   # processing info.
   rows = raw['data']['__ROWS']
   rows_page = raw['data']['__T__ROWS']
   rows_per_page = raw['data']['__T__ROWS_PAGE']
-  n_pages = 1
-  if(pageno == 1):
-    print("[-] Connected to NGA forum "+repr(raw['data']['__F']['fid']))
-    print("\tRows : "+repr(rows)+", Pages : "+repr(n_pages))
-  print("\r[-] Page " + repr(pageno) + " / " + repr(n_pages) + " - "+repr(res.status_code)+" OK", end='')
   for rowno in range(rows_page):
     if(not raw['data']['__T'].get(repr(rowno))):
       print('[X] Fail to resolve row ' + repr(rowno))
       continue
+    row = raw['data']['__T'][repr(rowno)]
+    title = row['subject']
+    tid = row['tid']
+    if(title.find('投票贴') > -1 or title.find('附加赛') > -1):
+      print(title)
+      #post = get_nga(base_url + '/read.php?tid=' + repr(tid) + '&lite=js')
     row = raw['data']['__T'][repr(rowno)]
     outputCSV.write(repr(row['tid'])) # post id
     outputCSV.write(sep + repr(1024 & row['type'])) # locked
@@ -137,8 +146,7 @@ for pageno in range(1,MAX_PAGES):
     outputCSV.write(sep + repr(row['replies']))
     outputCSV.write(sep + print_time(row['lastpost']))
     outputCSV.write('\n')
-  if(pageno == n_pages):
-    break
+
 print("\n[-] INFO - Finished")
 
 outputJSON.write("\n]")
