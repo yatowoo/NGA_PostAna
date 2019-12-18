@@ -64,6 +64,22 @@ last_page = ""
 def date2unix(str):
   return int(time.mktime(time.strptime(str,"%Y-%m-%d %H:%M:%S")))
 
+metadb = json.load(open('metadata.json'))
+def alias_correct(meta):
+  for i,name in enumerate(meta['candidates']):
+    if(metadb['ShipAliasDB'].get(name)):
+      continue
+    else:
+      isCorrected = False
+      for ship,alias in metadb['ShipAliasDB'].items():
+        if(re.search(name,','.join(alias),re.I)):
+          meta['candidates'][i] = ship
+          isCorrected = True
+          print('[+] Ship alias corrected - ' + name + ' -> ' + ship)
+          break
+      if(not isCorrected):
+        print('[X] Ship not found - ' + name)
+
 def get_nga(url):
   for i_req in range(0,MAX_RETRY):
     try:
@@ -127,7 +143,8 @@ for pageno in range(1,MAX_PAGES+1):
       text = post['data']['__R']['0']['content']
       meta = {}
       meta['tid'] = tid
-      meta['candidates'] = [s.split('，')[1].replace('[/i]','') for s in re.findall('\[i].*?\[/i\]', text, re.I)]
+      meta['candidates'] = [s.split('，')[1].replace('[/i]','').strip().split('/')[0] for s in re.findall('\[i].*?\[/i\]', text, re.I)]
+      alias_correct(meta)
       meta['selection_max'] = int(re.search('每人(.*?)票',text).groups()[0])
       ddl = re.search('投票于(.*?)：',text).groups()[0]
       ddl = re.sub('月', '-', ddl)
