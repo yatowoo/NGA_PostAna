@@ -14,18 +14,6 @@ def refresh_guest(ngack):
 
 def print_time(timestamp):
   return time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(timestamp))
-# User Params
-user_tid = None
-if(len(sys.argv) == 2):
-  user_tid = sys.argv[1]
-else:
-  user_tid = input("NGA_TID : ")
-NGA_TID = 6406100
-try:
-  NGA_TID = int(user_tid)
-except ValueError:
-  print("[+] ERROR - Invalid nga tid")
-  exit()
 
 MAX_PAGES = 1
 MAX_RETRY = 10
@@ -72,6 +60,9 @@ outputCSV.write("TID"+sep+"锁定"+sep+"标题"+sep+"用户ID"+sep+"发帖时间
 nga_cookie = {}
 refresh_guest(nga_cookie)
 last_page = ""
+
+def date2unix(str):
+  return int(time.mktime(time.strptime(str,"%Y-%m-%d %H:%M:%S")))
 
 def get_nga(url):
   for i_req in range(0,MAX_RETRY):
@@ -130,11 +121,21 @@ for pageno in range(1,MAX_PAGES+1):
     title = row['subject']
     tid = row['tid']
     if(title.find('投票贴') > -1 or title.find('附加赛') > -1):
+      SAIMOE_YEAR = time.localtime().tm_year
       print(title)
       post = get_nga(base_url + '/read.php?tid=' + repr(tid) + '&lite=js')
       text = post['data']['__R']['0']['content']
-      candidates = [s.split('，')[1].replace('[/i]','') for s in re.findall('\[i].*?\[/i\]', text, re.I)]
-      print(candidates)
+      meta = {}
+      meta['tid'] = tid
+      meta['candidates'] = [s.split('，')[1].replace('[/i]','') for s in re.findall('\[i].*?\[/i\]', text, re.I)]
+      meta['selection_max'] = int(re.search('每人(.*?)票',text).groups()[0])
+      ddl = re.search('投票于(.*?)：',text).groups()[0]
+      ddl = re.sub('月', '-', ddl)
+      ddl = re.sub('日.午',' ', ddl)
+      meta['deadline'] = repr(SAIMOE_YEAR) + '-' + ddl + ':00:00'
+      if(date2unix(meta['deadline']) < time.time()):
+        meta['deadline'] = repr(SAIMOE_YEAR+1) + '-' + ddl + ':00:00'
+      print(json.dumps(meta, indent=2, ensure_ascii=False))
     row = raw['data']['__T'][repr(rowno)]
     outputCSV.write(repr(row['tid'])) # post id
     outputCSV.write(sep + repr(1024 & row['type'])) # locked
