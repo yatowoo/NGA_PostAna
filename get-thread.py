@@ -67,7 +67,7 @@ def date2unix(str):
 metadb = json.load(open('metadata.json'))
 def alias_correct(meta):
   for i,name in enumerate(meta['candidates']):
-    if(metadb['ShipAliasDB'].get(name)):
+    if(metadb['ShipAliasDB'].get(name) is not None):
       continue
     else:
       isCorrected = False
@@ -143,7 +143,7 @@ for pageno in range(1,MAX_PAGES+1):
       text = post['data']['__R']['0']['content']
       meta = {}
       meta['tid'] = tid
-      meta['candidates'] = [s.split('，')[1].replace('[/i]','').strip().split('/')[0] for s in re.findall('\[i].*?\[/i\]', text, re.I)]
+      meta['candidates'] = [s.split('，')[-1].replace('[i]','').replace('[/i]','').strip().split('/')[0] for s in re.findall('\[i].*?\[/i\]', text, re.I)]
       alias_correct(meta)
       meta['selection_max'] = int(re.search('每人(.*?)票',text).groups()[0])
       ddl = re.search('投票于(.*?)：',text).groups()[0]
