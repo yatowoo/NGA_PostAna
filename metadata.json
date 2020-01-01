@@ -631,6 +631,44 @@
         "selection_max": 2,
         "deadline": "2019-12-28 10:00:00"
       }
+    },
+    "1v1":{
+      "A":{
+  "tid": 19852889,
+  "candidates": [
+    "秋月",
+    "天津风"
+  ],
+  "selection_max": 1,
+  "deadline": "2020-1-4 10:00:00"
+},
+"B":{
+  "tid": 19852900,
+  "candidates": [
+    "大凤",
+    "大和"
+  ],
+  "selection_max": 1,
+  "deadline": "2020-1-4 10:00:00"
+},
+"C":{
+  "tid": 19852914,
+  "candidates": [
+    "萨拉托加",
+    "瑞鹤"
+  ],
+  "selection_max": 1,
+  "deadline": "2020-1-4 10:00:00"
+},
+"D":{
+  "tid": 19852929,
+  "candidates": [
+    "阿武隈",
+    "绫波"
+  ],
+  "selection_max": 1,
+  "deadline": "2020-1-4 10:00:00"
+}
     }
   },
   "2018":{
