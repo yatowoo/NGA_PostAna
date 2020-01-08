@@ -136,9 +136,16 @@ for pageno in range(1,MAX_PAGES+1):
     row = raw['data']['__T'][repr(rowno)]
     title = row['subject']
     tid = row['tid']
-    if(title.find('投票贴') > -1 or title.find('附加赛') > -1):
+    # 判断正在进行的投票贴，非锁定
+    # TODO: or title.find('附加赛') > -1
+    if(title.find('投票贴') > -1 and not (1024 & row['type'])):
       SAIMOE_YEAR = time.localtime().tm_year
       print(title)
+      vote_info = re.search('\[活动\](.*?) 舰娘萌战 (.*?)(.)组投票贴',title).groups()
+      event = vote_info[0] # 第N届
+      stage = vote_info[1] # 阶段
+      group = vote_info[2] # 分组
+      print('\t' + event + '\n\t' + stage + '\n\t' + group)
       post = get_nga(base_url + '/read.php?tid=' + repr(tid) + '&lite=js')
       text = post['data']['__R']['0']['content']
       meta = {}
