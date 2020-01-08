@@ -5,6 +5,9 @@ import sys, os, time, datetime
 import requests, bs4
 import re, json, unicodedata
 
+# TODO: New workflow for fully auto-processing
+SAIMOE_YEAR = '2019'
+
 def rm_ctrl_ch(text):
   text = text.replace('\\x5C','\\\\')
   return "".join(ch for ch in text if unicodedata.category(ch)[0]!="C")
@@ -116,6 +119,7 @@ def get_nga(url):
   finally:
     return raw
 
+NEW_VOTE = False
 for pageno in range(1,MAX_PAGES+1):
   raw = get_nga(base_url+thread_api+'&page='+repr(pageno))
   if(raw is None):
@@ -139,13 +143,18 @@ for pageno in range(1,MAX_PAGES+1):
     # 判断正在进行的投票贴，非锁定
     # TODO: or title.find('附加赛') > -1
     if(title.find('投票贴') > -1 and not (1024 & row['type'])):
-      SAIMOE_YEAR = time.localtime().tm_year
       print(title)
       vote_info = re.search('\[活动\](.*?) 舰娘萌战 (.*?)(.)组投票贴',title).groups()
       event = vote_info[0] # 第N届
       stage = vote_info[1] # 阶段
       group = vote_info[2] # 分组
-      print('\t' + event + '\n\t' + stage + '\n\t' + group)
+      # Check metadb
+      if(metadb[SAIMOE_YEAR].get(stage) is None):
+        metadb[SAIMOE_YEAR][stage] = {}
+      if(metadb[SAIMOE_YEAR][stage].get(group) is None):
+        print('[+] NEW Vote found - ' + event + '-' + stage + '-' + group)
+      else:
+        continue
       post = get_nga(base_url + '/read.php?tid=' + repr(tid) + '&lite=js')
       text = post['data']['__R']['0']['content']
       meta = {}
@@ -156,10 +165,12 @@ for pageno in range(1,MAX_PAGES+1):
       ddl = re.search('投票于(.*?)：',text).groups()[0]
       ddl = re.sub('月', '-', ddl)
       ddl = re.sub('日.午',' ', ddl)
-      meta['deadline'] = repr(SAIMOE_YEAR) + '-' + ddl + ':00:00'
+      current_year = time.localtime().tm_year
+      meta['deadline'] = repr(current_year) + '-' + ddl + ':00:00'
       if(date2unix(meta['deadline']) < time.time()):
-        meta['deadline'] = repr(SAIMOE_YEAR+1) + '-' + ddl + ':00:00'
+        meta['deadline'] = repr(current_year+1) + '-' + ddl + ':00:00'
       print(json.dumps(meta, indent=2, ensure_ascii=False))
+      metadb[SAIMOE_YEAR][stage][group] = meta
     row = raw['data']['__T'][repr(rowno)]
     outputCSV.write(repr(row['tid'])) # post id
     outputCSV.write(sep + repr(1024 & row['type'])) # locked
@@ -169,6 +180,8 @@ for pageno in range(1,MAX_PAGES+1):
     outputCSV.write(sep + repr(row['replies']))
     outputCSV.write(sep + print_time(row['lastpost']))
     outputCSV.write('\n')
+
+json.dump(metadb, open('metadata.json', 'w'), indent=2, ensure_ascii=False)
 
 print("\n[-] INFO - Finished")
 
