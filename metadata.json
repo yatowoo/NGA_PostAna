@@ -680,6 +680,44 @@
         "selection_max": 1,
         "deadline": "2020-1-4 10:00:00"
       }
+    },
+    "32进16下半区": {
+      "I": {
+        "tid": 19922444,
+        "candidates": [
+          "朝潮",
+          "榛名"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-10 10:00:00"
+      },
+      "K": {
+        "tid": 19922477,
+        "candidates": [
+          "霞",
+          "翔鹤"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-10 10:00:00"
+      },
+      "J": {
+        "tid": 19922461,
+        "candidates": [
+          "陆奥",
+          "甘比尔湾"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-10 10:00:00"
+      },
+      "L": {
+        "tid": 19922492,
+        "candidates": [
+          "扎拉",
+          "贾维斯"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-10 10:00:00"
+      }
     }
   },
   "2018": {
