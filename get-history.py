@@ -4,6 +4,8 @@
 
 import json, re, time, datetime, sys, os
 
+DATA_FORMAT = '%a %b %d %H:%M:%S %Z %Y'
+
 if(len(sys.argv) > 1):
   HISTORY_FILE = sys.argv[1]
 else:
@@ -19,7 +21,6 @@ def buildLogEntry(history):
     entry['text'] = history
     # Analysis Date
     entry['date'] = re.search('---.*: (.*)\n', history).group(1)
-    entry['date_format'] = '%a %b %d %H:%M:%S %Z %Y'
     # Group info
     group_name = re.search('INFO - (.*) loading',history).group(1)
     entry['group'] = group_name
@@ -44,18 +45,20 @@ with open(HISTORY_FILE) as f:
 buildLogEntry(history)
 
 # Generate output for ChartJS
-start_hour = time.strptime(log[0]['date'], log[0]['date_format']).tm_hour
 output = {}
 for group in current_vote:
   output[group] = {}
   output[group]['title'] = group
-  output[group]['start_hour'] = start_hour
   for k in log[0]['efficiency'].keys():
     output[group][k] = []
 
 for entry in log:
   g = output[entry['group']]
   if(not g.get('candidates')):
+    try:
+      g['start_hour'] = time.strptime(entry['date'], DATA_FORMAT).tm_hour
+    except ValueError:
+      g['start_hour'] = time.strptime(entry['date'].replace('CST', 'CET'), DATA_FORMAT).tm_hour
     g['candidates'] = sorted(entry['result'].keys())
     for name in g['candidates']:
       g[name] = []
