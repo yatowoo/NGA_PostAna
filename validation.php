@@ -22,7 +22,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-2 text-center">
-      <ul class="list-group" id="sidebar">
+      <ul class="list-group position-fixed" id="sidebar">
       </ul>
     </div>
     <div class="col-sm-10 text-center">
