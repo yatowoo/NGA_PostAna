@@ -717,6 +717,42 @@
         ],
         "selection_max": 1,
         "deadline": "2020-1-10 10:00:00"
+      },
+      "N": {
+        "tid": 19957088,
+        "candidates": [
+          "塔什干",
+          "响"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-13 10:00:00"
+      },
+      "O": {
+        "tid": 19957104,
+        "candidates": [
+          "凉月",
+          "鹿岛"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-13 10:00:00"
+      },
+      "P": {
+        "tid": 19957113,
+        "candidates": [
+          "俾斯麦",
+          "金刚"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-13 10:00:00"
+      },
+      "M": {
+        "tid": 19957079,
+        "candidates": [
+          "时雨",
+          "夕立"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-13 10:00:00"
       }
     }
   },
