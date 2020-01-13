@@ -5,12 +5,21 @@
   <meta charset="utf-8">
   <link rel="icon" href="nga.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/js/mdb.min.js"></script>
   <link rel="stylesheet" href="https://mladenplavsic.github.io/bootstrap-navbar-sidebar/navbar-fixed-left.min.css">
-  <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
-  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <script src="https://cdn.staticfile.org/Chart.js/2.7.3/Chart.bundle.min.js"></script>
   <style type="text/css">a.btn{margin-bottom: 1rem;} hr{margin: 1rem;} .jumbotron{padding-bottom: 1rem}</style>
 </head>
 <body>
@@ -32,13 +41,13 @@
       <p>人工验证 分词失败回帖内容记录表格</p>
     </div>
     <div class="table-responsive text-center">
-      <table class="table table-striped table-borded table-hover">
-        <thead>
+      <table class="table col-sm w-auto table-striped table-borded table-hover" style="word-break:break-all; word-wrap:break-all;">
+        <thead class="thead-dark">
         <tr>
-          <th>楼层</th>
-          <th>回帖内容</th>
-          <th>投票数</th>
-          <th>分词数</th>
+          <th scope="col" class="th-sm">楼层</th>
+          <th scope="col">回帖内容</th>
+          <th scope="col">投票数</th>
+          <th scope="col">分词数</th>
         </tr></thead>
         <tbody>
 <?php
