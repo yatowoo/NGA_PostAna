@@ -59,7 +59,7 @@
     else if(strpos($line, "------>") !== false){
       $line = str_replace("------> output/", "", $line);
       $line = str_replace("-validation.csv\n", "", $line);
-      echo "<tr><td></td><td><b id=\"" . $line . "\">" . $line . "</b></td><td></td><td></td><tr>";
+      echo "<tr><td></td><td><u><b id=\"" . $line . "\">" . $line . "</b></u></td><td></td><td></td><tr>";
     }
     else if(strpos($line, "超票") !== false){
       $line = str_replace("超票\t", "", $line);
@@ -83,7 +83,7 @@
     groups = $('b');
     for ( i = 0; i < groups.length ; i ++){
       var gname = groups[i].id.split('-');
-      $("#sidebar").append('<a class="nav-link" href="#' + groups[i].id + '">Group ' + gname[gname.length-1]+'</a>');
+      $("#sidebar").append('<a class="nav-link" href="#' + groups[i].id + '">' + gname[1] + '-' + gname[2] +'</a>');
     }
   };
 </script>
