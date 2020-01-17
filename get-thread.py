@@ -173,7 +173,7 @@ for pageno in range(1,MAX_PAGES+1):
       meta['selection_max'] = int(re.search('每人(.*?)票',text).groups()[0])
       ddl = re.search('投票于(.*?)：',text).groups()[0]
       ddl = re.sub('月', '-', ddl)
-      ddl = re.sub('日.午',' ', ddl)
+      ddl = re.sub('日(.午)*晚*',' ', ddl)
       current_year = time.localtime().tm_year
       meta['deadline'] = repr(current_year) + '-' + ddl + ':00:00'
       if(date2unix(meta['deadline']) < time.time()):
