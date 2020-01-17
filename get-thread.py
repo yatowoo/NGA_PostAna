@@ -141,13 +141,22 @@ for pageno in range(1,MAX_PAGES+1):
     title = row['subject']
     tid = row['tid']
     # 判断正在进行的投票贴，非锁定
-    # TODO: or title.find('附加赛') > -1
     if(title.find('投票贴') > -1 and not (1024 & row['type'])):
       print(title)
-      vote_info = re.search('\[活动\](.*?) 舰娘萌战 (.*?)(.)组投票贴',title).groups()
+      if(title.find('附加赛') > -1):
+        vote_info = re.search('\[活动\](.*?) 舰娘萌战 (.*?)(.)组附加赛',title).groups()
+        group = vote_info[2] + 'X' # 分组
+      else:
+        vote_info = re.search('\[活动\](.*?) 舰娘萌战 (.*?)(.)组投票贴',title).groups()
+        group = vote_info[2] # 分组
       event = vote_info[0] # 第N届
       stage = vote_info[1] # 阶段
-      group = vote_info[2] # 分组
+      if(stage.find('上半区') > -1):
+        stage = stage.replace('上半区', '')
+        group = '1' + group
+      elif(stage.find('下半区') > -1):
+        stage = stage.replace('下半区', '')
+        group = '2' + group
       # Check metadb
       if(metadb[SAIMOE_YEAR].get(stage) is None):
         metadb[SAIMOE_YEAR][stage] = {}
