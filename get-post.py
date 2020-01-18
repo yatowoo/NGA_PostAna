@@ -129,7 +129,11 @@ for pageno in range(1,MAX_PAGES):
     outputCSV.write(sep + repr(row['lou'])) # post no.
     uid = row['authorid']
     outputCSV.write(sep + repr(uid))
-    outputCSV.write(sep + print_time(raw['data']['__U'][repr(uid)]['regdate']))
+    # 匿名
+    try:
+      outputCSV.write(sep + print_time(raw['data']['__U'][repr(uid)]['regdate']))
+    except KeyError:
+      outputCSV.write(sep + time.strftime('%Y-%m-%d %H:00:00'))
     outputCSV.write(sep + print_time(row['postdatetimestamp']))
     outputCSV.write(sep + str(row['content']).replace(',',' '))
     outputCSV.write('\n')
