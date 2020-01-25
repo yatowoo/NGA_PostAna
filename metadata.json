@@ -867,6 +867,118 @@
         ],
         "selection_max": 1,
         "deadline": "2020-1-20 10:00:00"
+      },
+      "2H": {
+        "tid": 20075029,
+        "candidates": [
+          "凉月",
+          "俾斯麦"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-23 10:00:00"
+      },
+      "2G": {
+        "tid": 20075023,
+        "candidates": [
+          "时雨",
+          "响"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-23 10:00:00"
+      },
+      "1F": {
+        "tid": 20075019,
+        "candidates": [
+          "神通",
+          "欧根"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-23 10:00:00"
+      },
+      "1E": {
+        "tid": 20075011,
+        "candidates": [
+          "瑞凤",
+          "雪风"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-23 10:00:00"
+      }
+    },
+    "深海8进4": {
+      "1A": {
+        "tid": 20113255,
+        "candidates": [
+          "深海鹤栖姬",
+          "战舰栖姬"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-25 10:00:00"
+      },
+      "1B": {
+        "tid": 20113269,
+        "candidates": [
+          "彼岸栖姬",
+          "防空栖姬"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-25 10:00:00"
+      },
+      "2D": {
+        "tid": 20113303,
+        "candidates": [
+          "战舰レ级",
+          "潜水新栖姬"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-25 10:00:00"
+      },
+      "2C": {
+        "tid": 20113280,
+        "candidates": [
+          "安齐奥栖姬",
+          "防空巡栖姬"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-25 10:00:00"
+      }
+    },
+    "8进4": {
+      "2C": {
+        "tid": 20137796,
+        "candidates": [
+          "朝潮",
+          "霞"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-28 10:00:00"
+      },
+      "2D": {
+        "tid": 20137806,
+        "candidates": [
+          "时雨",
+          "凉月"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-28 10:00:00"
+      },
+      "1B": {
+        "tid": 20137788,
+        "candidates": [
+          "瑞凤",
+          "欧根"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-28 10:00:00"
+      },
+      "1A": {
+        "tid": 20137780,
+        "candidates": [
+          "大凤",
+          "瑞鹤"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-1-28 10:00:00"
       }
     }
   },
