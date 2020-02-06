@@ -145,15 +145,21 @@ for pageno in range(1,MAX_PAGES+1):
       print(title)
       if(title.find('附加赛') > -1):
         vote_info = re.search('\[活动\](.*?) 舰娘萌战 (.*?)(.)组附加赛',title).groups()
+        stage = vote_info[1] # 阶段
         group = vote_info[2] + 'X' # 分组
       elif('半决赛' in title):
         vote_info = re.search('\[活动\](.*?) 舰娘萌战 (.*?)(.)半区投票贴',title).groups()
+        stage = vote_info[1] # 阶段
         group = vote_info[2] + 'X' # 分组
+      elif('决赛' in title):
+        vote_info = re.search('\[活动\](.*?) 舰娘萌战 (.*?)决赛投票贴',title).groups()
+        stage = '决赛' # 阶段
+        group = vote_info[1] + 'X' # 分组
       else:
         vote_info = re.search('\[活动\](.*?) 舰娘萌战 (.*?)(.)组投票贴',title).groups()
+        stage = vote_info[1] # 阶段
         group = vote_info[2] # 分组
       event = vote_info[0] # 第N届
-      stage = vote_info[1] # 阶段
       if(stage.find('上半区') > -1):
         stage = stage.replace('上半区', '')
         group = '1' + group
