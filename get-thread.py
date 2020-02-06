@@ -146,6 +146,9 @@ for pageno in range(1,MAX_PAGES+1):
       if(title.find('附加赛') > -1):
         vote_info = re.search('\[活动\](.*?) 舰娘萌战 (.*?)(.)组附加赛',title).groups()
         group = vote_info[2] + 'X' # 分组
+      elif('半决赛' in title):
+        vote_info = re.search('\[活动\](.*?) 舰娘萌战 (.*?)(.)半区投票贴',title).groups()
+        group = vote_info[2] + 'X' # 分组
       else:
         vote_info = re.search('\[活动\](.*?) 舰娘萌战 (.*?)(.)组投票贴',title).groups()
         group = vote_info[2] # 分组
