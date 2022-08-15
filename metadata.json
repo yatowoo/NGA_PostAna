@@ -1039,6 +1039,24 @@
         ],
         "selection_max": 1,
         "deadline": "2020-2-7 10:00:00"
+      },
+      "深海X": {
+        "tid": 20321349,
+        "candidates": [
+          "防空栖姬",
+          "潜水新栖姬"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-2-13 10:00:00"
+      },
+      "X": {
+        "tid": 20321344,
+        "candidates": [
+          "瑞鹤",
+          "霞"
+        ],
+        "selection_max": 1,
+        "deadline": "2020-2-13 10:00:00"
       }
     }
   },
